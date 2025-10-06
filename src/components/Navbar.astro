@@ -1,0 +1,97 @@
+---
+// Props interface
+interface Props {
+	currentPage?: string;
+}
+
+const { currentPage = 'home' } = Astro.props;
+---
+
+<header class="relative w-full bg-white z-50">
+	<nav class="max-w-[1315px] mx-auto px-4">
+		<div class="flex items-center justify-between h-[53.18px] py-[40px]">
+			<!-- Logo -->
+			<div class="h-[53.18px] w-[78.43px] relative shrink-0">
+				<img
+					src="/e62fb499be33792858b87a882b58a9fb469a40e1.svg"
+					alt="Kahf Kids Logo"
+					class="w-full h-full object-contain"
+				/>
+			</div>
+
+			<!-- Desktop Navigation -->
+			<div class="hidden md:flex items-center justify-end gap-[100px]">
+				<!-- Nav Links -->
+				<div class="flex items-center gap-[50px] font-['Baloo_2'] font-normal text-[#222222] text-[16px]">
+					<a href="#home" class="hover:text-[#ff4848] transition-colors">Home</a>
+					<a href="#videos" class="hover:text-[#ff4848] transition-colors">Videos</a>
+					<a href="#pricing" class="hover:text-[#ff4848] transition-colors">Pricing</a>
+				</div>
+
+				<!-- Kids Courses Button -->
+				<div class="bg-white border border-[#ff4848] border-solid rounded-[10px] h-[50px] w-[129px] flex items-center justify-center px-[16px] py-[14px] hover:bg-[#ff4848] transition-colors group cursor-pointer">
+					<div class="flex items-center gap-[4px]">
+						<span class="font-['Baloo_2'] font-medium text-[#ff4848] text-[14px] group-hover:text-white transition-colors">
+							Kids Courses
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Mobile Menu Button -->
+			<button
+				class="md:hidden p-2 text-gray-900 hover:text-orange-500 transition-colors"
+				aria-label="Toggle mobile menu"
+				id="mobile-menu-button"
+			>
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+				</svg>
+			</button>
+		</div>
+
+		<!-- Mobile Navigation -->
+		<div class="hidden md:hidden border-t border-gray-100 pt-4 pb-6" id="mobile-menu">
+			<div class="flex flex-col items-center space-y-4">
+				<a
+					href="#home"
+					class="text-[#222222] text-[16px] font-['Baloo_2'] font-normal hover:text-[#ff4848] transition-colors"
+				>
+					Home
+				</a>
+				<a
+					href="#videos"
+					class="text-[#222222] text-[16px] font-['Baloo_2'] font-normal hover:text-[#ff4848] transition-colors"
+				>
+					Videos
+				</a>
+				<a
+					href="#pricing"
+					class="text-[#222222] text-[16px] font-['Baloo_2'] font-normal hover:text-[#ff4848] transition-colors"
+				>
+					Pricing
+				</a>
+				<div class="bg-white border border-[#ff4848] border-solid rounded-[10px] h-[50px] w-[129px] flex items-center justify-center px-[16px] py-[14px] hover:bg-[#ff4848] transition-colors group cursor-pointer">
+					<div class="flex items-center gap-[4px]">
+						<span class="font-['Baloo_2'] font-medium text-[#ff4848] text-[14px] group-hover:text-white transition-colors">
+							Kids Courses
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const mobileMenuButton = document.getElementById('mobile-menu-button');
+		const mobileMenu = document.getElementById('mobile-menu');
+
+		if (mobileMenuButton && mobileMenu) {
+			mobileMenuButton.addEventListener('click', () => {
+				mobileMenu.classList.toggle('hidden');
+			});
+		}
+	});
+</script>

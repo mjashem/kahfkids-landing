@@ -1,16 +1,26 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import Ecosystem from '../components/Ecosystem.astro';
+import Pricing from '../components/Pricing.astro';
+import MuslimGeneration from '../components/MuslimGeneration.astro';
+import Devices from '../components/Devices.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Kahf Kids - Safe & Fun Educational App for Muslim Children" description="The Ultimate Safe & Fun Edutainment Hub for Kids - Discover stories, games, and learning tools in a secure space made just for kids.">
+	<Navbar currentPage="home" />
+
+	<main>
+		<Hero />
+		<Features />
+		<Ecosystem />
+		<Pricing />
+		<MuslimGeneration />
+		<Devices />
+	</main>
+
+	<Footer />
+</Layout>
