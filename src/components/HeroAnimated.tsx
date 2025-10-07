@@ -35,20 +35,45 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
               <div className="space-y-6">
                 {/* Decorative elements row */}
                 <div className="flex flex-row items-center lg:items-start gap-4 justify-end lg:justify-end -lg:mb-8 -mb-2 mr-3 lg:mr-44">
-                  <div className="flex h-[60px] sm:h-[80px] lg:h-[100px] items-center justify-center w-[40px] sm:w-[45px] lg:w-[50px]" style={{ transform: 'rotate(13.97deg)' }}>
+                  <motion.div
+                    className="flex h-[60px] sm:h-[80px] lg:h-[100px] items-center justify-center w-[40px] sm:w-[45px] lg:w-[50px]"
+                    style={{ transform: 'rotate(13.97deg)' }}
+                    animate={{
+                      rotate: [13.97, 18.97, 13.97],
+                      y: [0, -5, 0]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
                     <img
                       src="/b2de00c26e68f0cd06db557a2c071e420ab33f7c.svg"
                       alt="Decorative element 1"
                       className="w-full h-full object-contain mr-9 -mb-6"
                     />
-                  </div>
-                  <div className="flex h-[80px] sm:h-[100px] lg:h-[120px] items-center justify-center w-[50px] sm:w-[55px] lg:w-[60px]" style={{ transform: 'rotate(344.472deg)' }}>
+                  </motion.div>
+                  <motion.div
+                    className="flex h-[80px] sm:h-[100px] lg:h-[120px] items-center justify-center w-[50px] sm:w-[55px] lg:w-[60px]"
+                    style={{ transform: 'rotate(344.472deg)' }}
+                    animate={{
+                      rotate: [344.472, 339.472, 344.472],
+                      y: [0, 8, 0]
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.5
+                    }}
+                  >
                     <img
                       src="/3ed83473475b7033e6aee65965f34306b624d58e.svg"
                       alt="Decorative element 2"
                       className="w-full h-full object-contain"
                     />
-                  </div>
+                  </motion.div>
                 </div>
                 {/* Heading */}
                 <motion.h1
@@ -116,13 +141,24 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                     />
                   </div>
                 </div>
-                <div className="hidden lg:flex items-center justify-center w-[45px] sm:w-[50px] lg:w-[55px] h-[45px] sm:h-[50px] lg:h-[55px] ml-18 mt-12">
+                <motion.div
+                    className="hidden lg:flex items-center justify-center w-[45px] sm:w-[50px] lg:w-[55px] h-[45px] sm:h-[50px] lg:h-[55px] ml-18 mt-12"
+                    animate={{
+                      rotate: [0, 360],
+                      scale: [1, 1.1, 1]
+                    }}
+                    transition={{
+                      duration: 8,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  >
                     <img
                       src="/c068262c56f0183e00a6b2dfa618608bda1d6964.svg"
                       alt="Decorative element 3"
                       className="w-full h-full object-contain"
                     />
-                </div>
+                </motion.div>
               </motion.div>
             </AnimatedSection>
 
