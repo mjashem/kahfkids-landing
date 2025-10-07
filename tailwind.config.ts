@@ -12,7 +12,7 @@ export default {
         'kahf-black': '#000000', // Pure black
       },
       fontFamily: {
-        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'sans': ['"Baloo 2"', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

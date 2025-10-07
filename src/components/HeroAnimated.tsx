@@ -58,12 +58,12 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
         <div className="absolute left-[160px] top-[241px] w-[775px]">
           <div className="space-y-[24px]">
             {/* Heading */}
-            <h1 className="font-['Baloo_2:SemiBold',_sans-serif] font-semibold text-[#222222] text-[56px] leading-[70px] tracking-[-0.56px] w-full">
+            <h1 className="font-semibold text-[#222222] text-[56px] leading-[70px] tracking-[-0.56px] w-full">
               The Ultimate <span className="text-[#ff4848]">Safe & Fun</span> Edutainment Hub for Kids
             </h1>
 
             {/* Description */}
-            <p className="font-['Baloo_2:Medium',_sans-serif] font-medium text-[#4a4b4d] text-[18px] leading-[normal] tracking-[-0.18px] w-[412px]">
+            <p className="font-medium text-[#4a4b4d] text-[18px] leading-[normal] tracking-[-0.18px] w-[412px]">
               Discover stories, games, and learning tools—all in a secure space made just for kids.
             </p>
           </div>
@@ -76,7 +76,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="text-white text-[14px] font-['Baloo_2:Medium',_sans-serif] leading-[22.5px]">Buy Premium</span>
+              <span className="text-white text-[14px] leading-[22.5px]">Buy Premium</span>
               <motion.svg
                 className="w-6 h-6"
                 fill="none"
