@@ -11,31 +11,48 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
     <section
       id="home"
       className={`relative bg-white overflow-hidden ${className}`}
-      style={{ minHeight: '703px' }}
+      style={{ minHeight: '500px' }}
     >
       {/* Background with decorative elements */}
       <div className="absolute inset-0">
         {/* Wavy divider at bottom */}
-        <div className="absolute bottom-0 left-0 right-0" style={{ height: '22px' }}>
-          <svg viewBox="0 0 1440 22" className="w-full h-full" style={{ transform: 'rotate(180deg) scaleY(-1)' }}>
+        <div className="absolute bottom-0 left-0 right-0" style={{ height: '23px' }}>
+          <svg viewBox="0 0 1440 23" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
-              d="M0,22 C480,11 960,0 1440,11 L1440,22 L0,22 Z"
-              fill="#7cac0f3bc32b634469f881db7ee593f79f24c926"
+              d="M1440 0.5L0 22.5H1440V0.5Z"
+              fill="#FF4848"
             />
           </svg>
         </div>
       </div>
 
-      <div className="relative h-full pt-20 lg:pt-32">
+      <div className="relative h-full pt-10 lg:pt-16">
         <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl h-full">
-          <div className="flex flex-col lg:flex-row items-center lg:items-center justify-center h-full gap-8 lg:gap-16">
+          <div className="flex flex-col lg:flex-row items-start lg:items-start justify-between h-full w-full gap-8 lg:gap-16">
 
             {/* Hero Content */}
-            <AnimatedSection animation="slideRight" delay={0.2} className="flex-none lg:max-w-lg text-center lg:text-center">
+            <AnimatedSection animation="slideRight" delay={0.2} className="flex-1 lg:flex-[2] text-center lg:text-left order-2 lg:order-1">
               <div className="space-y-6">
+                {/* Decorative elements row */}
+                <div className="flex flex-row items-center lg:items-start gap-4 justify-end lg:justify-end -mb-8 mr-44">
+                  <div className="flex h-[60px] sm:h-[80px] lg:h-[100px] items-center justify-center w-[40px] sm:w-[45px] lg:w-[50px]" style={{ transform: 'rotate(13.97deg)' }}>
+                    <img
+                      src="/b2de00c26e68f0cd06db557a2c071e420ab33f7c.svg"
+                      alt="Decorative element 1"
+                      className="w-full h-full object-contain mr-9 -mb-6"
+                    />
+                  </div>
+                  <div className="flex h-[80px] sm:h-[100px] lg:h-[120px] items-center justify-center w-[50px] sm:w-[55px] lg:w-[60px]" style={{ transform: 'rotate(344.472deg)' }}>
+                    <img
+                      src="/3ed83473475b7033e6aee65965f34306b624d58e.svg"
+                      alt="Decorative element 2"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
                 {/* Heading */}
                 <motion.h1
-                  className="font-semibold text-[#222222] text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-[70px] tracking-[-0.56px]"
+                  className="font-['Baloo_2:SemiBold',_sans-serif] font-semibold text-[#222222] text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-[70px] tracking-[-0.56px]"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
@@ -45,25 +62,26 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
 
                 {/* Description */}
                 <motion.p
-                  className="font-medium text-[#4a4b4d] text-lg leading-normal tracking-[-0.18px] max-w-md"
+                  className="font-['Baloo_2:Medium',_sans-serif] font-medium text-[#4a4b4d] text-lg leading-normal tracking-[-0.18px] w-full"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
                 >
-                  Discover stories, games, and learning tools—all in a secure space made just for kids.
+                  Discover stories, games, and learning tools—all in<br />
+                  a secure space made just for kids.
                 </motion.p>
               </div>
 
               {/* CTA Buttons */}
               <motion.div
-                className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mt-8"
+                className="flex flex-col sm:flex-row items-top justify-center lg:justify-start gap-3 mt-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
                 {/* Buy Premium Button */}
                 <motion.button
-                  className="bg-[#ff4848] rounded-lg px-4 py-3 h-12 flex items-center gap-2 w-full sm:w-auto"
+                  className="bg-[#ff4848] rounded-lg px-4 py-3 h-[50px] flex items-center gap-1 w-full sm:w-[157px] justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -86,14 +104,14 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
 
                 {/* App Store Badges */}
                 <div className="flex gap-3">
-                  <div className="w-40 h-12">
+                  <div className="w-[162px] h-12">
                     <img
                       src="/50ef2ac624889246853661a08035409d6146ae4d.svg"
                       alt="App Store"
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <div className="w-40 h-12">
+                  <div className="w-[162px] h-12">
                     <img
                       src="/91d03ea036776e5d506d4a563368f57e1012ce70.svg"
                       alt="Google Play"
@@ -101,17 +119,24 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                     />
                   </div>
                 </div>
+                <div className="flex items-center justify-center w-[45px] sm:w-[50px] lg:w-[55px] h-[45px] sm:h-[50px] lg:h-[55px] ml-18 mt-12">
+                    <img
+                      src="/c068262c56f0183e00a6b2dfa618608bda1d6964.svg"
+                      alt="Decorative element 3"
+                      className="w-full h-full object-contain"
+                    />
+                </div>
               </motion.div>
             </AnimatedSection>
 
             {/* iPhone Mockup */}
             <motion.div
-              className="flex-none flex justify-center lg:justify-end lg:max-w-md"
+              className="flex-1 lg:flex-[1] flex justify-center lg:justify-end order-1 lg:order-2 mt-10"
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
             >
-          <div className="relative">
+          <div className="relative scale-75 sm:scale-90 lg:scale-100 origin-top">
             {/* Phone Shadow */}
             <div
               className="absolute bg-gray-900/10 rounded-[40px] blur-xl"
@@ -267,22 +292,122 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                           <span className="text-[#0d1013] text-[7.14px] leading-[10.11px] text-center font-['Axiforma:Medium',_sans-serif]">Salah</span>
                         </div>
                       </div>
+
+                      <div className="bg-white rounded-[11.90px] p-[16.06px] w-[65.44px] h-[77.93px]">
+                        <div className="flex flex-col items-center gap-[7.14px]">
+                          <div className="w-[32.72px] h-[32.72px]">
+                            <img
+                              src="/4db8e9a5af4123d497dd7a3104ca81883ec09885.svg"
+                              alt="Duwa"
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                          <span className="text-[#0d1013] text-[7.14px] leading-[10.11px] text-center font-['Axiforma:Medium',_sans-serif]">Duwa</span>
+                        </div>
+                      </div>
+
+                      <div className="bg-white rounded-[11.90px] p-[11.30px] w-[65.44px] h-[77.93px]">
+                        <div className="flex flex-col items-center gap-[4.16px]">
+                          <div className="w-[42.24px] h-[42.24px]">
+                            <img
+                              src="/c20231dabb8d425c9b2acc3bef868e007b4cad1c.svg"
+                              alt="Read"
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                          <span className="text-[#0d1013] text-[7.14px] leading-[10.11px] text-center font-['Axiforma:Medium',_sans-serif]">Read</span>
+                        </div>
+                      </div>
+
+                      <div className="bg-white rounded-[11.90px] p-[11.30px] w-[65.44px] h-[77.93px]">
+                        <div className="flex flex-col items-center gap-[4.16px]">
+                          <div className="w-[42.24px] h-[42.24px]">
+                            <img
+                              src="/9190e1007013b7d0e80d2a544e5765516eef18cb.svg"
+                              alt="Read"
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                          <span className="text-[#0d1013] text-[7.14px] leading-[10.11px] text-center font-['Axiforma:Medium',_sans-serif]">Read</span>
+                        </div>
+                      </div>
+
+                      <div className="bg-white rounded-[11.90px] p-[14.87px] w-[65.44px] h-[77.93px]">
+                        <div className="flex flex-col items-center gap-[7.14px]">
+                          <div className="w-[34.87px] h-[34.87px]">
+                            <img
+                              src="/65361fce5a6c6b76c8bb20a41285fa095f9c1dcd.svg"
+                              alt="Salah"
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                          <span className="text-[#0d1013] text-[7.14px] leading-[10.11px] text-center font-['Axiforma:Medium',_sans-serif]">Salah</span>
+                        </div>
+                      </div>
+
+                      <div className="bg-white rounded-[11.90px] p-[16.06px] w-[65.44px] h-[77.93px]">
+                        <div className="flex flex-col items-center gap-[7.14px]">
+                          <div className="w-[32.72px] h-[32.72px]">
+                            <img
+                              src="/5ffa4a82e687d3ad50cf7c3cd6fc44e95598b1ba.svg"
+                              alt="Duwa"
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                          <span className="text-[#0d1013] text-[7.14px] leading-[10.11px] text-center font-['Axiforma:Medium',_sans-serif]">Duwa</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-[5.95px] mt-[5.95px]">
+                      <div className="bg-white rounded-[11.90px] p-[11.30px] w-[65.44px] h-[77.93px]">
+                        <div className="flex flex-col items-center gap-[4.16px]">
+                          <div className="w-[42.24px] h-[42.24px]">
+                            <img
+                              src="/b27688e19e1de15be01cc4b7a3156638ab871230.svg"
+                              alt="Read"
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                          <span className="text-[#0d1013] text-[7.14px] leading-[10.11px] text-center font-['Axiforma:Medium',_sans-serif]">Read</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Bottom Navigation */}
-                <div className="absolute bottom-[11.90px] left-[11.89px] right-[11.89px] bg-white rounded-[23px] h-[37.48px] flex items-center justify-center">
+                <div className="absolute bottom-[11.90px] left-[11.89px] right-[11.89px] bg-white rounded-[23px] h-[37.48px] flex items-center justify-center px-[47.59px]">
                   <div className="flex items-center gap-[25.58px]">
                     <div className="bg-white border border-[#ff7050] border-solid rounded-[20.95px] px-[11.00px] py-[5.76px] h-[24.10px] flex items-center gap-[4.76px]">
                       <div className="w-[14.28px] h-[14.28px]">
                         <img
-                          src="/0a7160e8cc393c94ef9f71567af4feb5add2702e.svg"
+                          src="/0d8319fcfb8b0661232cd54ef2ee2ba949e5c6f9.svg"
                           alt="Home"
                           className="w-full h-full object-contain"
                         />
                       </div>
                       <span className="text-[#ff7050] text-[7.14px] leading-[10.11px] font-['Axiforma:Medium',_sans-serif]">Home</span>
+                    </div>
+
+                    <div className="flex items-center gap-[4.76px]">
+                      <div className="w-[14.28px] h-[14.28px]">
+                        <img
+                          src="/4db8e9a5af4123d497dd7a3104ca81883ec09885.svg"
+                          alt="Parent"
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-[4.76px]">
+                      <div className="w-[14.28px] h-[14.28px]">
+                        <img
+                          src="/43a03d3f814c5b7ada5c437b000db34e137a785f.svg"
+                          alt="Settings"
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -304,7 +429,23 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                     </div>
 
                     <div className="flex items-center gap-[2.38px]">
+                      <div className="bg-white rounded-[3.57px] px-[4.16px] py-[1.19px] h-[13.68px] flex items-center">
+                        <div className="w-[25.17px] h-[4.69px]">
+                          <img
+                            src="/d795f1b5bd0e1fb70bc2353a6461ad9b68939043.svg"
+                            alt="26,700"
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      </div>
                       <span className="text-white text-[5.95px] leading-[8.99px] font-['Axiforma:Medium',_sans-serif]">Keep Safe</span>
+                      <div className="w-[8.33px] h-[8.33px]">
+                        <img
+                          src="/0985b281789ff653f82eddcbb9426c677011447c.svg"
+                          alt="Arrow"
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
