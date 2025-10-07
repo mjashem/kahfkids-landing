@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { AnimatedSection } from './AnimatedSection';
 
 interface HeroAnimatedProps {
   className?: string;
@@ -30,21 +31,36 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
           <div className="flex flex-col lg:flex-row items-center lg:items-center justify-center h-full gap-8 lg:gap-16">
 
             {/* Hero Content */}
-            <div className="flex-none lg:max-w-lg text-center lg:text-center">
+            <AnimatedSection animation="slideRight" delay={0.2} className="flex-none lg:max-w-lg text-center lg:text-center">
               <div className="space-y-6">
                 {/* Heading */}
-                <h1 className="font-semibold text-[#222222] text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-[70px] tracking-[-0.56px]">
+                <motion.h1
+                  className="font-semibold text-[#222222] text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-[70px] tracking-[-0.56px]"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                >
                   The Ultimate <span className="text-[#ff4848]">Safe & Fun</span> Edutainment Hub for Kids
-                </h1>
+                </motion.h1>
 
                 {/* Description */}
-                <p className="font-medium text-[#4a4b4d] text-lg leading-normal tracking-[-0.18px] max-w-md">
+                <motion.p
+                  className="font-medium text-[#4a4b4d] text-lg leading-normal tracking-[-0.18px] max-w-md"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                >
                   Discover stories, games, and learning tools—all in a secure space made just for kids.
-                </p>
+                </motion.p>
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mt-8">
+              <motion.div
+                className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mt-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
                 {/* Buy Premium Button */}
                 <motion.button
                   className="bg-[#ff4848] rounded-lg px-4 py-3 h-12 flex items-center gap-2 w-full sm:w-auto"
@@ -85,8 +101,8 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                     />
                   </div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </AnimatedSection>
 
             {/* iPhone Mockup */}
             <motion.div

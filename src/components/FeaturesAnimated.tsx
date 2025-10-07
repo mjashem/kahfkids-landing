@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { AnimatedSection } from './AnimatedSection';
 
 const FeaturesAnimated = () => {
   const features = [
@@ -44,8 +45,9 @@ const FeaturesAnimated = () => {
         variants={containerVariants}
         className="max-w-7xl mx-auto"
       >
-        <motion.div
-          variants={itemVariants}
+        <AnimatedSection
+          animation="fadeUp"
+          delay={0.2}
           className="text-center mb-12"
         >
           <h2 className="text-[42px] font-semibold text-[#222222] leading-[70px] tracking-[-0.42px] mb-5 capitalize">
@@ -54,7 +56,7 @@ const FeaturesAnimated = () => {
           <p className="text-[18px] text-[#4a4b4d] tracking-[-0.18px]">
             Lorem ipsum dolor sit amet consectetur. Snsecteturm dolor sit amet cosadd.
           </p>
-        </motion.div>
+        </AnimatedSection>
 
         <motion.div
           variants={containerVariants}
@@ -67,8 +69,9 @@ const FeaturesAnimated = () => {
           }}
         >
           <div className="relative px-[72px] py-[82px] flex flex-col lg:flex-row items-center gap-12">
-            <motion.div
-              variants={itemVariants}
+            <AnimatedSection
+              animation="slideLeft"
+              delay={0.4}
               className="flex-1 lg:max-w-[525px]"
             >
               <div className="relative mb-8 h-[62px] flex items-center"
@@ -106,7 +109,7 @@ const FeaturesAnimated = () => {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </AnimatedSection>
 
             <motion.div
               variants={itemVariants}

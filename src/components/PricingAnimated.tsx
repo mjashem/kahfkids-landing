@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { AnimatedSection } from './AnimatedSection';
 
 const PricingAnimated = () => {
   const pricingPlans = [
@@ -111,21 +112,19 @@ const PricingAnimated = () => {
         className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-36"
       >
         {/* Pricing Section */}
-        <motion.div
-          variants={containerVariants}
+        <AnimatedSection
+          animation="fadeUp"
+          delay={0.2}
           className="flex flex-col gap-[60px] items-center"
         >
-          <motion.div
-            variants={itemVariants}
-            className="text-center"
-          >
+          <div className="text-center">
             <h2 className="text-[42px] font-semibold text-[#222222] leading-[70px] capitalize tracking-[-0.42px] mb-5">
               Safe & Fun Content for Kids – at an Affordable Price
             </h2>
             <p className="text-[18px] text-[#4a4b4d] tracking-[-0.18px]">
               Kahf Kids brings your child safe, halal, and fun content at an affordable price. Simple plans for a secure and joyful digital world.
             </p>
-          </motion.div>
+          </div>
 
           <motion.div
             variants={containerVariants}
@@ -193,24 +192,22 @@ const PricingAnimated = () => {
               </motion.div>
             ))}
           </motion.div>
-        </motion.div>
+        </AnimatedSection>
 
         {/* Complete Ecosystem Section */}
-        <motion.div
-          variants={containerVariants}
+        <AnimatedSection
+          animation="fadeUp"
+          delay={0.4}
           className="flex flex-col gap-[40px] items-center"
         >
-          <motion.div
-            variants={itemVariants}
-            className="text-center"
-          >
+          <div className="text-center">
             <h2 className="text-[42px] font-semibold text-[#2c2626] leading-[70px] capitalize tracking-[-0.42px] mb-5">
               A Complete Ecosystem
             </h2>
             <p className="text-[18px] text-[#4a4b4d] tracking-[-0.18px]">
               Everything your child needs to learn, play, and grow—safely in one place.
             </p>
-          </motion.div>
+          </div>
 
           <motion.div
             variants={containerVariants}
@@ -244,8 +241,8 @@ const PricingAnimated = () => {
               </motion.div>
             ))}
           </motion.div>
+          </AnimatedSection>
         </motion.div>
-      </motion.div>
     </div>
   );
 };

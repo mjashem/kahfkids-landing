@@ -1,7 +1,9 @@
+import { AnimatedSection } from './AnimatedSection';
+
 const FooterAnimated = () => {
   return (
     <footer className="bg-white py-25">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-2.5 items-center justify-center">
+      <AnimatedSection animation="fadeUp" delay={0.2} className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-2.5 items-center justify-center">
         <div className="flex flex-col lg:flex-row gap-[130px] items-start justify-center">
           <div className="flex flex-col lg:flex-row gap-[100px] w-full max-w-[1120px] h-auto lg:h-[257px]">
             {/* Logo and Description */}
@@ -128,7 +130,7 @@ const FooterAnimated = () => {
             </p>
           </div>
         </div>
-      </div>
+      </AnimatedSection>
     </footer>
   );
 };

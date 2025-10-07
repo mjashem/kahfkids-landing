@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { AnimatedSection } from './AnimatedSection';
 
 const MuslimGenerationAnimated = () => {
   const values = [
@@ -50,21 +51,19 @@ const MuslimGenerationAnimated = () => {
         variants={containerVariants}
         className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-20 items-center"
       >
-        <motion.div
-          variants={containerVariants}
+        <AnimatedSection
+          animation="fadeUp"
+          delay={0.2}
           className="flex flex-col gap-[80px] items-center text-center"
         >
-          <motion.div
-            variants={itemVariants}
-            className="text-white max-w-[1121px]"
-          >
+          <div className="text-white max-w-[1121px]">
             <h2 className="text-[42px] font-semibold leading-[70px] capitalize tracking-[-0.42px] mb-5">
               Raising the next generation of muslims
             </h2>
             <p className="text-[18px] tracking-[-0.18px] max-w-[1002px] mx-auto">
               To nurture young minds with eeman, akhlaq, and ilm, ensuring their digital world is safe, ethical, and enriching for their faith journey.
             </p>
-          </motion.div>
+          </div>
 
           <motion.div
             variants={containerVariants}
@@ -106,8 +105,6 @@ const MuslimGenerationAnimated = () => {
               </motion.div>
             ))}
           </motion.div>
-        </motion.div>
-
         <motion.button
           variants={itemVariants}
           whileHover={{
@@ -119,6 +116,7 @@ const MuslimGenerationAnimated = () => {
         >
           Join Our Community
         </motion.button>
+      </AnimatedSection>
       </motion.div>
     </div>
   );

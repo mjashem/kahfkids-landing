@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { AnimatedSection } from './AnimatedSection';
 
 const EcosystemAnimated = () => {
   const contentFeatures = [
@@ -79,16 +80,10 @@ const EcosystemAnimated = () => {
         className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-40"
       >
         {/* Content Features Section */}
-        <motion.div
-          variants={containerVariants}
-          className="flex flex-col gap-10 items-center"
-        >
-          <motion.h2
-            variants={itemVariants}
-            className="text-[36px] font-semibold text-[#222222] leading-normal capitalize tracking-[-0.36px] text-center w-full max-w-[676px]"
-          >
+        <AnimatedSection animation="fadeUp" delay={0.2} className="flex flex-col gap-10 items-center">
+          <h2 className="text-[36px] font-semibold text-[#222222] leading-normal capitalize tracking-[-0.36px] text-center w-full max-w-[676px]">
             Watch, Read, Play & Learn - All in One App for kids
-          </motion.h2>
+          </h2>
 
           <motion.div
             variants={containerVariants}
@@ -117,19 +112,13 @@ const EcosystemAnimated = () => {
               </motion.div>
             ))}
           </motion.div>
-        </motion.div>
+        </AnimatedSection>
 
         {/* Safety Features Section */}
-        <motion.div
-          variants={containerVariants}
-          className="flex flex-col gap-10 items-center"
-        >
-          <motion.h2
-            variants={itemVariants}
-            className="text-[36px] font-semibold text-[#222222] leading-[70px] capitalize tracking-[-0.36px] text-center w-full max-w-[676px]"
-          >
+        <AnimatedSection animation="fadeUp" delay={0.4} className="flex flex-col gap-10 items-center">
+          <h2 className="text-[36px] font-semibold text-[#222222] leading-[70px] capitalize tracking-[-0.36px] text-center w-full max-w-[676px]">
             Safety first - built for parents
-          </motion.h2>
+          </h2>
 
           <motion.div
             variants={containerVariants}
@@ -158,7 +147,7 @@ const EcosystemAnimated = () => {
               </motion.div>
             ))}
           </motion.div>
-        </motion.div>
+        </AnimatedSection>
       </motion.div>
     </div>
   );
