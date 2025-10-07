@@ -70,13 +70,13 @@ const EcosystemAnimated = () => {
   };
 
   return (
-    <div className="bg-[#fffbfb] py-28 px-4 md:px-[206px]">
+    <div className="bg-[#fffbfb] py-28">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="max-w-7xl mx-auto flex flex-col gap-[157px]"
+        className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-40"
       >
         {/* Content Features Section */}
         <motion.div
@@ -102,7 +102,7 @@ const EcosystemAnimated = () => {
                   y: -5,
                   transition: { duration: 0.2 }
                 }}
-                className={`bg-white border-2 ${feature.borderColor} rounded-[20px] h-[90px] px-[57px] py-[30px] flex items-center justify-center min-w-[265px] max-w-[265px]`}
+                className={`bg-white border-2 ${feature.borderColor} rounded-[20px] h-[90px] px-[40px] py-[30px] flex items-center justify-center min-w-[220px] max-w-[280px] flex-1`}
               >
                 <div className="flex items-center gap-3 w-full">
                   <img
@@ -143,7 +143,7 @@ const EcosystemAnimated = () => {
                   y: -5,
                   transition: { duration: 0.2 }
                 }}
-                className={`bg-white border-2 ${feature.borderColor} rounded-[20px] h-[90px] px-[57px] py-[30px] flex items-center justify-center min-w-[265px] max-w-[265px]`}
+                className={`bg-white border-2 ${feature.borderColor} rounded-[20px] h-[90px] px-[40px] py-[30px] flex items-center justify-center min-w-[220px] max-w-[280px] flex-1`}
               >
                 <div className="flex items-center gap-3 w-full">
                   <img

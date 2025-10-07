@@ -11,8 +11,8 @@ const DevicesAnimated = () => {
   ];
 
   return (
-    <div className="bg-[#f8f0f0] py-20 px-4 md:px-[160px] min-h-[944px] flex items-center justify-center">
-      <div className="max-w-7xl mx-auto flex flex-col gap-[40px] items-center">
+    <div className="bg-[#f8f0f0] py-20 min-h-[944px] flex items-center justify-center">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-10 items-center w-full">
         <div className="text-center max-w-[1121px]">
           <h2 className="text-[42px] font-semibold text-[#2c2626] leading-[70px] capitalize tracking-[-0.42px] mb-5">
             Enjoy Kahf Kids anytime, anywhere
@@ -52,7 +52,7 @@ const DevicesAnimated = () => {
             {devicePlatforms.map((platform, index) => (
               <div
                 key={index}
-                className="flex items-center justify-center bg-white p-3 rounded shadow-sm"
+                className="flex items-center justify-center p-3"
                 style={{
                   width: '83.25px',
                   height: '47px',

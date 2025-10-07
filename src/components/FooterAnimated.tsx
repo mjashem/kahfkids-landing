@@ -1,9 +1,9 @@
 const FooterAnimated = () => {
   return (
-    <footer className="bg-white px-4 md:px-[160px] py-[100px]">
-      <div className="max-w-7xl mx-auto flex flex-col gap-[10px]">
-        <div className="flex flex-col lg:flex-row gap-[130px]">
-          <div className="flex flex-col lg:flex-row gap-[100px] w-full lg:w-[1120px] h-auto lg:h-[257px]">
+    <footer className="bg-white py-25">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-2.5 items-center justify-center">
+        <div className="flex flex-col lg:flex-row gap-[130px] items-start justify-center">
+          <div className="flex flex-col lg:flex-row gap-[100px] w-full max-w-[1120px] h-auto lg:h-[257px]">
             {/* Logo and Description */}
             <div className="flex flex-col gap-[15px] w-full lg:w-[300px]">
               <div className="flex flex-col gap-[43px]">

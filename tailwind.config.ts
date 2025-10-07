@@ -33,6 +33,17 @@ export default {
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
+      maxWidth: {
+        'container': '1121px',
+        'content': '800px',
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
+        '144': '36rem',
+        '160': '40rem',
+      },
     },
   },
   plugins: [],

@@ -42,13 +42,13 @@ const MuslimGenerationAnimated = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-orange-500 to-pink-600 py-20 px-4 md:px-[159px]">
+    <div className="bg-gradient-to-br from-orange-500 to-pink-600 py-20">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="max-w-7xl mx-auto flex flex-col gap-[80px] items-center"
+        className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-20 items-center"
       >
         <motion.div
           variants={containerVariants}

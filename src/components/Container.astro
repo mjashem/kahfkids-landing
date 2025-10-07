@@ -1,0 +1,21 @@
+---
+interface Props {
+  className?: string;
+  children: any;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+}
+
+const { className = '', children, size = 'lg' } = Astro.props;
+
+// Define container max-widths based on size
+const sizeClasses = {
+  sm: 'max-w-4xl',
+  md: 'max-w-5xl',
+  lg: 'max-w-6xl',
+  xl: 'max-w-7xl'
+};
+---
+
+<div class="mx-auto px-4 sm:px-6 lg:px-8 {sizeClasses[size]} {className}">
+  {children}
+</div>

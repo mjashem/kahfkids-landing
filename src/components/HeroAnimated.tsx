@@ -10,7 +10,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
     <section
       id="home"
       className={`relative bg-white overflow-hidden ${className}`}
-      style={{ height: '703px' }}
+      style={{ minHeight: '703px' }}
     >
       {/* Background with decorative elements */}
       <div className="absolute inset-0">
@@ -25,101 +25,76 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
         </div>
       </div>
 
-      <div className="relative h-full pt-[133px]">
+      <div className="relative h-full pt-20 lg:pt-32">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl h-full">
+          <div className="flex flex-col lg:flex-row items-center lg:items-center justify-center h-full gap-8 lg:gap-16">
 
-        {/* Decorative Elements */}
-        <div className="absolute left-[551.52px] top-[153.01px] w-[76.83px] h-[121.66px]">
-          <img
-            src="/b2de00c26e68f0cd06db557a2c071e420ab33f7c.svg"
-            alt="Decorative element"
-            className="w-full h-full object-contain"
-            style={{ transform: 'rotate(13.97deg)' }}
-          />
-        </div>
+            {/* Hero Content */}
+            <div className="flex-none lg:max-w-lg text-center lg:text-center">
+              <div className="space-y-6">
+                {/* Heading */}
+                <h1 className="font-semibold text-[#222222] text-3xl sm:text-4xl lg:text-5xl leading-tight lg:leading-[70px] tracking-[-0.56px]">
+                  The Ultimate <span className="text-[#ff4848]">Safe & Fun</span> Edutainment Hub for Kids
+                </h1>
 
-        <div className="absolute left-[628.15px] top-[147.49px] w-[100.25px] h-[155.72px]">
-          <img
-            src="/3ed83473475b7033e6aee65965f34306b624d58e.svg"
-            alt="Decorative element"
-            className="w-full h-full object-contain"
-            style={{ transform: 'rotate(344.472deg)' }}
-          />
-        </div>
-
-        <div className="absolute left-[740px] top-[535px] w-[83.52px] h-[67.44px]">
-          <img
-            src="/c068262c56f0183e00a6b2dfa618608bda1d6964.svg"
-            alt="Decorative element"
-            className="w-full h-full object-contain"
-          />
-        </div>
-
-        {/* Hero Content */}
-        <div className="absolute left-[160px] top-[241px] w-[775px]">
-          <div className="space-y-[24px]">
-            {/* Heading */}
-            <h1 className="font-semibold text-[#222222] text-[56px] leading-[70px] tracking-[-0.56px] w-full">
-              The Ultimate <span className="text-[#ff4848]">Safe & Fun</span> Edutainment Hub for Kids
-            </h1>
-
-            {/* Description */}
-            <p className="font-medium text-[#4a4b4d] text-[18px] leading-[normal] tracking-[-0.18px] w-[412px]">
-              Discover stories, games, and learning tools—all in a secure space made just for kids.
-            </p>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex items-center gap-[12px] mt-[40px]">
-            {/* Buy Premium Button */}
-            <motion.button
-              className="bg-[#ff4848] rounded-[8px] px-[16px] py-[14px] h-[50px] flex items-center gap-[4px]"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="text-white text-[14px] leading-[22.5px]">Buy Premium</span>
-              <motion.svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                animate={{ x: [0, 5, 0] }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </motion.svg>
-            </motion.button>
-
-            {/* App Store Badges */}
-            <div className="flex gap-[12px]">
-              <div className="w-[162px] h-[48px]">
-                <img
-                  src="/50ef2ac624889246853661a08035409d6146ae4d.svg"
-                  alt="App Store"
-                  className="w-full h-full object-contain"
-                />
+                {/* Description */}
+                <p className="font-medium text-[#4a4b4d] text-lg leading-normal tracking-[-0.18px] max-w-md">
+                  Discover stories, games, and learning tools—all in a secure space made just for kids.
+                </p>
               </div>
-              <div className="w-[162px] h-[48px]">
-                <img
-                  src="/91d03ea036776e5d506d4a563368f57e1012ce70.svg"
-                  alt="Google Play"
-                  className="w-full h-full object-contain"
-                />
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mt-8">
+                {/* Buy Premium Button */}
+                <motion.button
+                  className="bg-[#ff4848] rounded-lg px-4 py-3 h-12 flex items-center gap-2 w-full sm:w-auto"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="text-white text-sm leading-6">Buy Premium</span>
+                  <motion.svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </motion.svg>
+                </motion.button>
+
+                {/* App Store Badges */}
+                <div className="flex gap-3">
+                  <div className="w-40 h-12">
+                    <img
+                      src="/50ef2ac624889246853661a08035409d6146ae4d.svg"
+                      alt="App Store"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-40 h-12">
+                    <img
+                      src="/91d03ea036776e5d506d4a563368f57e1012ce70.svg"
+                      alt="Google Play"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* iPhone Mockup */}
-        <motion.div
-          className="absolute right-[262px] top-[187px]"
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-        >
+            {/* iPhone Mockup */}
+            <motion.div
+              className="flex-none flex justify-center lg:justify-end lg:max-w-md"
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+            >
           <div className="relative">
             {/* Phone Shadow */}
             <div
@@ -339,6 +314,8 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
             </div>
           </div>
         </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
