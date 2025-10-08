@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Card data structure
 const cardsData = [
@@ -149,24 +149,27 @@ const FeaturesAnimated = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          key={currentCard.id}
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{
-            duration: 0.6,
-            ease: [0.25, 0.46, 0.45, 0.94]
-          }}
-          className="relative"
-          style={{
-            backgroundImage: `url(/b735a4b1560e335b3817dba23ebb3183b366404a.svg)`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
+        <div className="relative" style={{ minHeight: '450px' }}>
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={currentCard.id}
+            initial={{ scale: 0.95, opacity: 0, y: 30 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.95, opacity: 0, y: -30 }}
+            transition={{
+              duration: 0.6,
+              ease: [0.16, 1, 0.3, 1]
+            }}
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(/b735a4b1560e335b3817dba23ebb3183b366404a.svg)`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
             <div className="relative px-[72px] py-[82px] flex flex-col lg:flex-row items-center gap-12">
               <div className="flex-1 lg:max-w-[525px]">
                 <div className="relative mb-8 h-[62px] flex items-center"
@@ -185,8 +188,15 @@ const FeaturesAnimated = () => {
                 <div className="px-[40px] py-[10px]">
                   <div className="space-y-5">
                     {currentCard.features.map((item: string, index: number) => (
-                      <div
+                      <motion.div
                         key={`${currentCard.id}-feature-${index}`}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                          duration: 0.4,
+                          delay: 0.3 + (index * 0.1),
+                          ease: [0.16, 1, 0.3, 1]
+                        }}
                         className="flex items-center gap-3"
                       >
                         <div className="flex-shrink-0 w-6 h-6">
@@ -199,13 +209,20 @@ const FeaturesAnimated = () => {
                         <p className="text-[18px] text-[#4a4b4d] tracking-[-0.18px] font-medium">
                           {item}
                         </p>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
               </div>
 
               <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.2,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
                 whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
                 className="relative rounded-[16px] overflow-hidden lg:w-[340px] lg:h-[310px] w-full h-[350px]"
               >
@@ -236,6 +253,8 @@ const FeaturesAnimated = () => {
               </motion.div>
             </div>
           </motion.div>
+        </AnimatePresence>
+        </div>
 
         <motion.div
           variants={itemVariants}
