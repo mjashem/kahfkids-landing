@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 // Card data structure
 const cardsData = [
@@ -150,7 +150,13 @@ const FeaturesAnimated = () => {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          key={currentCard.id}
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            duration: 0.6,
+            ease: [0.25, 0.46, 0.45, 0.94]
+          }}
           className="relative"
           style={{
             backgroundImage: `url(/b735a4b1560e335b3817dba23ebb3183b366404a.svg)`,
@@ -161,36 +167,23 @@ const FeaturesAnimated = () => {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div className="relative px-[72px] py-[82px] flex flex-col lg:flex-row items-center gap-12">
-            <div className="flex-1 lg:max-w-[525px]">
-              <motion.div
-                key={`title-${currentCard.id}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="relative mb-8 h-[62px] flex items-center"
-                style={{
-                  backgroundImage: `url(${currentCard.backgroundSvg})`,
-                  backgroundSize: 'contain',
-                  backgroundPosition: 'left center',
-                  backgroundRepeat: 'no-repeat'
-                }}
-              >
-                <h3 className="absolute top-[7px] left-[40px] text-[28px] font-semibold text-[#fffbfb] leading-normal capitalize tracking-[-0.28px] z-10">
-                  {currentCard.title}
-                </h3>
-              </motion.div>
+            <div className="relative px-[72px] py-[82px] flex flex-col lg:flex-row items-center gap-12">
+              <div className="flex-1 lg:max-w-[525px]">
+                <div className="relative mb-8 h-[62px] flex items-center"
+                  style={{
+                    backgroundImage: `url(${currentCard.backgroundSvg})`,
+                    backgroundSize: 'contain',
+                    backgroundPosition: 'left center',
+                    backgroundRepeat: 'no-repeat'
+                  }}
+                >
+                  <h3 className="absolute top-[7px] left-[40px] text-[28px] font-semibold text-[#fffbfb] leading-normal capitalize tracking-[-0.28px] z-10">
+                    {currentCard.title}
+                  </h3>
+                </div>
 
-              <div className="px-[40px] py-[10px]">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`features-${currentCard.id}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="space-y-5"
-                  >
+                <div className="px-[40px] py-[10px]">
+                  <div className="space-y-5">
                     {currentCard.features.map((item: string, index: number) => (
                       <div
                         key={`${currentCard.id}-feature-${index}`}
@@ -208,19 +201,11 @@ const FeaturesAnimated = () => {
                         </p>
                       </div>
                     ))}
-                  </motion.div>
-                </AnimatePresence>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            <AnimatePresence mode="wait">
               <motion.div
-                key={`image-${currentCard.id}`}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5 }}
-                variants={itemVariants}
                 whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
                 className="relative rounded-[16px] overflow-hidden lg:w-[340px] lg:h-[310px] w-full h-[350px]"
               >
@@ -249,9 +234,8 @@ const FeaturesAnimated = () => {
                   />
                 )}
               </motion.div>
-            </AnimatePresence>
-          </div>
-        </motion.div>
+            </div>
+          </motion.div>
 
         <motion.div
           variants={itemVariants}
