@@ -111,26 +111,37 @@ const FeaturesAnimated = () => {
   
   return (
     <div className="bg-[#faefef] py-20 px-4 md:px-[159px]">
-      {/* Fixed Header */}
-      <div className="sticky top-0 z-50 bg-[#faefef] py-8">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={containerVariants}
-          className="max-w-6xl mx-auto text-center"
-        >
-          <h2 className="text-[42px] font-semibold text-[#222222] leading-[70px] tracking-[-0.42px] mb-5 capitalize">
-            Available Features in Kahf Kids
-          </h2>
-          <p className="text-[18px] text-[#4a4b4d] tracking-[-0.18px]">
-            Lorem ipsum dolor sit amet consectetur. Snsecteturm dolor sit amet cosadd.
-          </p>
-        </motion.div>
-      </div>
-
       {/* Sticky Cards Container */}
       <div ref={containerRef} className="relative">
+        {/* Header as a sticky element in the sequence */}
+        <div
+          className="relative"
+          style={{
+            position: 'sticky',
+            top: '0',
+            zIndex: 0, // Highest z-index to stay on top
+            height: '200px'
+          }}
+        >
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="absolute inset-0 flex items-center justify-center bg-[#faefef]"
+          >
+            <div className="max-w-6xl mx-auto text-center py-8 px-4">
+              <h2 className="text-[42px] font-semibold text-[#222222] leading-[70px] tracking-[-0.42px] mb-5 capitalize">
+                Available Features in Kahf Kids
+              </h2>
+              <p className="text-[18px] text-[#4a4b4d] tracking-[-0.18px]">
+                Lorem ipsum dolor sit amet consectetur. Snsecteturm dolor sit amet cosadd.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Feature Cards */}
         {cardsData.map((card, index) => (
           <StickyCard
             key={card.id}
