@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 // Card data structure
 const cardsData = [
@@ -88,19 +88,13 @@ const cardsData = [
 ];
 
 const FeaturesAnimated = () => {
-  const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Automatic card rotation
-  useEffect(() => {
-    if (!isPaused) {
-      const interval = setInterval(() => {
-        setCurrentCardIndex((prevIndex) => (prevIndex + 1) % cardsData.length);
-      }, 4000); // Change card every 4 seconds
-
-      return () => clearInterval(interval);
-    }
-  }, [isPaused]);
+  // Track scroll progress for the entire container
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -113,95 +107,102 @@ const FeaturesAnimated = () => {
     }
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
+  // Create a separate component for each card to handle useScroll properly
+  const StickyCard = ({ card, index, totalCards }: { card: typeof cardsData[0]; index: number; totalCards: number }) => {
+    const cardRef = useRef<HTMLDivElement>(null);
 
-  const currentCard = cardsData[currentCardIndex];
+    // Track scroll progress for this specific card
+    const { scrollYProgress: cardScrollProgress } = useScroll({
+      target: cardRef,
+      offset: ["start end", "end start"]
+    });
 
-  return (
-    <div className="bg-[#faefef] py-20 px-4 md:px-[159px]">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-        className="max-w-7xl mx-auto"
+    // Transform values for stacking effect
+    // First card (index 0): no initial animation, stays in place
+    // Other cards: animate from bottom
+    const scale = useTransform(cardScrollProgress, [0, 0.5, 1], [
+      index === 0 ? 1 : 0.9,
+      1,
+      1
+    ]);
+    const y = useTransform(cardScrollProgress, [0, 0.5, 1], [
+      index === 0 ? 0 : 50,
+      0,
+      0
+    ]);
+    const opacity = useTransform(cardScrollProgress, [0, 0.3, 1], [
+      index === 0 ? 1 : 0,
+      1,
+      1
+    ]);
+
+    return (
+      <div
+        ref={cardRef}
+        className="relative"
+        style={{
+          position: 'sticky',
+          top: '200px', // Account for fixed header height
+          zIndex: index + 1,
+          height: '450px' // Match the original card height
+        }}
       >
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-center mb-12"
+          style={{
+            scale,
+            y,
+            opacity
+          }}
+          className="absolute inset-0 flex items-center justify-center px-4"
         >
-          <h2 className="text-[42px] font-semibold text-[#222222] leading-[70px] tracking-[-0.42px] mb-5 capitalize">
-            Available Features in Kahf Kids
-          </h2>
-          <p className="text-[18px] text-[#4a4b4d] tracking-[-0.18px]">
-            Lorem ipsum dolor sit amet consectetur. Snsecteturm dolor sit amet cosadd.
-          </p>
-        </motion.div>
-
-        <div className="relative" style={{ minHeight: '450px' }}>
-        <AnimatePresence mode="sync">
           <motion.div
-            key={currentCard.id}
-            initial={{ scale: 0.95, opacity: 0, y: 30 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.95, opacity: 0, y: -30 }}
+            initial={{ scale: 0.95, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
             transition={{
               duration: 0.6,
               ease: [0.16, 1, 0.3, 1]
             }}
-            className="absolute inset-0"
+            className="w-full"
             style={{
               backgroundImage: `url(/b735a4b1560e335b3817dba23ebb3183b366404a.svg)`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'
             }}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
           >
             <div className="relative px-[72px] py-[82px] flex flex-col lg:flex-row items-center gap-12">
               <div className="flex-1 lg:max-w-[525px]">
-                <div className="relative mb-8 h-[62px] flex items-center"
+                <div
+                  className="relative mb-8 h-[62px] flex items-center"
                   style={{
-                    backgroundImage: `url(${currentCard.backgroundSvg})`,
+                    backgroundImage: `url(${card.backgroundSvg})`,
                     backgroundSize: 'contain',
                     backgroundPosition: 'left center',
                     backgroundRepeat: 'no-repeat'
                   }}
                 >
                   <h3 className="absolute top-[7px] left-[40px] text-[28px] font-semibold text-[#fffbfb] leading-normal capitalize tracking-[-0.28px] z-10">
-                    {currentCard.title}
+                    {card.title}
                   </h3>
                 </div>
 
                 <div className="px-[40px] py-[10px]">
                   <div className="space-y-5">
-                    {currentCard.features.map((item: string, index: number) => (
+                    {card.features.map((item: string, featureIndex: number) => (
                       <motion.div
-                        key={`${currentCard.id}-feature-${index}`}
+                        key={`${card.id}-feature-${featureIndex}`}
                         initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         transition={{
                           duration: 0.4,
-                          delay: 0.3 + (index * 0.1),
+                          delay: featureIndex * 0.1,
                           ease: [0.16, 1, 0.3, 1]
                         }}
                         className="flex items-center gap-3"
                       >
                         <div className="flex-shrink-0 w-6 h-6">
                           <img
-                            src={currentCard.tickIcon}
+                            src={card.tickIcon}
                             alt="tick"
                             className="w-full h-full"
                           />
@@ -217,7 +218,7 @@ const FeaturesAnimated = () => {
 
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
+                whileInView={{ scale: 1, opacity: 1 }}
                 transition={{
                   duration: 0.6,
                   delay: 0.2,
@@ -226,39 +227,75 @@ const FeaturesAnimated = () => {
                 whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
                 className="relative rounded-[16px] overflow-hidden lg:w-[340px] lg:h-[310px] w-full h-[350px]"
               >
-                {currentCard.isStacked ? (
+                {card.isStacked ? (
                   <div className="relative w-full h-full flex flex-col gap-[17.854px]">
                     <div className="h-[144.825px] rounded-[16px] overflow-hidden">
                       <img
-                        src={currentCard.images![0]}
-                        alt={currentCard.imageAlt![0]}
+                        src={card.images![0]}
+                        alt={card.imageAlt![0]}
                         className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="h-[146.068px] rounded-[16px] overflow-hidden">
                       <img
-                        src={currentCard.images![1]}
-                        alt={currentCard.imageAlt![1]}
+                        src={card.images![1]}
+                        alt={card.imageAlt![1]}
                         className="w-full h-full object-cover"
                       />
                     </div>
                   </div>
                 ) : (
                   <img
-                    src={currentCard.image}
-                    alt={Array.isArray(currentCard.imageAlt) ? currentCard.imageAlt[0] : currentCard.imageAlt}
+                    src={card.image}
+                    alt={Array.isArray(card.imageAlt) ? card.imageAlt[0] : card.imageAlt}
                     className="w-full h-full object-cover"
                   />
                 )}
               </motion.div>
             </div>
           </motion.div>
-        </AnimatePresence>
-        </div>
+        </motion.div>
+      </div>
+    );
+  };
 
+  return (
+    <div className="bg-[#faefef] py-20 px-4 md:px-[159px]">
+      {/* Fixed Header */}
+      <div className="sticky top-0 z-50 bg-[#faefef] py-8">
         <motion.div
-          variants={itemVariants}
-          className="relative h-[77px]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+          className="max-w-7xl mx-auto text-center"
+        >
+          <h2 className="text-[42px] font-semibold text-[#222222] leading-[70px] tracking-[-0.42px] mb-5 capitalize">
+            Available Features in Kahf Kids
+          </h2>
+          <p className="text-[18px] text-[#4a4b4d] tracking-[-0.18px]">
+            Lorem ipsum dolor sit amet consectetur. Snsecteturm dolor sit amet cosadd.
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Sticky Cards Container */}
+      <div ref={containerRef} className="relative">
+        {cardsData.map((card, index) => (
+          <StickyCard
+            key={card.id}
+            card={card}
+            index={index}
+            totalCards={cardsData.length}
+          />
+        ))}
+
+        {/* Footer decorative element */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="relative h-[77px] mt-20"
         >
           <div
             className="absolute inset-0 bg-[#fffbfb] shadow-[0px_-2px_14px_0px_rgba(213,179,179,0.25)]"
@@ -268,9 +305,9 @@ const FeaturesAnimated = () => {
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'
             }}
-          ></div>
+          />
         </motion.div>
-      </motion.div>
+      </div>
     </div>
   );
 };
