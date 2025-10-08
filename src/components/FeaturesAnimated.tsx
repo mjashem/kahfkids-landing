@@ -110,7 +110,7 @@ const FeaturesAnimated = () => {
 
   
   return (
-    <div className="bg-[#faefef] py-20 px-4 md:px-[159px]">
+    <div className="bg-[#faefef] py-12 lg:py-20 px-4 md:px-[159px]">
       {/* Sticky Cards Container */}
       <div ref={containerRef} className="relative">
         {/* Header as a sticky element in the sequence */}
@@ -130,11 +130,11 @@ const FeaturesAnimated = () => {
             variants={containerVariants}
             className="absolute inset-0 flex items-center justify-center bg-[#faefef]"
           >
-            <div className="max-w-6xl mx-auto text-center py-8 px-4">
-              <h2 className="text-[42px] font-semibold text-[#222222] leading-[70px] tracking-[-0.42px] mb-5 capitalize">
+            <div className="max-w-6xl mx-auto text-center py-6 lg:py-8 px-4">
+              <h2 className="text-[28px] lg:text-[42px] font-semibold text-[#222222] leading-[40px] lg:leading-[70px] tracking-[-0.42px] mb-4 lg:mb-5 capitalize">
                 Available Features in Kahf Kids
               </h2>
-              <p className="text-[18px] text-[#4a4b4d] tracking-[-0.18px]">
+              <p className="text-[16px] lg:text-[18px] text-[#4a4b4d] tracking-[-0.18px]">
                 Lorem ipsum dolor sit amet consectetur. Snsecteturm dolor sit amet cosadd.
               </p>
             </div>
