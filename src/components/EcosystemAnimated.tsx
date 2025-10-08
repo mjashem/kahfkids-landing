@@ -73,12 +73,64 @@ const EcosystemAnimated = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5
+      }
+    },
+    hover: {
+      scale: 1.05,
+      y: -5,
+      transition: {
+        duration: 0.3
+      }
+    },
+    tap: {
+      scale: 0.98,
+      transition: {
+        duration: 0.1
+      }
+    }
+  };
+
+  const iconVariants = {
+    hidden: { opacity: 0, scale: 0.8, rotate: -10 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        duration: 0.6,
+        delay: 0.2
+      }
+    },
+    hover: {
+      scale: 1.15,
+      rotate: 5,
+      transition: {
+        duration: 0.3
+      }
+    }
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5
+        duration: 0.5,
+        delay: 0.3
+      }
+    },
+    hover: {
+      color: "#4F46E5",
+      transition: {
+        duration: 0.2
       }
     }
   };
@@ -104,7 +156,9 @@ const EcosystemAnimated = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="relative flex flex-col items-center justify-center gap-3 h-[200px] w-full max-w-[250px]"
+              whileHover="hover"
+              whileTap="tap"
+              className="relative flex flex-col items-center justify-center gap-3 h-[200px] w-full max-w-[250px] cursor-pointer"
             >
               <div className="absolute inset-0 z-0">
                 <img
@@ -114,16 +168,22 @@ const EcosystemAnimated = () => {
                 />
               </div>
               <div className="relative z-10 flex flex-col items-center gap-3">
-                <div className="w-8 h-8">
+                <motion.div
+                  variants={iconVariants}
+                  className="w-8 h-8"
+                >
                   <img
                     src={feature.icon}
                     alt={feature.title}
                     className="w-full h-full object-contain"
                   />
-                </div>
-                <p className="font-['Baloo_2:Medium',_sans-serif] font-medium leading-[22px] text-[#222222] text-[20px] text-center max-w-[200px]">
+                </motion.div>
+                <motion.p
+                  variants={textVariants}
+                  className="font-['Baloo_2:Medium',_sans-serif] font-medium leading-[22px] text-[#222222] text-[20px] text-center max-w-[200px]"
+                >
                   {feature.title}
-                </p>
+                </motion.p>
               </div>
             </motion.div>
           ))}
@@ -133,9 +193,12 @@ const EcosystemAnimated = () => {
         {isDesktop && (
           <div className="relative inline-grid leading-[0] place-items-start w-full" style={{ gridTemplateColumns: 'max-content', gridTemplateRows: 'max-content' }}>
               {contentFeatures.map((feature, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="absolute box-border flex flex-col gap-[12.166px] items-center justify-center h-[182px] px-[5.066px] py-[29.383px] w-[240.56px]"
+                variants={itemVariants}
+                whileHover="hover"
+                whileTap="tap"
+                className="absolute box-border flex flex-col gap-[12.166px] items-center justify-center h-[182px] px-[5.066px] py-[29.383px] w-[240.56px] cursor-pointer"
                 style={{
                   marginLeft: index === 0 ? '0px' : index === 1 ? '285.563px' : index === 2 ? '571.117px' : '856.68px',
                   marginTop: index === 1 || index === 3 ? '30px' : '0px'
@@ -148,17 +211,23 @@ const EcosystemAnimated = () => {
                     className="block max-w-none size-full"
                   />
                 </div>
-                <div className="relative shrink-0 w-[30.415px] h-[30.415px] z-10">
+                <motion.div
+                  variants={iconVariants}
+                  className="relative shrink-0 w-[30.415px] h-[30.415px] z-10"
+                >
                   <img
                     src={feature.icon}
                     alt={feature.title}
                     className="block max-w-none size-full"
                   />
-                </div>
-                <p className="font-['Baloo_2:Medium',_sans-serif] font-medium leading-[22px] text-[#222222] text-[20px] text-center z-10 max-w-[200px]">
+                </motion.div>
+                <motion.p
+                  variants={textVariants}
+                  className="font-['Baloo_2:Medium',_sans-serif] font-medium leading-[22px] text-[#222222] text-[20px] text-center z-10 max-w-[200px]"
+                >
                   {feature.title}
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
             ))}
             </div>
           )}
@@ -176,7 +245,9 @@ const EcosystemAnimated = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="relative flex flex-col items-center justify-center gap-3 h-[200px] w-full max-w-[250px]"
+              whileHover="hover"
+              whileTap="tap"
+              className="relative flex flex-col items-center justify-center gap-3 h-[200px] w-full max-w-[250px] cursor-pointer"
             >
               <div className="absolute inset-0 z-0">
                 <img
@@ -186,16 +257,22 @@ const EcosystemAnimated = () => {
                 />
               </div>
               <div className="relative z-10 flex flex-col items-center gap-3">
-                <div className="w-8 h-8">
+                <motion.div
+                  variants={iconVariants}
+                  className="w-8 h-8"
+                >
                   <img
                     src={feature.icon}
                     alt={feature.title}
                     className="w-full h-full object-contain"
                   />
-                </div>
-                <p className="font-['Baloo_2:Medium',_sans-serif] font-medium leading-[22px] text-[#222222] text-[20px] text-center max-w-[200px]">
+                </motion.div>
+                <motion.p
+                  variants={textVariants}
+                  className="font-['Baloo_2:Medium',_sans-serif] font-medium leading-[22px] text-[#222222] text-[20px] text-center max-w-[200px]"
+                >
                   {feature.title}
-                </p>
+                </motion.p>
               </div>
             </motion.div>
           ))}
@@ -205,9 +282,12 @@ const EcosystemAnimated = () => {
         {isDesktop && (
           <div className="relative inline-grid leading-[0] place-items-start w-full" style={{ gridTemplateColumns: 'max-content', gridTemplateRows: 'max-content' }}>
               {safetyFeatures.map((feature, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="absolute box-border flex flex-col gap-[12.166px] items-center justify-center h-[182px] px-[5.066px] py-[29.383px] w-[240.56px]"
+                variants={itemVariants}
+                whileHover="hover"
+                whileTap="tap"
+                className="absolute box-border flex flex-col gap-[12.166px] items-center justify-center h-[182px] px-[5.066px] py-[29.383px] w-[240.56px] cursor-pointer"
                 style={{
                   marginLeft: index === 0 ? '0px' : index === 1 ? '285.563px' : index === 2 ? '571.117px' : '856.68px',
                   marginTop: index === 1 || index === 3 ? '30px' : '0px'
@@ -220,17 +300,23 @@ const EcosystemAnimated = () => {
                     className="block max-w-none size-full"
                   />
                 </div>
-                <div className="relative shrink-0 w-[30px] h-[30px] z-10">
+                <motion.div
+                  variants={iconVariants}
+                  className="relative shrink-0 w-[30px] h-[30px] z-10"
+                >
                   <img
                     src={feature.icon}
                     alt={feature.title}
                     className="block max-w-none size-full"
                   />
-                </div>
-                <p className="font-['Baloo_2:Medium',_sans-serif] font-medium leading-[22px] text-[#222222] text-[20px] text-center z-10 max-w-[200px]">
+                </motion.div>
+                <motion.p
+                  variants={textVariants}
+                  className="font-['Baloo_2:Medium',_sans-serif] font-medium leading-[22px] text-[#222222] text-[20px] text-center z-10 max-w-[200px]"
+                >
                   {feature.title}
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
               ))}
             </div>
           )}
