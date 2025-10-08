@@ -23,7 +23,7 @@ const StickyCard = ({ card, index, totalCards }: { card: CardType; index: number
       className="relative"
       style={{
         position: 'sticky',
-        top: '120px',
+        top: '200px',
         zIndex: index + 1,
         height: 'calc(100vh - 200px)' // Reduced height to ensure it fits
       }}
