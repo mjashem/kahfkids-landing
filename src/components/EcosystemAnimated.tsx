@@ -1,7 +1,20 @@
 import { motion } from 'framer-motion';
 import { AnimatedSection } from './AnimatedSection';
+import { useState, useEffect } from 'react';
 
 const EcosystemAnimated = () => {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 768); // md breakpoint
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
   const contentFeatures = [
     {
       icon: "/25e50a221f706eb2892661d26564dfbec384df51.svg",
@@ -71,13 +84,13 @@ const EcosystemAnimated = () => {
   };
 
   return (
-    <div className="bg-[#fffbfb] py-28 px-4 sm:px-6 lg:px-8 pb-85">
+    <div className="bg-[#fffbfb] py-28 px-4 sm:px-6 lg:px-8 lg:pb-85 overflow-x-hidden">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-80"
+        className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-20 lg:gap-80"
       >
         {/* Content Features Section */}
         <AnimatedSection animation="fadeUp" delay={0.2} className="flex flex-col gap-10 items-center">
@@ -85,8 +98,41 @@ const EcosystemAnimated = () => {
             Watch, Read, Play & Learn - All in One App for kids
           </h2>
 
-          <div className="relative inline-grid leading-[0] place-items-start w-[1027.24px]" style={{ gridTemplateColumns: 'max-content', gridTemplateRows: 'max-content' }}>
-            {contentFeatures.map((feature, index) => (
+          {/* Mobile Layout - Single Column */}
+          <div className="flex flex-col items-center gap-8 md:!hidden w-full">
+          {contentFeatures.map((feature, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="relative flex flex-col items-center justify-center gap-3 h-[200px] w-full max-w-[250px]"
+            >
+              <div className="absolute inset-0 z-0">
+                <img
+                  src={feature.backgroundFrame}
+                  alt=""
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="relative z-10 flex flex-col items-center gap-3">
+                <div className="w-8 h-8">
+                  <img
+                    src={feature.icon}
+                    alt={feature.title}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <p className="font-['Baloo_2:Medium',_sans-serif] font-medium leading-[22px] text-[#222222] text-[20px] text-center max-w-[200px]">
+                  {feature.title}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+          </div>
+
+        {/* Desktop Layout - Staggered Grid */}
+        {isDesktop && (
+          <div className="relative inline-grid leading-[0] place-items-start w-full" style={{ gridTemplateColumns: 'max-content', gridTemplateRows: 'max-content' }}>
+              {contentFeatures.map((feature, index) => (
               <div
                 key={index}
                 className="absolute box-border flex flex-col gap-[12.166px] items-center justify-center h-[182px] px-[5.066px] py-[29.383px] w-[240.56px]"
@@ -114,7 +160,8 @@ const EcosystemAnimated = () => {
                 </p>
               </div>
             ))}
-          </div>
+            </div>
+          )}
         </AnimatedSection>
 
         {/* Safety Features Section */}
@@ -123,8 +170,41 @@ const EcosystemAnimated = () => {
             Safety first - built for parents
           </h2>
 
-          <div className="relative inline-grid leading-[0] place-items-start w-[1027.24px]" style={{ gridTemplateColumns: 'max-content', gridTemplateRows: 'max-content' }}>
-            {safetyFeatures.map((feature, index) => (
+          {/* Mobile Layout - Single Column */}
+          <div className="flex flex-col items-center gap-8 md:!hidden w-full">
+          {safetyFeatures.map((feature, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="relative flex flex-col items-center justify-center gap-3 h-[200px] w-full max-w-[250px]"
+            >
+              <div className="absolute inset-0 z-0">
+                <img
+                  src={feature.backgroundFrame}
+                  alt=""
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="relative z-10 flex flex-col items-center gap-3">
+                <div className="w-8 h-8">
+                  <img
+                    src={feature.icon}
+                    alt={feature.title}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <p className="font-['Baloo_2:Medium',_sans-serif] font-medium leading-[22px] text-[#222222] text-[20px] text-center max-w-[200px]">
+                  {feature.title}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+          </div>
+
+        {/* Desktop Layout - Staggered Grid */}
+        {isDesktop && (
+          <div className="relative inline-grid leading-[0] place-items-start w-full" style={{ gridTemplateColumns: 'max-content', gridTemplateRows: 'max-content' }}>
+              {safetyFeatures.map((feature, index) => (
               <div
                 key={index}
                 className="absolute box-border flex flex-col gap-[12.166px] items-center justify-center h-[182px] px-[5.066px] py-[29.383px] w-[240.56px]"
@@ -151,8 +231,9 @@ const EcosystemAnimated = () => {
                   {feature.title}
                 </p>
               </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </AnimatedSection>
       </motion.div>
     </div>
