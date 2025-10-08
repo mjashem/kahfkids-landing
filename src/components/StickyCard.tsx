@@ -35,7 +35,7 @@ const StickyCard = ({ card, index, totalCards }: { card: CardType; index: number
           initial={{ scale: 0.95, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{
-            duration: 0.6,
+            duration: 1.2,
             ease: [0.16, 1, 0.3, 1]
           }}
           className="w-full h-full bg-white rounded-[20px] shadow-lg flex items-center justify-center"
@@ -64,8 +64,8 @@ const StickyCard = ({ card, index, totalCards }: { card: CardType; index: number
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{
-                        duration: 0.4,
-                        delay: featureIndex * 0.1,
+                        duration: 0.8,
+                        delay: featureIndex * 0.2,
                         ease: [0.16, 1, 0.3, 1]
                       }}
                       className="flex items-center gap-3"
@@ -90,11 +90,11 @@ const StickyCard = ({ card, index, totalCards }: { card: CardType; index: number
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{
-                duration: 0.6,
-                delay: 0.2,
+                duration: 1.0,
+                delay: 0.4,
                 ease: [0.16, 1, 0.3, 1]
               }}
-              whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.5 } }}
               className="relative rounded-[16px] overflow-hidden lg:w-[340px] lg:h-[310px] w-full h-[350px]"
             >
               {card.isStacked ? (
