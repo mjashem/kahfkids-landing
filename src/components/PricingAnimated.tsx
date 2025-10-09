@@ -77,19 +77,22 @@ const PricingAnimated = () => {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.6,
-        staggerChildren: 0.1
+        duration: 0.3,
+        staggerChildren: 0.05
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
     visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: {
-        duration: 0.5
+        duration: 0.25,
+        type: "spring",
+        stiffness: 150
       }
     }
   };
@@ -98,93 +101,101 @@ const PricingAnimated = () => {
     <img
       src="/pricing-illustration.svg"
       alt="tick"
-      className="w-[18px] h-[18px] flex-shrink-0"
+      className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0"
     />
   );
 
   return (
-    <div id="pricing" className="bg-[#fffbfb] py-20 pb-30">
+    <div id="pricing" className="bg-[#fffbfb] py-16 sm:py-20 lg:py-24">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-36"
+        className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-24 lg:gap-32"
       >
         {/* Pricing Section */}
         <AnimatedSection
           animation="fadeUp"
-          delay={0.2}
-          className="flex flex-col gap-[60px] items-center"
+          delay={0}
+          className="flex flex-col gap-12 sm:gap-16 lg:gap-20 items-center"
         >
           <div className="text-center">
-            <h2 className="text-[42px] font-semibold text-[#222222] leading-[70px] capitalize tracking-[-0.42px] mb-5">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#222222] leading-tight lg:leading-[1.2] capitalize tracking-tight mb-4 sm:mb-6">
               Safe & Fun Content for Kids – at an Affordable Price
             </h2>
-            <p className="text-[18px] text-[#4a4b4d] tracking-[-0.18px]">
+            <p className="text-base sm:text-lg text-[#4a4b4d] tracking-tight max-w-2xl mx-auto">
               Kahf Kids brings your child safe, halal, and fun content at an affordable price. Simple plans for a secure and joyful digital world.
             </p>
           </div>
 
           <motion.div
             variants={containerVariants}
-            className="flex flex-col lg:flex-row gap-[23px] items-center justify-center"
+            className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center justify-center w-full"
           >
             {pricingPlans.map((plan, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
                 whileHover={{
-                  y: -5,
-                  transition: { duration: 0.2 }
+                  y: -8,
+                  scale: 1.02,
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+                  transition: {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20
+                  }
                 }}
-                className={`relative bg-white border-2 ${plan.borderColor} rounded-[20px] p-[30px] w-full max-w-[420px]`}
+                className={`relative bg-white border-2 ${plan.borderColor} rounded-2xl p-6 sm:p-8 w-full max-w-sm sm:max-w-md lg:max-w-lg shadow-lg hover:shadow-2xl transition-shadow duration-300`}
               >
                 {plan.isPopular && (
-                  <div className="absolute -top-[-28px] right-0 bg-[#ff4848] text-white px-4 py-3 rounded-tl-[9px] rounded-bl-[9px]">
-                    <span className="text-[14px] font-medium">{plan.discount}</span>
+                  <div className="absolute -top-3 sm:-top-2 right-4 sm:right-6 bg-[#ff4848] text-white px-3 py-2 sm:px-4 sm:py-3 rounded-t-lg rounded-bl-lg z-10">
+                    <span className="text-xs sm:text-sm font-medium">{plan.discount}</span>
                   </div>
                 )}
 
-                <div className="flex flex-col gap-[30px]">
+                <div className="flex flex-col gap-6 sm:gap-8">
                   <div>
-                    <h3 className="text-[16px] font-medium text-[#222222] capitalize tracking-[-0.16px] mb-2">
+                    <h3 className="text-base sm:text-lg font-medium text-[#222222] capitalize tracking-tight mb-2">
                       {plan.name}
                     </h3>
                     <div className="relative">
-                      <p className="text-[40px] font-semibold text-[#222222] tracking-[-0.4px]">
+                      <p className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#222222] tracking-tight">
                         {plan.price}
                       </p>
                       {plan.priceNote && (
-                        <span className="text-[16px] text-[#4a4b4d] tracking-[-0.16px] absolute top-[21px] right-0">
+                        <span className="text-sm sm:text-base text-[#4a4b4d] tracking-tight absolute top-2 sm:top-3 right-0">
                           {plan.priceNote}
                         </span>
                       )}
                     </div>
                   </div>
 
-                  <div className="space-y-[24px]">
+                  <div className="space-y-4 sm:space-y-6">
                     {plan.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex gap-[10px] items-start">
+                      <div key={featureIndex} className="flex gap-3 items-start">
                         <TickIcon />
-                        <p className="text-[16px] text-[#4a4b4d] leading-[23px] flex-1">
+                        <p className="text-sm sm:text-base text-[#4a4b4d] leading-relaxed flex-1">
                           {feature}
                         </p>
                       </div>
                     ))}
                   </div>
 
-                  <div className="flex flex-col gap-[12px] items-center">
-                    <button
-                      className={`w-full py-3 px-4 rounded-[6px] text-[14px] font-medium transition-colors duration-300 ${
+                  <div className="flex flex-col gap-3 sm:gap-4 items-center">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`w-full py-3 sm:py-4 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium transition-all duration-300 transform ${
                         plan.isPopular
-                          ? 'bg-[#ff4848] text-white hover:bg-[#e03333]'
-                          : 'bg-[#222222] text-white hover:bg-[#333333]'
+                          ? 'bg-[#ff4848] text-white hover:bg-[#e03333] hover:shadow-lg'
+                          : 'bg-[#222222] text-white hover:bg-[#333333] hover:shadow-lg'
                       }`}
                     >
                       {plan.buttonText}
-                    </button>
-                    <p className="text-[12px] text-[#4a4b4d] text-center">
+                    </motion.button>
+                    <p className="text-xs sm:text-sm text-[#4a4b4d] text-center">
                       You can cancel anytime.
                     </p>
                   </div>
@@ -197,43 +208,52 @@ const PricingAnimated = () => {
         {/* Complete Ecosystem Section */}
         <AnimatedSection
           animation="fadeUp"
-          delay={0.4}
-          className="flex flex-col gap-[40px] items-center"
+          delay={0}
+          className="flex flex-col gap-12 sm:gap-16 items-center"
         >
           <div className="text-center">
-            <h2 className="text-[42px] font-semibold text-[#2c2626] leading-[70px] capitalize tracking-[-0.42px] mb-5">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#2c2626] leading-tight lg:leading-[1.2] capitalize tracking-tight mb-4 sm:mb-6">
               A Complete Ecosystem
             </h2>
-            <p className="text-[18px] text-[#4a4b4d] tracking-[-0.18px]">
+            <p className="text-base sm:text-lg text-[#4a4b4d] tracking-tight max-w-2xl mx-auto">
               Everything your child needs to learn, play, and grow—safely in one place.
             </p>
           </div>
 
           <motion.div
             variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[16px] w-full"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 w-full"
           >
             {ecosystemFeatures.map((feature, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
                 whileHover={{
-                  y: -5,
-                  transition: { duration: 0.2 }
+                  y: -6,
+                  scale: 1.02,
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
+                  transition: {
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 25,
+                    duration: 0.2
+                  }
                 }}
-                className={`bg-white border-2 ${feature.borderColor} rounded-[20px] p-[30px] h-[188px] flex flex-col justify-start`}
+                className={`bg-white border-2 ${feature.borderColor} rounded-2xl p-6 sm:p-8 min-h-[160px] sm:min-h-[180px] lg:min-h-[200px] flex flex-col justify-start shadow-lg hover:shadow-xl transition-shadow duration-200`}
               >
-                <div className="flex flex-col gap-[10px]">
-                  <img
+                <div className="flex flex-col gap-4">
+                  <motion.img
                     src={feature.icon}
                     alt={feature.number}
-                    className="w-[30px] h-[30px] flex-shrink-0"
+                    className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
                   />
                   <div>
-                    <h3 className="text-[24px] font-semibold text-[#2c2626] mb-2">
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#2c2626] mb-2">
                       {feature.number}
                     </h3>
-                    <p className="text-[16px] text-[#4a4b4d] tracking-[-0.16px] leading-normal">
+                    <p className="text-sm sm:text-base text-[#4a4b4d] tracking-tight leading-relaxed">
                       {feature.title}
                     </p>
                   </div>
