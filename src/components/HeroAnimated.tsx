@@ -123,28 +123,117 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
               >
                 {/* Buy Premium Button */}
                 <motion.button
-                  className="bg-[#ff4848] rounded-lg px-3 sm:px-4 md:px-5 py-2 sm:py-3 md:py-4 h-9 sm:h-11 md:h-12 flex items-center gap-1 sm:gap-2 w-full sm:w-[157px] justify-center shadow-lg shadow-red-500/25 hover:shadow-xl hover:shadow-red-500/35 transition-all duration-300 cursor-pointer"
+                  className="relative bg-[#ff4848] rounded-lg px-3 sm:px-4 md:px-5 py-2 sm:py-3 md:py-4 h-9 sm:h-11 md:h-12 flex items-center gap-1 sm:gap-2 w-full sm:w-[157px] justify-center cursor-pointer overflow-hidden shadow-lg whitespace-nowrap"
+                  animate={{
+                    scale: [1, 1.08, 1],
+                    boxShadow: [
+                      "0 4px 15px rgba(255, 72, 72, 0.4)",
+                      "0 8px 30px rgba(255, 72, 72, 0.6)",
+                      "0 4px 15px rgba(255, 72, 72, 0.4)"
+                    ]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
                   whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 20px 25px -5px rgba(239, 68, 68, 0.35), 0 10px 10px -5px rgba(239, 68, 68, 0.2)"
+                    scale: 1.15,
+                    backgroundColor: "#ff3030",
+                    boxShadow: "0 15px 40px rgba(255, 72, 72, 0.7)",
+                    transition: { duration: 0.2 }
                   }}
                   whileTap={{
-                    scale: 0.98,
-                    boxShadow: "0 10px 15px -3px rgba(239, 68, 68, 0.3), 0 4px 6px -2px rgba(239, 68, 68, 0.15)"
+                    scale: 0.95,
+                    backgroundColor: "#e02020",
+                    transition: { duration: 0.1 }
+                  }}
+                  onClick={() => {
+                    const pricingSection = document.getElementById('pricing');
+                    if (pricingSection) {
+                      pricingSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                      });
+                    }
                   }}
                 >
-                  <span className="text-white text-xs sm:text-sm font-['Baloo_2:Medium',_sans-serif] font-medium leading-5 sm:leading-6">Buy Premium</span>
+                  {/* Strong shimmer effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12"
+                    animate={{
+                      x: ["-200%", "300%"]
+                    }}
+                    transition={{
+                      duration: 1.2,
+                      repeat: Infinity,
+                      ease: "easeOut",
+                      repeatDelay: 0.3
+                    }}
+                  />
+
+                  {/* Pulsing glow ring */}
+                  <motion.div
+                    className="absolute -inset-1 bg-[#ff4848] rounded-lg opacity-30"
+                    animate={{
+                      scale: [1, 1.2, 1],
+                      opacity: [0.3, 0.1, 0.3]
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+
+                  {/* Bright flash effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-transparent via-white/30 to-transparent"
+                    animate={{
+                      opacity: [0, 0, 0.6, 0],
+                      y: ["100%", "-100%"]
+                    }}
+                    transition={{
+                      duration: 2.5,
+                      repeat: Infinity,
+                      ease: "easeOut",
+                      repeatDelay: 1
+                    }}
+                  />
+
+                  {/* Diamond Icon */}
                   <motion.img
-                    src="/arrow-icon.svg"
-                    alt="Arrow"
-                    className="w-6 h-6"
-                    animate={{ x: [0, 4, 0] }}
+                    src="/diamond-icon.svg"
+                    alt="Diamond"
+                    className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 flex-shrink-0"
+                    animate={{
+                      rotate: [0, 45, 0, -45, 0],
+                      scale: [1, 1.1, 1, 1.1, 1]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+
+                  <motion.span
+                    className="text-white text-xs sm:text-sm font-['Baloo_2:Bold',_sans-serif] font-bold leading-5 sm:leading-6 relative z-10"
+                    animate={{
+                      textShadow: [
+                        "0 0 10px rgba(255, 255, 255, 0.5)",
+                        "0 0 20px rgba(255, 255, 255, 0.8)",
+                        "0 0 10px rgba(255, 255, 255, 0.5)"
+                      ]
+                    }}
                     transition={{
                       duration: 2,
                       repeat: Infinity,
                       ease: "easeInOut"
                     }}
-                  />
+                  >
+                    Unlock Premium
+                  </motion.span>
                 </motion.button>
 
                 {/* App Store Badges - Row on all screen sizes */}
