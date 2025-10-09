@@ -66,10 +66,10 @@ const StickyCard = ({
             transition: 'all 0.3s ease-out',
           }}
         >
-          <div className="relative px-5 py-4 lg:px-[72px] lg:py-[82px] flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-12 w-full h-full">
-            <div className="lg:flex-1 lg:max-w-[525px] flex flex-col lg:justify-center">
+          <div className="relative px-5 py-8 lg:px-[72px] lg:py-[82px] flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-12 w-full h-full">
+            <div className="flex-1 lg:max-w-[525px] flex flex-col lg:justify-center">
               <div
-                className="relative mb-2 lg:mb-8 h-[40px] lg:h-[62px] flex items-center flex-shrink-0"
+                className="relative mb-4 sm:mb-6 lg:mb-8 h-[40px] lg:h-[62px] flex items-center flex-shrink-0"
                 style={{
                   backgroundImage: `url(${card.backgroundSvg})`,
                   backgroundSize: 'contain',
@@ -83,13 +83,13 @@ const StickyCard = ({
               </div>
 
               <motion.div
-                className="px-3 lg:px-[40px] py-2 lg:py-[10px] flex-1"
+                className="px-5 py-2 lg:px-[40px] lg:py-[10px] flex-1"
                 style={{
                   opacity: featuresOpacity,
                   x: featuresX,
                 }}
               >
-                <div className="space-y-1.5 lg:space-y-5">
+                <div className="space-y-4 sm:space-y-5 lg:space-y-5">
                   {card.features.map((item: string, featureIndex: number) => (
                     <motion.div
                       key={`${card.id}-feature-${featureIndex}`}
@@ -103,7 +103,7 @@ const StickyCard = ({
                           0.6 + featureIndex * 0.07
                         ], [index === 0 ? 0 : -12, 0]), // Reduced from -15 to -12 for mobile
                       }}
-                      className="flex items-center gap-2 lg:gap-3"
+                      className="flex items-center gap-3 sm:gap-4 lg:gap-3"
                     >
                       <div className="flex-shrink-0 w-4 h-4 lg:w-6 lg:h-6">
                         <img
@@ -112,7 +112,7 @@ const StickyCard = ({
                           className="w-full h-full"
                         />
                       </div>
-                      <p className="text-[15px] lg:text-[18px] text-[#4a4b4d] tracking-[-0.18px] font-medium leading-normal">
+                      <p className="text-[14px] sm:text-[15px] lg:text-[18px] text-[#4a4b4d] tracking-[-0.18px] font-medium leading-normal">
                         {item}
                       </p>
                     </motion.div>
@@ -127,7 +127,7 @@ const StickyCard = ({
                 scale: imageScale,
               }}
               whileHover={{ scale: 1.05, transition: { duration: 0.5 } }}
-              className="relative rounded-[16px] overflow-hidden lg:w-[340px] lg:h-[310px] w-full h-[140px] sm:h-[160px] md:h-[180px] max-w-[340px] mx-auto lg:mx-0 flex-shrink-0"
+              className="relative rounded-[16px] overflow-hidden lg:w-[340px] lg:h-[310px] w-full h-[200px] sm:h-[220px] md:h-[240px] max-w-[340px] mx-auto lg:mx-0 flex-shrink-0"
             >
               {card.isStacked ? (
                 <div className="relative w-full h-full">
