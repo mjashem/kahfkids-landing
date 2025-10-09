@@ -103,7 +103,7 @@ const PricingAnimated = () => {
   );
 
   return (
-    <div id="pricing" className="bg-[#faefef] py-36">
+    <div id="pricing" className="bg-[#fffbfb] py-20 pb-30">
       <motion.div
         initial="hidden"
         whileInView="visible"
