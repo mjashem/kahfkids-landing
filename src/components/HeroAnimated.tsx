@@ -147,11 +147,11 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                   />
                 </motion.button>
 
-                {/* App Store Badges - Column on mobile, Row on larger screens */}
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-3 md:gap-4 w-full sm:w-auto items-center sm:items-start">
+                {/* App Store Badges - Row on all screen sizes */}
+                <div className="flex flex-row gap-3 sm:gap-3 md:gap-4 w-full sm:w-auto items-center">
                   <motion.a
                     href="#"
-                    className="w-[160px] sm:w-[170px] md:w-[175px] lg:w-[180px] h-9 sm:h-11 md:h-12 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
+                    className="w-1/2 sm:w-[170px] md:w-[175px] lg:w-[180px] h-12 sm:h-11 md:h-12 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                     whileHover={{
                       scale: 1.05,
                       y: -2,
@@ -170,7 +170,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                   </motion.a>
                   <motion.a
                     href="#"
-                    className="w-[160px] sm:w-[170px] md:w-[175px] lg:w-[180px] h-9 sm:h-11 md:h-12 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
+                    className="w-1/2 sm:w-[170px] md:w-[175px] lg:w-[180px] h-12 sm:h-11 md:h-12 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                     whileHover={{
                       scale: 1.05,
                       y: -2,
@@ -211,7 +211,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
 
             {/* iPhone Mockup */}
             <motion.div
-              className="flex-1 lg:flex-[1] flex justify-center lg:justify-end order-1 lg:order-2 mt-4 sm:mt-6 lg:mt-8 relative z-20"
+              className="flex-1 lg:flex-[1] flex justify-center lg:justify-end order-1 lg:order-2 mt-4 sm:mt-6 lg:mt-8 relative z-20 lg:pr-0"
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
@@ -221,11 +221,11 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                 transition: { duration: 0.5, repeat: Infinity, repeatType: "reverse" }
               }}
             >
-              <div className="relative w-full lg:w-auto origin-top -mb-12 sm:-mb-16 md:-mb-20 lg:-mb-24 xl:-mb-32 lg:transform lg:translate-x-8" style={{ transform: 'translateX(15px)' }}>
+              <div className="relative w-full lg:w-auto origin-top -mb-12 sm:-mb-16 md:-mb-20 lg:-mb-24 xl:-mb-32 -translate-x-6 lg:transform lg:translate-x-8">
                 <img
                   src="/iphone-mockup.png"
                   alt="iPhone 11 with Kahf Kids App"
-                  className="w-full h-auto object-contain max-w-[280px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[450px] xl:max-w-[520px]"
+                  className="w-full h-auto object-contain max-w-[320px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[450px] xl:max-w-[520px]"
                 />
               </div>
             </motion.div>
