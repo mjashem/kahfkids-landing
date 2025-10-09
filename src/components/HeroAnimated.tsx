@@ -30,7 +30,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
           <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between h-full w-full gap-0 lg:gap-16">
 
             {/* Hero Content */}
-            <AnimatedSection animation="slideRight" delay={0.2} className="flex-1 lg:flex-[2] text-center lg:text-left order-1 lg:order-1">
+            <AnimatedSection animation="slideRight" delay={0.1} className="flex-1 lg:flex-[2] text-center lg:text-left order-1 lg:order-1">
               <div className="space-y-6">
                 {/* Decorative elements row */}
                 <div className="flex flex-row items-center lg:items-start gap-2 sm:gap-3 md:gap-4 lg:gap-4 justify-end lg:justify-end -mb-2 sm:-mb-4 lg:-mb-8 mr-2 sm:mr-4 lg:mr-44">
@@ -89,7 +89,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                   className="font-['Baloo_2:SemiBold',_sans-serif] font-semibold text-[#222222] text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight md:leading-normal lg:leading-[70px] tracking-tight md:tracking-normal lg:tracking-[-0.56px]"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.3 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
                   whileHover={{ scale: 1.02 }}
                 >
                   The Ultimate <motion.span
@@ -107,7 +107,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                   className="font-['Baloo_2:Medium',_sans-serif] font-medium text-[#4a4b4d] text-base sm:text-lg leading-normal tracking-normal sm:tracking-[-0.18px] w-full"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.5 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
                 >
                   Discover stories, games, and learning tools—all in<br />
                   a secure space made just for kids.
@@ -119,7 +119,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                 className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-3 md:gap-4 mt-6 sm:mt-7 md:mt-8 lg:mt-10 w-full sm:w-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.7 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
               >
                 {/* Buy Premium Button */}
                 <motion.button
@@ -303,7 +303,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
               className="flex-1 lg:flex-[1] flex justify-center lg:justify-end order-1 lg:order-2 mt-4 sm:mt-6 lg:mt-8 relative z-20 lg:pr-0"
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               whileHover={{
                 scale: 1.02,
                 rotate: [-1, 1, -1],
