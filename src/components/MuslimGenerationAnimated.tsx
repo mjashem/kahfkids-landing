@@ -25,8 +25,8 @@ const MuslimGenerationAnimated = () => {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.6,
-        staggerChildren: 0.1
+        duration: 0.3,
+        staggerChildren: 0.05
       }
     }
   };
@@ -37,13 +37,13 @@ const MuslimGenerationAnimated = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5
+        duration: 0.25
       }
     }
   };
 
   return (
-    <div className="bg-gradient-to-br from-orange-500 to-pink-600 py-20">
+    <div className="py-20" style={{background: 'linear-gradient(118.88deg, #DD4E6D 22.43%, #E15353 95.02%)'}}>
       <motion.div
         initial="hidden"
         whileInView="visible"
