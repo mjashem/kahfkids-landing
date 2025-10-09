@@ -127,7 +127,7 @@ const StickyCard = ({
                 scale: imageScale,
               }}
               whileHover={{ scale: 1.05, transition: { duration: 0.5 } }}
-              className="relative rounded-[16px] overflow-hidden lg:w-[340px] lg:h-[310px] w-full h-[140px] sm:h-[160px] flex-shrink-0"
+              className="relative rounded-[16px] overflow-hidden lg:w-[340px] lg:h-[310px] w-full h-[140px] sm:h-[160px] md:h-[180px] max-w-[340px] mx-auto lg:mx-0 flex-shrink-0"
             >
               {card.isStacked ? (
                 <div className="relative w-full h-full">
