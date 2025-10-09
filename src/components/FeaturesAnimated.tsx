@@ -101,7 +101,7 @@ const FeaturesAnimated = () => {
   const totalCards = cardsData.length;
 
   return (
-    <div className="bg-[#faefef] py-12 lg:py-20 px-4 md:px-[159px]">
+    <div className="bg-[#faefef] py-12 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
       {/* Sticky Cards Container */}
       <div ref={containerRef} className="relative">
         {/* Header as a sticky element in the sequence */}
@@ -111,7 +111,7 @@ const FeaturesAnimated = () => {
             position: 'sticky',
             top: '0',
             zIndex: 0, // Highest z-index to stay on top
-            height: '200px'
+            height: 'clamp(180px, 20vh, 200px)'
           }}
         >
           <motion.div
@@ -125,10 +125,17 @@ const FeaturesAnimated = () => {
             className="absolute inset-0 flex items-center justify-center bg-[#faefef]"
           >
             <div className="max-w-6xl mx-auto text-center py-6 lg:py-8 px-4">
-              <h2 className="text-[28px] lg:text-[42px] font-semibold text-[#222222] leading-[40px] lg:leading-[70px] tracking-[-0.42px] mb-4 lg:mb-5 capitalize">
+              <h2 className="font-semibold text-[#222222] tracking-[-0.42px] mb-4 lg:mb-5 capitalize"
+                  style={{
+                    fontSize: 'clamp(1.75rem, 4vw, 2.625rem)',
+                    lineHeight: 'clamp(2.5rem, 5vw, 4.375rem)'
+                  }}>
                 Available Features in Kahf Kids
               </h2>
-              <p className="text-[16px] lg:text-[18px] text-[#4a4b4d] tracking-[-0.18px]">
+              <p className="text-[#4a4b4d] tracking-[-0.18px]"
+                 style={{
+                   fontSize: 'clamp(1rem, 2vw, 1.125rem)'
+                 }}>
                 Lorem ipsum dolor sit amet consectetur. Snsecteturm dolor sit amet cosadd.
               </p>
             </div>
@@ -138,18 +145,18 @@ const FeaturesAnimated = () => {
         {/* Feature Cards */}
         {cardsData.map((card, index) => {
           // Calculate scroll progress for each individual card
-          // First card gets smaller range since it starts visible, others get redistributed range
+          // Optimized for mobile with better range distribution
           let cardStart, cardEnd;
           if (index === 0) {
-            // First card gets only 10% of scroll range since it's already visible
+            // First card gets smaller range since it's already visible
             cardStart = 0;
-            cardEnd = 0.1;
+            cardEnd = 0.15; // Increased from 0.1 for better mobile experience
           } else {
-            // Redistribute remaining 90% among other cards
+            // Redistribute remaining range among other cards
             const remainingCards = totalCards - 1;
-            const remainingRange = 0.9;
-            cardStart = 0.1 + ((index - 1) / remainingCards) * remainingRange;
-            cardEnd = 0.1 + ((index) / remainingCards) * remainingRange;
+            const remainingRange = 0.85; // Adjusted from 0.9
+            cardStart = 0.15 + ((index - 1) / remainingCards) * remainingRange;
+            cardEnd = 0.15 + ((index) / remainingCards) * remainingRange;
           }
           const cardScrollYProgress = useTransform(scrollYProgress, [cardStart, cardEnd], [0, 1]);
 

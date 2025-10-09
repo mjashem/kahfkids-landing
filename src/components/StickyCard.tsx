@@ -26,19 +26,19 @@ const StickyCard = ({
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
-  // Card slides up from bottom - slower animation
+  // Card slides up from bottom - responsive animation values
   // For first card (index 0), start visible, for others slide from bottom
-  const cardY = useTransform(scrollYProgress, [0, 0.5, 1], [index === 0 ? 0 : 80, 0, 0]);
+  const cardY = useTransform(scrollYProgress, [0, 0.5, 1], [index === 0 ? 0 : 60, 0, 0]); // Reduced from 80 for mobile
   const cardOpacity = useTransform(scrollYProgress, [0, 0.3, 1], [index === 0 ? 1 : 0, 1, 1]);
   const cardScale = useTransform(scrollYProgress, [0, 0.4, 1], [index === 0 ? 1 : 0.95, 1, 1]);
 
-  // Features animate in as card progresses - slower timing
-  const featuresOpacity = useTransform(scrollYProgress, [index === 0 ? 0 : 0.1, 0.6, 1], [index === 0 ? 1 : 0, 1, 1]);
-  const featuresX = useTransform(scrollYProgress, [index === 0 ? 0 : 0.1, 0.6], [index === 0 ? 0 : -25, 0]);
+  // Features animate in as card progresses - optimized timing for mobile
+  const featuresOpacity = useTransform(scrollYProgress, [index === 0 ? 0 : 0.15, 0.6, 1], [index === 0 ? 1 : 0, 1, 1]); // Adjusted start from 0.1 to 0.15
+  const featuresX = useTransform(scrollYProgress, [index === 0 ? 0 : 0.15, 0.6], [index === 0 ? 0 : -20, 0]); // Reduced from -25
 
-  // Image animates in later - slower timing
-  const imageOpacity = useTransform(scrollYProgress, [index === 0 ? 0 : 0.2, 0.8, 1], [index === 0 ? 1 : 0, 1, 1]);
-  const imageScale = useTransform(scrollYProgress, [index === 0 ? 0 : 0.2, 0.8], [index === 0 ? 1 : 0.9, 1]);
+  // Image animates in later - responsive timing
+  const imageOpacity = useTransform(scrollYProgress, [index === 0 ? 0 : 0.25, 0.8, 1], [index === 0 ? 1 : 0, 1, 1]); // Adjusted start from 0.2 to 0.25
+  const imageScale = useTransform(scrollYProgress, [index === 0 ? 0 : 0.25, 0.8], [index === 0 ? 1 : 0.9, 1]); // Adjusted start from 0.2 to 0.25
 
 
   return (
@@ -47,9 +47,9 @@ const StickyCard = ({
       className="relative"
       style={{
         position: 'sticky',
-        top: '200px',
+        top: 'clamp(180px, 20vh, 200px)',
         zIndex: index + 1,
-        height: 'calc(100vh - 200px)'
+        height: 'calc(100vh - clamp(180px, 20vh, 200px))'
       }}
     >
       <motion.div
@@ -95,13 +95,13 @@ const StickyCard = ({
                       key={`${card.id}-feature-${featureIndex}`}
                       style={{
                         opacity: useTransform(scrollYProgress, [
-                          index === 0 ? 0 : 0.1 + featureIndex * 0.08,
-                          0.6 + featureIndex * 0.08
+                          index === 0 ? 0 : 0.15 + featureIndex * 0.07, // Adjusted from 0.1 to 0.15, reduced spacing
+                          0.6 + featureIndex * 0.07
                         ], [index === 0 ? 1 : 0, 1]),
                         x: useTransform(scrollYProgress, [
-                          index === 0 ? 0 : 0.1 + featureIndex * 0.08,
-                          0.6 + featureIndex * 0.08
-                        ], [index === 0 ? 0 : -15, 0]),
+                          index === 0 ? 0 : 0.15 + featureIndex * 0.07, // Adjusted from 0.1 to 0.15
+                          0.6 + featureIndex * 0.07
+                        ], [index === 0 ? 0 : -12, 0]), // Reduced from -15 to -12 for mobile
                       }}
                       className="flex items-center gap-2 lg:gap-3"
                     >
