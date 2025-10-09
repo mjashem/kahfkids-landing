@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { AnimatedSection } from './AnimatedSection';
 
 const DevicesAnimated = () => {
@@ -12,65 +13,119 @@ const DevicesAnimated = () => {
     { logo: "/sony-logo.png", name: "Sony" }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.25,
+        type: "spring",
+        stiffness: 150
+      }
+    }
+  };
+
   return (
-    <div className="bg-[#f8f0f0] py-20 min-h-[944px] flex items-center justify-center">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-10 items-center w-full">
-        <AnimatedSection animation="fadeUp" delay={0.2} className="text-center max-w-[1121px]">
-          <h2 className="text-[42px] font-semibold text-[#2c2626] leading-[70px] capitalize tracking-[-0.42px] mb-5">
+    <div className="bg-[#f8f0f0] py-16 sm:py-20 lg:py-24 min-h-screen flex items-center justify-center">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+        className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-12 sm:gap-16 lg:gap-20 items-center w-full"
+      >
+        <AnimatedSection animation="fadeUp" delay={0} className="text-center max-w-4xl lg:max-w-5xl">
+          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-semibold text-[#2c2626] leading-tight lg:leading-[70px] capitalize tracking-tight mb-4 sm:mb-6">
             Enjoy Kahf Kids anytime, anywhere
           </h2>
-          <p className="text-[18px] text-[#4a4b4d] tracking-[-0.18px] max-w-[753px] mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-[#4a4b4d] tracking-tight max-w-2xl lg:max-w-3xl mx-auto leading-relaxed">
             Stream safely on every device—whether it's phones, tablets, smart TVs, or the web. With just one account, your kids can learn, play, and explore across all platforms seamlessly.
           </p>
         </AnimatedSection>
 
         {/* Device Group Image */}
-        <AnimatedSection animation="scaleIn" delay={0.4} className="relative w-full max-w-[790px] h-[403px] flex items-center justify-center">
-          <img
+        <AnimatedSection animation="scaleIn" delay={0.1} className="relative w-full max-w-2xl lg:max-w-4xl h-64 sm:h-80 lg:h-96 flex items-center justify-center">
+          <motion.img
             src="/tv-mockup.png"
             alt="Kahf Kids on all devices - TV, MacBook, iPad, and iPhone"
             className="w-full h-full object-contain"
+            whileHover={{
+              scale: 1.05,
+              transition: { duration: 0.3 }
+            }}
           />
         </AnimatedSection>
 
         {/* Platform Logos */}
-        <AnimatedSection animation="fadeUp" delay={0.6} className="flex flex-col gap-[45px] items-center w-full max-w-[666px]">
+        <AnimatedSection animation="fadeUp" delay={0.2} className="flex flex-col gap-8 sm:gap-12 items-center w-full max-w-4xl">
           {/* App Store and Google Play Badges */}
-          <div className="flex gap-3 items-center">
-            <img
+          <motion.div
+            variants={containerVariants}
+            className="flex gap-4 sm:gap-6 items-center"
+          >
+            <motion.img
               src="/devices-background.svg"
               alt="App Store"
-              className="h-12 w-40 object-contain"
+              className="h-10 sm:h-12 w-32 sm:w-40 object-contain"
+              whileHover={{ y: -4, scale: 1.05 }}
+              transition={{ duration: 0.2 }}
             />
-            <img
+            <motion.img
               src="/devices-illustration.svg"
               alt="Google Play"
-              className="h-12 w-40 object-contain"
+              className="h-10 sm:h-12 w-32 sm:w-40 object-contain"
+              whileHover={{ y: -4, scale: 1.05 }}
+              transition={{ duration: 0.2 }}
             />
-          </div>
+          </motion.div>
 
           {/* Device Platform Logos */}
-          <div className="flex flex-wrap justify-center gap-0 w-full h-[47px] items-start">
+          <motion.div
+            variants={containerVariants}
+            className="flex flex-wrap justify-center gap-2 sm:gap-4 lg:gap-6 w-full items-center"
+          >
             {devicePlatforms.map((platform, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="flex items-center justify-center p-3"
-                style={{
-                  width: '83.25px',
-                  height: '47px',
-                  padding: '17.33px 18.27px'
+                variants={itemVariants}
+                whileHover={{
+                  y: -6,
+                  scale: 1.1,
+                  transition: {
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 25
+                  }
                 }}
+                whileTap={{
+                  scale: 0.95,
+                  transition: { duration: 0.1 }
+                }}
+                className="flex items-center justify-center p-2 sm:p-3"
               >
                 <img
                   src={platform.logo}
                   alt={platform.name}
-                  className="w-[46.71px] h-[46.71px] object-contain"
+                  className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain"
                 />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </AnimatedSection>
-      </div>
+      </motion.div>
     </div>
   );
 };
