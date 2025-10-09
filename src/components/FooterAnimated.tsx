@@ -12,7 +12,7 @@ const FooterAnimated = () => {
                 <div className="flex flex-col gap-[15px]">
                   <div className="h-[53.183px] w-[78.427px]">
                     <img
-                      src="/77888cd9cbf8ae5c172c487472780b52bd2d46e2.svg"
+                      src="/footer-logo-1.svg"
                       alt="Kahf Kids Logo"
                       className="w-full h-full object-contain"
                     />
@@ -58,7 +58,7 @@ const FooterAnimated = () => {
                   <a href="#" className="bg-[#e7f1f3] flex items-center justify-center rounded-[10px] w-[39.93px] h-[39.93px] hover:bg-[#d1e7ea] transition-colors">
                     <div className="w-[19.97px] h-[19.97px]">
                       <img
-                        src="/3d8f78eb6868df4ae8ace43eda4bf6fc27d410b6.svg"
+                        src="/footer-logo-2.svg"
                         alt="Facebook"
                         className="w-full h-full object-contain"
                       />
@@ -67,7 +67,7 @@ const FooterAnimated = () => {
                   <a href="#" className="bg-[#e7f1f3] flex items-center justify-center rounded-[10px] w-[39.93px] h-[39.93px] hover:bg-[#d1e7ea] transition-colors">
                     <div className="w-[19.97px] h-[19.97px]">
                       <img
-                        src="/ba32d6dc9c82d105735a5c2a4836e150e612812d.svg"
+                        src="/footer-logo-3.svg"
                         alt="Twitter"
                         className="w-full h-full object-contain"
                       />
@@ -76,7 +76,7 @@ const FooterAnimated = () => {
                   <a href="#" className="bg-[#e7f1f3] flex items-center justify-center rounded-[10px] w-[39.93px] h-[39.93px] hover:bg-[#d1e7ea] transition-colors">
                     <div className="w-[19.96px] h-[19.96px]">
                       <img
-                        src="/75c678c4cd22bfee17b7a8d0b14d66ed18f5ae48.svg"
+                        src="/footer-logo-4.svg"
                         alt="Instagram"
                         className="w-full h-full object-contain"
                       />
@@ -85,7 +85,7 @@ const FooterAnimated = () => {
                   <a href="#" className="bg-[#e7f1f3] flex items-center justify-center rounded-[10px] w-[39.93px] h-[39.93px] hover:bg-[#d1e7ea] transition-colors">
                     <div className="w-[19.96px] h-[19.96px]">
                       <img
-                        src="/d9c864e66f2ae6c0c330e0e34acaf8851a7a7f09.svg"
+                        src="/footer-logo-5.svg"
                         alt="YouTube"
                         className="w-full h-full object-contain"
                       />
@@ -99,14 +99,14 @@ const FooterAnimated = () => {
                 <div className="flex gap-[7.25px]">
                   <div className="h-[29px] w-[97.874px]">
                     <img
-                      src="/34533b9289d6d770de004dc34f6fd4b5b1a890e7.svg"
+                      src="/footer-logo-6.svg"
                       alt="App Store"
                       className="w-full h-full object-contain"
                     />
                   </div>
                   <div className="h-[29px] w-[97.876px]">
                     <img
-                      src="/fe0c087090e275fba7d5db28bb1ef202bfc500ef.svg"
+                      src="/footer-logo-7.svg"
                       alt="Google Play"
                       className="w-full h-full object-contain"
                     />

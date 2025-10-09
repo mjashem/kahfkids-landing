@@ -2,14 +2,14 @@ import { AnimatedSection } from './AnimatedSection';
 
 const DevicesAnimated = () => {
   const devicePlatforms = [
-    { logo: "/28e0ce35027043bf16ea68628d986ff0871ca6eb.png", name: "Roku" },
-    { logo: "/b6a98014599c0a0864772e0c8a0803b5d467d5ac.png", name: "FireTV" },
-    { logo: "/736749964c2af19249b3dc29b4b70039ada58147.png", name: "Apple TV" },
-    { logo: "/0d6a4cdcedfde206aafd383bb63ab20e0787c91f.png", name: "iOS" },
-    { logo: "/15a1d16c58aa8deaafe887642e2b0c5394a122b3.png", name: "Android" },
-    { logo: "/d2c840d6d5299337087e74be193e7dcad3336d4c.png", name: "Windows" },
-    { logo: "/610119d1b6084c1494dab31893c825844a85ecb8.png", name: "LG" },
-    { logo: "/687ec34cab65f3a2f895197cf1e385cf6475f6ae.png", name: "Sony" }
+    { logo: "/roku-logo.png", name: "Roku" },
+    { logo: "/firetv-logo.png", name: "FireTV" },
+    { logo: "/appletv-logo.png", name: "Apple TV" },
+    { logo: "/ios-logo.png", name: "iOS" },
+    { logo: "/android-logo.png", name: "Android" },
+    { logo: "/windows-logo.png", name: "Windows" },
+    { logo: "/lg-logo.png", name: "LG" },
+    { logo: "/sony-logo.png", name: "Sony" }
   ];
 
   return (
@@ -27,7 +27,7 @@ const DevicesAnimated = () => {
         {/* Device Group Image */}
         <AnimatedSection animation="scaleIn" delay={0.4} className="relative w-full max-w-[790px] h-[403px] flex items-center justify-center">
           <img
-            src="/Group-46939.png"
+            src="/tv-mockup.png"
             alt="Kahf Kids on all devices - TV, MacBook, iPad, and iPhone"
             className="w-full h-full object-contain"
           />
@@ -38,12 +38,12 @@ const DevicesAnimated = () => {
           {/* App Store and Google Play Badges */}
           <div className="flex gap-3 items-center">
             <img
-              src="/474171806f8e270d58ca28e75c228a7a2130b51c.svg"
+              src="/devices-background.svg"
               alt="App Store"
               className="h-12 w-40 object-contain"
             />
             <img
-              src="/f6da9254686dc90e68c2ac4399e79e3c053721df.svg"
+              src="/devices-illustration.svg"
               alt="Google Play"
               className="h-12 w-40 object-contain"
             />

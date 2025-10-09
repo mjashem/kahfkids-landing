@@ -53,7 +53,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                     }}
                   >
                     <img
-                      src="/b2de00c26e68f0cd06db557a2c071e420ab33f7c.svg"
+                      src="/decorative-element-hero-1.svg"
                       alt="Decorative element 1"
                       className="w-full h-full object-contain mr-2 sm:mr-4 lg:mr-6 -mb-2 sm:-mb-4 lg:-mb-6"
                     />
@@ -78,7 +78,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                     }}
                   >
                     <img
-                      src="/3ed83473475b7033e6aee65965f34306b624d58e.svg"
+                      src="/decorative-element-hero-2.svg"
                       alt="Decorative element 2"
                       className="w-full h-full object-contain"
                     />
@@ -135,7 +135,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                 >
                   <span className="text-white text-xs sm:text-sm font-['Baloo_2:Medium',_sans-serif] font-medium leading-5 sm:leading-6">Buy Premium</span>
                   <motion.img
-                    src="/8b78a29a98038eaf1e4c5809e928d41af276b77e.svg"
+                    src="/arrow-icon.svg"
                     alt="Arrow"
                     className="w-6 h-6"
                     animate={{ x: [0, 4, 0] }}
@@ -163,7 +163,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                     }}
                   >
                     <img
-                      src="/50ef2ac624889246853661a08035409d6146ae4d.svg"
+                      src="/app-store-badge.svg"
                       alt="Download on App Store"
                       className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
                     />
@@ -182,7 +182,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                     }}
                   >
                     <img
-                      src="/91d03ea036776e5d506d4a563368f57e1012ce70.svg"
+                      src="/google-play-badge.svg"
                       alt="Get it on Google Play"
                       className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
                     />
@@ -201,7 +201,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                     }}
                   >
                     <img
-                      src="/c068262c56f0183e00a6b2dfa618608bda1d6964.svg"
+                      src="/decorative-element-hero-3.svg"
                       alt="Decorative element 3"
                       className="w-full h-full object-contain"
                     />
@@ -223,7 +223,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
             >
               <div className="relative w-full lg:w-auto origin-top -mb-12 sm:-mb-16 md:-mb-20 lg:-mb-24 xl:-mb-32 lg:transform lg:translate-x-8" style={{ transform: 'translateX(15px)' }}>
                 <img
-                  src="/iPhone-11.png"
+                  src="/iphone-mockup.png"
                   alt="iPhone 11 with Kahf Kids App"
                   className="w-full h-auto object-contain max-w-[280px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[450px] xl:max-w-[520px]"
                 />

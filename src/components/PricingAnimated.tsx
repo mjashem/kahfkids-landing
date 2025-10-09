@@ -35,37 +35,37 @@ const PricingAnimated = () => {
 
   const ecosystemFeatures = [
     {
-      icon: "/13574bffc9a4b67c79b40105aeb8440305b4d605.svg",
+      icon: "/feature-icon-1.svg",
       number: "14,000+",
       title: "Curated Safe Videos For Kids, manually reviewed by experts.",
       borderColor: "border-[#d0474c]"
     },
     {
-      icon: "/a798c26b3048ce7b95110c713bfeef8c41374441.svg",
+      icon: "/feature-icon-2.svg",
       number: "100%",
       title: "No ads, no tracking, no harmful distractions—just a safe space.",
       borderColor: "border-[#377aff]"
     },
     {
-      icon: "/43280da8d04c0e2a1462516a90942ba46874c368.svg",
+      icon: "/feature-icon-3.svg",
       number: "Fully Child-Safe",
       title: "COPPA & Google Play Families Compliant.",
       borderColor: "border-[#85a70b]"
     },
     {
-      icon: "/b979891ab8f6aa8a4698c7ea13934c9c8cf0b3ef.svg",
+      icon: "/feature-icon-4.svg",
       number: "All-In-One Platform",
       title: "From entertainment to learning, everything your child needs is in one app.",
       borderColor: "border-[#8b47d0]"
     },
     {
-      icon: "/1af2e95eae60351a1a9b5c5af93321790620f2a0.svg",
+      icon: "/feature-icon-5.svg",
       number: "Parent Controlled",
       title: "You stay in charge with powerful parental controls. Decide what your child watches.",
       borderColor: "border-[#1ca565]"
     },
     {
-      icon: "/71f9648a69fdaa8d58e3eaac2c91d4957b5a560a.svg",
+      icon: "/feature-icon-6.svg",
       number: "Designed for Muslim Kids",
       title: "Content carefully integrated with positive values that inspire.",
       borderColor: "border-[#b17462]"
@@ -96,7 +96,7 @@ const PricingAnimated = () => {
 
   const TickIcon = () => (
     <img
-      src="/c90c60250967264df76640b5cfef4ef4872ceb8e.svg"
+      src="/pricing-illustration.svg"
       alt="tick"
       className="w-[18px] h-[18px] flex-shrink-0"
     />

@@ -13,10 +13,10 @@ const cardsData = [
       "Video Filter – Parents can change video settings",
       "Child-Lock Fullscreen Mode"
     ],
-    image: "/8ddecc66e042270dc07d1dfc91720cda161f11ca.png",
+    image: "/feature-image-1.png",
     imageAlt: "Video feature preview",
-    backgroundSvg: "/ae3717db0f2d91cf80c0384c9f239aead67fa96a.svg",
-    tickIcon: "/0a2110529c0182290d362ea1637ebf4fddce305d.svg"
+    backgroundSvg: "/feature-background-1.svg",
+    tickIcon: "/tick-icon-1.svg"
   },
   {
     id: 2,
@@ -28,13 +28,13 @@ const cardsData = [
       "Video Filter Option & Theme Changing"
     ],
     images: [
-      "/e797017022f1be232c6daebc3ba2ade3d4fd5834.png",
-      "/d7fc10a6763216ba31e9457dacada447e7750416.png"
+      "/feature-image-1-hover.png",
+      "/feature-image-1-active.png"
     ],
     imageAlt: ["Parental controls top", "Parental controls bottom"],
     isStacked: true,
-    backgroundSvg: "/34a08a05c8f525a5f3342655f9bbd32a73fdf157.svg",
-    tickIcon: "/95e522db57601cfbfa3033afdd645dc5d2643324.svg"
+    backgroundSvg: "/feature-background-2.svg",
+    tickIcon: "/tick-icon-2.svg"
   },
   {
     id: 3,
@@ -45,10 +45,10 @@ const cardsData = [
       "Multiple Translations – Bangla, English & more.",
       "Last-Read History & Bookmark"
     ],
-    image: "/cae6132d6726f0142a5abb6a1f4a459e4779e1b8.png",
+    image: "/feature-image-2.png",
     imageAlt: "Digital Quran app preview",
-    backgroundSvg: "/2d40020a2f032826354b02fe447ae8ce898cf2fa.svg",
-    tickIcon: "/5f9ede447d45841dbca32696a6283be3300b68b9.svg"
+    backgroundSvg: "/feature-background-3.svg",
+    tickIcon: "/tick-icon-3.svg"
   },
   {
     id: 4,
@@ -57,10 +57,10 @@ const cardsData = [
       "Free Educational Games – Brain-boosting activities.",
       "Premium Games – Extra engaging, skill-building games."
     ],
-    image: "/e8708a3d3bd151bc79611ec4e5ee8d5012894a78.png",
+    image: "/feature-image-2-hover.png",
     imageAlt: "Interactive games preview",
-    backgroundSvg: "/8d9c954d65f666b7ad2e9d4964c8d7160338e9a3.svg",
-    tickIcon: "/dc023faa25962797083f7f014de1b2501f4866f1.svg"
+    backgroundSvg: "/feature-background-4.svg",
+    tickIcon: "/tick-icon-4.svg"
   },
   {
     id: 5,
@@ -69,10 +69,10 @@ const cardsData = [
       "Free Educational Games – Brain-boosting activities.",
       "Premium Games – Extra engaging, skill-building games."
     ],
-    image: "/9ddf624ed35c2346c86d9ee92fa4a2dc970c4457.png",
+    image: "/feature-image-3.png",
     imageAlt: "Courses preview",
-    backgroundSvg: "/d0ce5cdd381f0b1323c9d96ab981bffa32011554.svg",
-    tickIcon: "/fbb92885856e7580980b5d6e28bbf209dc738bf9.svg"
+    backgroundSvg: "/feature-background-5.svg",
+    tickIcon: "/tick-icon-5.svg"
   },
   {
     id: 6,
@@ -81,10 +81,10 @@ const cardsData = [
       "Free Educational Games – Brain-boosting activities.",
       "Premium Games – Extra engaging, skill-building games."
     ],
-    image: "/125ed3ef434857c02bc51ba76c31df73c153e8c0.png",
+    image: "/feature-image-3-hover.png",
     imageAlt: "Tools preview",
-    backgroundSvg: "/7554ca389eb349dd6360f4fb5940c1abd4c4fca2.svg",
-    tickIcon: "/34890d8cf644b9e738236c93e3c72c68174b7251.svg"
+    backgroundSvg: "/feature-background-6.svg",
+    tickIcon: "/tick-icon-6.svg"
   }
 ];
 

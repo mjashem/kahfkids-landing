@@ -4,17 +4,17 @@ import { AnimatedSection } from './AnimatedSection';
 const MuslimGenerationAnimated = () => {
   const values = [
     {
-      icon: "/20e040a21212644c38f1d506cd7751e86ce79481.svg",
+      icon: "/muslim-icon-1.svg",
       title: "Eeman",
       description: "Strengthening faith through engaging Islamic content."
     },
     {
-      icon: "/116f44fbeefae0ed7f6abcc7a7ccc1f19757e4e7.svg",
+      icon: "/muslim-icon-2.svg",
       title: "Akhlaq",
       description: "Building character and beautiful manners."
     },
     {
-      icon: "/518ceaaf119d4f469af89dcc1e02fd50a5919375.svg",
+      icon: "/muslim-icon-3.svg",
       title: "Ilm",
       description: "Fostering love for learning and knowledge."
     }
