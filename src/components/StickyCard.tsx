@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useTransform, MotionValue } from 'framer-motion';
 
 interface CardType {
   id: number;
@@ -13,8 +13,32 @@ interface CardType {
   isStacked?: boolean;
 }
 
-const StickyCard = ({ card, index, totalCards }: { card: CardType; index: number; totalCards: number }) => {
+const StickyCard = ({
+  card,
+  index,
+  totalCards,
+  scrollYProgress
+}: {
+  card: CardType;
+  index: number;
+  totalCards: number;
+  scrollYProgress: MotionValue<number>;
+}) => {
   const cardRef = useRef<HTMLDivElement>(null);
+
+  // Card slides up from bottom - slower animation
+  // For first card (index 0), start visible, for others slide from bottom
+  const cardY = useTransform(scrollYProgress, [0, 0.5, 1], [index === 0 ? 0 : 80, 0, 0]);
+  const cardOpacity = useTransform(scrollYProgress, [0, 0.3, 1], [index === 0 ? 1 : 0, 1, 1]);
+  const cardScale = useTransform(scrollYProgress, [0, 0.4, 1], [index === 0 ? 1 : 0.95, 1, 1]);
+
+  // Features animate in as card progresses - slower timing
+  const featuresOpacity = useTransform(scrollYProgress, [index === 0 ? 0 : 0.1, 0.6, 1], [index === 0 ? 1 : 0, 1, 1]);
+  const featuresX = useTransform(scrollYProgress, [index === 0 ? 0 : 0.1, 0.6], [index === 0 ? 0 : -25, 0]);
+
+  // Image animates in later - slower timing
+  const imageOpacity = useTransform(scrollYProgress, [index === 0 ? 0 : 0.2, 0.8, 1], [index === 0 ? 1 : 0, 1, 1]);
+  const imageScale = useTransform(scrollYProgress, [index === 0 ? 0 : 0.2, 0.8], [index === 0 ? 1 : 0.9, 1]);
 
 
   return (
@@ -30,16 +54,17 @@ const StickyCard = ({ card, index, totalCards }: { card: CardType; index: number
     >
       <motion.div
         className="absolute inset-0 flex items-center justify-center px-4"
+        style={{
+          y: cardY,
+          opacity: cardOpacity,
+          scale: cardScale,
+        }}
       >
         <motion.div
-          initial={{ scale: 0.95, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          transition={{
-            duration: 1.2,
-            delay: index * 0.3,
-            ease: [0.16, 1, 0.3, 1]
-          }}
           className="w-full h-full bg-white rounded-[20px] shadow-lg flex items-center justify-center overflow-hidden"
+          style={{
+            transition: 'all 0.3s ease-out',
+          }}
         >
           <div className="relative px-5 py-4 lg:px-[72px] lg:py-[82px] flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-12 w-full h-full">
             <div className="flex-1 lg:max-w-[525px] flex flex-col lg:justify-center">
@@ -57,17 +82,26 @@ const StickyCard = ({ card, index, totalCards }: { card: CardType; index: number
                 </h3>
               </div>
 
-              <div className="px-3 lg:px-[40px] py-2 lg:py-[10px] flex-1">
+              <motion.div
+                className="px-3 lg:px-[40px] py-2 lg:py-[10px] flex-1"
+                style={{
+                  opacity: featuresOpacity,
+                  x: featuresX,
+                }}
+              >
                 <div className="space-y-1.5 lg:space-y-5">
                   {card.features.map((item: string, featureIndex: number) => (
                     <motion.div
                       key={`${card.id}-feature-${featureIndex}`}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{
-                        duration: 0.8,
-                        delay: featureIndex * 0.2,
-                        ease: [0.16, 1, 0.3, 1]
+                      style={{
+                        opacity: useTransform(scrollYProgress, [
+                          index === 0 ? 0 : 0.1 + featureIndex * 0.08,
+                          0.6 + featureIndex * 0.08
+                        ], [index === 0 ? 1 : 0, 1]),
+                        x: useTransform(scrollYProgress, [
+                          index === 0 ? 0 : 0.1 + featureIndex * 0.08,
+                          0.6 + featureIndex * 0.08
+                        ], [index === 0 ? 0 : -15, 0]),
                       }}
                       className="flex items-center gap-2 lg:gap-3"
                     >
@@ -84,16 +118,13 @@ const StickyCard = ({ card, index, totalCards }: { card: CardType; index: number
                     </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{
-                duration: 1.0,
-                delay: 0.4,
-                ease: [0.16, 1, 0.3, 1]
+              style={{
+                opacity: imageOpacity,
+                scale: imageScale,
               }}
               whileHover={{ scale: 1.05, transition: { duration: 0.5 } }}
               className="relative rounded-[16px] overflow-hidden lg:w-[340px] lg:h-[310px] w-full h-[140px] sm:h-[160px] flex-shrink-0"

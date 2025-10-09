@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useScroll } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import StickyCard from './StickyCard';
 
 // Card data structure
@@ -97,18 +97,9 @@ const FeaturesAnimated = () => {
     offset: ["start start", "end end"]
   });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.1
-      }
-    }
-  };
+  // Calculate scroll progress for each card
+  const totalCards = cardsData.length;
 
-  
   return (
     <div className="bg-[#faefef] py-12 lg:py-20 px-4 md:px-[159px]">
       {/* Sticky Cards Container */}
@@ -124,10 +115,13 @@ const FeaturesAnimated = () => {
           }}
         >
           <motion.div
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            variants={containerVariants}
+            transition={{
+              duration: 0.8,
+              ease: [0.16, 1, 0.3, 1]
+            }}
             className="absolute inset-0 flex items-center justify-center bg-[#faefef]"
           >
             <div className="max-w-6xl mx-auto text-center py-6 lg:py-8 px-4">
@@ -142,14 +136,22 @@ const FeaturesAnimated = () => {
         </div>
 
         {/* Feature Cards */}
-        {cardsData.map((card, index) => (
-          <StickyCard
-            key={card.id}
-            card={card}
-            index={index}
-            totalCards={cardsData.length}
-          />
-        ))}
+        {cardsData.map((card, index) => {
+          // Calculate scroll progress for each individual card
+          const cardStart = index / totalCards;
+          const cardEnd = (index + 1) / totalCards;
+          const cardScrollYProgress = useTransform(scrollYProgress, [cardStart, cardEnd], [0, 1]);
+
+          return (
+            <StickyCard
+              key={card.id}
+              card={card}
+              index={index}
+              totalCards={totalCards}
+              scrollYProgress={cardScrollYProgress}
+            />
+          );
+        })}
       </div>
     </div>
   );
