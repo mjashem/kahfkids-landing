@@ -138,8 +138,19 @@ const FeaturesAnimated = () => {
         {/* Feature Cards */}
         {cardsData.map((card, index) => {
           // Calculate scroll progress for each individual card
-          const cardStart = index / totalCards;
-          const cardEnd = (index + 1) / totalCards;
+          // First card gets smaller range since it starts visible, others get redistributed range
+          let cardStart, cardEnd;
+          if (index === 0) {
+            // First card gets only 10% of scroll range since it's already visible
+            cardStart = 0;
+            cardEnd = 0.1;
+          } else {
+            // Redistribute remaining 90% among other cards
+            const remainingCards = totalCards - 1;
+            const remainingRange = 0.9;
+            cardStart = 0.1 + ((index - 1) / remainingCards) * remainingRange;
+            cardEnd = 0.1 + ((index) / remainingCards) * remainingRange;
+          }
           const cardScrollYProgress = useTransform(scrollYProgress, [cardStart, cardEnd], [0, 1]);
 
           return (
