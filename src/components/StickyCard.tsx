@@ -61,13 +61,13 @@ const StickyCard = ({
         }}
       >
         <motion.div
-          className="w-full h-full bg-white rounded-[20px] shadow-lg flex items-center justify-center overflow-hidden"
+          className="w-full max-w-6xl h-full bg-white rounded-[20px] shadow-lg flex items-center justify-center overflow-hidden"
           style={{
             transition: 'all 0.3s ease-out',
           }}
         >
           <div className="relative px-5 py-4 lg:px-[72px] lg:py-[82px] flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-12 w-full h-full">
-            <div className="flex-1 lg:max-w-[525px] flex flex-col lg:justify-center">
+            <div className="lg:flex-1 lg:max-w-[525px] flex flex-col lg:justify-center">
               <div
                 className="relative mb-2 lg:mb-8 h-[40px] lg:h-[62px] flex items-center flex-shrink-0"
                 style={{
