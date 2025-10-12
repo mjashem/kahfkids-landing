@@ -91,7 +91,7 @@ const PricingAnimated = () => {
       scale: 1,
       transition: {
         duration: 0.25,
-        type: "spring",
+        type: "spring" as const,
         stiffness: 150
       }
     }
@@ -142,7 +142,7 @@ const PricingAnimated = () => {
                   scale: 1.02,
                   boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
                   transition: {
-                    type: "spring",
+                    type: "spring" as const,
                     stiffness: 300,
                     damping: 20
                   }
@@ -233,7 +233,7 @@ const PricingAnimated = () => {
                   scale: 1.02,
                   boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
                   transition: {
-                    type: "spring",
+                    type: "spring" as const,
                     stiffness: 400,
                     damping: 25,
                     duration: 0.2

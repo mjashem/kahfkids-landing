@@ -21,7 +21,7 @@ const FooterAnimated = () => {
       scale: 1,
       transition: {
         duration: 0.25,
-        type: "spring",
+        type: "spring" as const,
         stiffness: 150
       }
     }
@@ -75,7 +75,7 @@ const FooterAnimated = () => {
                   href="#"
                   className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
                   whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 400 }}
+                  transition={{ type: "spring" as const, stiffness: 400 }}
                 >
                   Home
                 </motion.a>
@@ -83,7 +83,7 @@ const FooterAnimated = () => {
                   href="#"
                   className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
                   whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 400 }}
+                  transition={{ type: "spring" as const, stiffness: 400 }}
                 >
                   Features
                 </motion.a>
@@ -91,7 +91,7 @@ const FooterAnimated = () => {
                   href="#"
                   className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
                   whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 400 }}
+                  transition={{ type: "spring" as const, stiffness: 400 }}
                 >
                   Pricing
                 </motion.a>
@@ -99,7 +99,7 @@ const FooterAnimated = () => {
                   href="#"
                   className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
                   whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 400 }}
+                  transition={{ type: "spring" as const, stiffness: 400 }}
                 >
                   Blog
                 </motion.a>
@@ -114,7 +114,7 @@ const FooterAnimated = () => {
                   href="#"
                   className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
                   whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 400 }}
+                  transition={{ type: "spring" as const, stiffness: 400 }}
                 >
                   Contact Us
                 </motion.a>
@@ -122,7 +122,7 @@ const FooterAnimated = () => {
                   href="#"
                   className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
                   whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 400 }}
+                  transition={{ type: "spring" as const, stiffness: 400 }}
                 >
                   Help Center
                 </motion.a>
@@ -130,7 +130,7 @@ const FooterAnimated = () => {
                   href="#"
                   className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
                   whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 400 }}
+                  transition={{ type: "spring" as const, stiffness: 400 }}
                 >
                   Privacy Policy
                 </motion.a>
@@ -138,7 +138,7 @@ const FooterAnimated = () => {
                   href="#"
                   className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
                   whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 400 }}
+                  transition={{ type: "spring" as const, stiffness: 400 }}
                 >
                   Terms & Condition
                 </motion.a>
@@ -146,7 +146,7 @@ const FooterAnimated = () => {
                   href="#"
                   className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
                   whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 400 }}
+                  transition={{ type: "spring" as const, stiffness: 400 }}
                 >
                   Child Safety Policy
                 </motion.a>
@@ -171,7 +171,7 @@ const FooterAnimated = () => {
                   whileHover={{
                     y: -4,
                     scale: 1.1,
-                    transition: { type: "spring", stiffness: 400, damping: 25 }
+                    transition: { type: "spring" as const, stiffness: 400, damping: 25 }
                   }}
                 >
                   <div className="w-5 h-5 sm:w-6 sm:h-6">
@@ -188,7 +188,7 @@ const FooterAnimated = () => {
                   whileHover={{
                     y: -4,
                     scale: 1.1,
-                    transition: { type: "spring", stiffness: 400, damping: 25 }
+                    transition: { type: "spring" as const, stiffness: 400, damping: 25 }
                   }}
                 >
                   <div className="w-5 h-5 sm:w-6 sm:h-6">
@@ -205,7 +205,7 @@ const FooterAnimated = () => {
                   whileHover={{
                     y: -4,
                     scale: 1.1,
-                    transition: { type: "spring", stiffness: 400, damping: 25 }
+                    transition: { type: "spring" as const, stiffness: 400, damping: 25 }
                   }}
                 >
                   <div className="w-5 h-5 sm:w-6 sm:h-6">
@@ -222,7 +222,7 @@ const FooterAnimated = () => {
                   whileHover={{
                     y: -4,
                     scale: 1.1,
-                    transition: { type: "spring", stiffness: 400, damping: 25 }
+                    transition: { type: "spring" as const, stiffness: 400, damping: 25 }
                   }}
                 >
                   <div className="w-5 h-5 sm:w-6 sm:h-6">
@@ -245,7 +245,7 @@ const FooterAnimated = () => {
                 <motion.div
                   className="h-8 w-24 sm:h-10 sm:w-28"
                   whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 400 }}
+                  transition={{ type: "spring" as const, stiffness: 400 }}
                 >
                   <img
                     src="/footer-logo-6.svg"
@@ -256,7 +256,7 @@ const FooterAnimated = () => {
                 <motion.div
                   className="h-8 w-24 sm:h-10 sm:w-28"
                   whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 400 }}
+                  transition={{ type: "spring" as const, stiffness: 400 }}
                 >
                   <img
                     src="/footer-logo-7.svg"

@@ -55,7 +55,7 @@ const PhoneMockup: React.FC<PhoneMockupProps> = ({ className = '' }) => {
                 </div>
                 <div className="flex-1">
                   <h4 className="font-medium text-sm text-gray-900">Featured: Islamic Stories</h4>
-                  <p class="text-xs text-gray-500">New videos added today</p>
+                  <p className="text-xs text-gray-500">New videos added today</p>
                 </div>
               </div>
             </div>
