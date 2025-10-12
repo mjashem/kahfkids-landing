@@ -1,136 +1,291 @@
+import { motion } from 'framer-motion';
 import { AnimatedSection } from './AnimatedSection';
 
 const FooterAnimated = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        staggerChildren: 0.05
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.25,
+        type: "spring",
+        stiffness: 150
+      }
+    }
+  };
+
   return (
-    <footer className="bg-white py-25">
-      <AnimatedSection animation="fadeUp" delay={0.2} className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-2.5 items-center justify-center">
-        <div className="flex flex-col lg:flex-row gap-[130px] items-start justify-center">
-          <div className="flex flex-col lg:flex-row gap-[100px] w-full max-w-[1120px] h-auto lg:h-[257px]">
-            {/* Logo and Description */}
-            <div className="flex flex-col gap-[15px] w-full lg:w-[300px]">
-              <div className="flex flex-col gap-[43px]">
-                <div className="flex flex-col gap-[15px]">
-                  <div className="h-[53.183px] w-[78.427px]">
-                    <img
-                      src="/footer-logo-1.svg"
-                      alt="Kahf Kids Logo"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <p className="font-medium text-[#4a4b4d] text-[14px] leading-[22.71px]">
-                    Safe, Islamic, and educational content that nurtures faith, character, and knowledge in children.
-                  </p>
+    <footer className="bg-white py-16 sm:py-20 lg:py-24">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+        className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-8 sm:gap-10 items-center justify-center"
+      >
+        {/* Main Footer Content */}
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col md:flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-16 w-full max-w-7xl items-center md:items-center lg:items-start"
+        >
+          {/* Logo and Description */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col gap-4 sm:gap-6 w-full lg:w-1/4 xl:w-1/5 items-center sm:items-center md:items-center lg:items-start text-center lg:text-left"
+          >
+            <div className="flex flex-col gap-6 sm:gap-8 items-center sm:items-center md:items-center lg:items-start">
+              <div className="flex flex-col gap-4 sm:gap-6 items-center sm:items-center md:items-center lg:items-start">
+                <div className="h-12 w-16 sm:h-14 sm:w-20">
+                  <img
+                    src="/footer-logo-1.svg"
+                    alt="Kahf Kids Logo"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
+                <p className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed max-w-sm">
+                  Safe, Islamic, and educational content that nurtures faith, character, and knowledge in children.
+                </p>
               </div>
             </div>
+          </motion.div>
 
+          {/* Navigation and Support - Always Row Layout, Centered on Medium */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-row lg:flex-row gap-4 sm:gap-6 lg:gap-8 w-full lg:w-1/3 items-start md:items-start lg:items-start justify-center md:justify-center lg:justify-start text-center lg:text-left"
+          >
             {/* Navigation */}
-            <div className="flex flex-col gap-[15.97px] w-full lg:w-[125px]">
-              <h3 className="font-semibold text-black text-[13px] leading-[27.951px]">Navigation</h3>
-              <div className="flex flex-col gap-[12px]">
-                <a href="#" className="font-medium text-[#4a4b4d] text-[14px] leading-[19.965px] hover:text-black transition-colors">Home</a>
-                <a href="#" className="font-medium text-[#4a4b4d] text-[14px] leading-[19.965px] hover:text-black transition-colors">Features</a>
-                <a href="#" className="font-medium text-[#4a4b4d] text-[14px] leading-[19.965px] hover:text-black transition-colors">Pricing</a>
-                <a href="#" className="font-medium text-[#4a4b4d] text-[14px] leading-[19.965px] hover:text-black transition-colors">Blog</a>
+            <div className="flex-1 max-w-xs">
+              <h3 className="font-semibold text-black text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">Navigation</h3>
+              <div className="flex flex-col gap-3 sm:gap-4">
+                <motion.a
+                  href="#"
+                  className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  Home
+                </motion.a>
+                <motion.a
+                  href="#"
+                  className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  Features
+                </motion.a>
+                <motion.a
+                  href="#"
+                  className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  Pricing
+                </motion.a>
+                <motion.a
+                  href="#"
+                  className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  Blog
+                </motion.a>
               </div>
             </div>
 
             {/* Support */}
-            <div className="flex flex-col gap-[15.97px] w-full lg:w-[138px]">
-              <h3 className="font-semibold text-black text-[13px] leading-[27.951px]">Support</h3>
-              <div className="flex flex-col gap-[12px]">
-                <a href="#" className="font-medium text-[#4a4b4d] text-[14px] leading-[19.965px] hover:text-black transition-colors">Contact Us</a>
-                <a href="#" className="font-medium text-[#4a4b4d] text-[14px] leading-[19.965px] hover:text-black transition-colors">Help Center</a>
-                <a href="#" className="font-medium text-[#4a4b4d] text-[14px] leading-[19.965px] hover:text-black transition-colors">Privacy Policy</a>
-                <a href="#" className="font-medium text-[#4a4b4d] text-[14px] leading-[19.965px] hover:text-black transition-colors">Terms & Condition</a>
-                <a href="#" className="font-medium text-[#4a4b4d] text-[14px] leading-[19.965px] hover:text-black transition-colors">Child Safety Policy</a>
+            <div className="flex-1 max-w-xs">
+              <h3 className="font-semibold text-black text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">Support</h3>
+              <div className="flex flex-col gap-3 sm:gap-4">
+                <motion.a
+                  href="#"
+                  className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  Contact Us
+                </motion.a>
+                <motion.a
+                  href="#"
+                  className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  Help Center
+                </motion.a>
+                <motion.a
+                  href="#"
+                  className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  Privacy Policy
+                </motion.a>
+                <motion.a
+                  href="#"
+                  className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  Terms & Condition
+                </motion.a>
+                <motion.a
+                  href="#"
+                  className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  Child Safety Policy
+                </motion.a>
               </div>
             </div>
+          </motion.div>
 
-            {/* Social Media and App Stores */}
-            <div className="flex flex-col gap-[40px] h-auto lg:h-[257px]">
-              {/* Social Media */}
-              <div className="flex flex-col gap-[16px] w-full lg:w-[195.72px]">
-                <div className="flex flex-col gap-[10px]">
-                  <h4 className="font-semibold text-black text-[13px] leading-[27.951px] whitespace-nowrap">Follow Us</h4>
-                </div>
-                <div className="flex gap-[12px]">
-                  <a href="#" className="bg-[#e7f1f3] flex items-center justify-center rounded-[10px] w-[39.93px] h-[39.93px] hover:bg-[#d1e7ea] transition-colors">
-                    <div className="w-[19.97px] h-[19.97px]">
-                      <img
-                        src="/footer-logo-2.svg"
-                        alt="Facebook"
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                  </a>
-                  <a href="#" className="bg-[#e7f1f3] flex items-center justify-center rounded-[10px] w-[39.93px] h-[39.93px] hover:bg-[#d1e7ea] transition-colors">
-                    <div className="w-[19.97px] h-[19.97px]">
-                      <img
-                        src="/footer-logo-3.svg"
-                        alt="Twitter"
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                  </a>
-                  <a href="#" className="bg-[#e7f1f3] flex items-center justify-center rounded-[10px] w-[39.93px] h-[39.93px] hover:bg-[#d1e7ea] transition-colors">
-                    <div className="w-[19.96px] h-[19.96px]">
-                      <img
-                        src="/footer-logo-4.svg"
-                        alt="Instagram"
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                  </a>
-                  <a href="#" className="bg-[#e7f1f3] flex items-center justify-center rounded-[10px] w-[39.93px] h-[39.93px] hover:bg-[#d1e7ea] transition-colors">
-                    <div className="w-[19.96px] h-[19.96px]">
-                      <img
-                        src="/footer-logo-5.svg"
-                        alt="YouTube"
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                  </a>
-                </div>
+          {/* Social Media and App Stores */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col gap-8 sm:gap-10 w-full lg:w-1/3 xl:w-1/4 items-center sm:items-center md:items-center lg:items-start text-center lg:text-left"
+          >
+            {/* Social Media */}
+            <div className="flex flex-col gap-4 sm:gap-6 w-full items-center sm:items-center md:items-center lg:items-start">
+              <div className="flex flex-col gap-3 sm:gap-4 items-center sm:items-center md:items-center lg:items-start">
+                <h4 className="font-semibold text-black text-sm sm:text-base leading-relaxed whitespace-nowrap">Follow Us</h4>
               </div>
-
-              {/* App Store Badges */}
-              <div className="flex flex-col gap-[20px] h-auto lg:h-[142px]">
-                <div className="flex gap-[7.25px]">
-                  <div className="h-[29px] w-[97.874px]">
+              <div className="flex gap-3 sm:gap-4">
+                <motion.a
+                  href="#"
+                  className="bg-[#e7f1f3] flex items-center justify-center rounded-lg w-10 h-10 sm:w-12 sm:h-12 hover:bg-[#d1e7ea] transition-colors"
+                  whileHover={{
+                    y: -4,
+                    scale: 1.1,
+                    transition: { type: "spring", stiffness: 400, damping: 25 }
+                  }}
+                >
+                  <div className="w-5 h-5 sm:w-6 sm:h-6">
                     <img
-                      src="/footer-logo-6.svg"
-                      alt="App Store"
+                      src="/footer-logo-2.svg"
+                      alt="Facebook"
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <div className="h-[29px] w-[97.876px]">
+                </motion.a>
+                <motion.a
+                  href="#"
+                  className="bg-[#e7f1f3] flex items-center justify-center rounded-lg w-10 h-10 sm:w-12 sm:h-12 hover:bg-[#d1e7ea] transition-colors"
+                  whileHover={{
+                    y: -4,
+                    scale: 1.1,
+                    transition: { type: "spring", stiffness: 400, damping: 25 }
+                  }}
+                >
+                  <div className="w-5 h-5 sm:w-6 sm:h-6">
                     <img
-                      src="/footer-logo-7.svg"
-                      alt="Google Play"
+                      src="/footer-logo-3.svg"
+                      alt="Twitter"
                       className="w-full h-full object-contain"
                     />
                   </div>
-                </div>
-                <div className="font-medium text-[#4a4b4d] text-[12px] leading-[19.965px] w-[207px]">
-                  <p className="mb-0">Also available on:</p>
-                  <p className="mb-0">Apple TV • Android TV • Chromecast</p>
-                  <p>Samsung, LG, Roku, Fire TV coming soon</p>
-                </div>
+                </motion.a>
+                <motion.a
+                  href="#"
+                  className="bg-[#e7f1f3] flex items-center justify-center rounded-lg w-10 h-10 sm:w-12 sm:h-12 hover:bg-[#d1e7ea] transition-colors"
+                  whileHover={{
+                    y: -4,
+                    scale: 1.1,
+                    transition: { type: "spring", stiffness: 400, damping: 25 }
+                  }}
+                >
+                  <div className="w-5 h-5 sm:w-6 sm:h-6">
+                    <img
+                      src="/footer-logo-4.svg"
+                      alt="Instagram"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </motion.a>
+                <motion.a
+                  href="#"
+                  className="bg-[#e7f1f3] flex items-center justify-center rounded-lg w-10 h-10 sm:w-12 sm:h-12 hover:bg-[#d1e7ea] transition-colors"
+                  whileHover={{
+                    y: -4,
+                    scale: 1.1,
+                    transition: { type: "spring", stiffness: 400, damping: 25 }
+                  }}
+                >
+                  <div className="w-5 h-5 sm:w-6 sm:h-6">
+                    <img
+                      src="/footer-logo-5.svg"
+                      alt="YouTube"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </motion.a>
               </div>
             </div>
-          </div>
-        </div>
+
+            {/* App Store Badges */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col gap-4 sm:gap-6 w-full items-center sm:items-center md:items-center lg:items-start"
+            >
+              <div className="flex gap-2 sm:gap-3">
+                <motion.div
+                  className="h-8 w-24 sm:h-10 sm:w-28"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <img
+                    src="/footer-logo-6.svg"
+                    alt="App Store"
+                    className="w-full h-full object-contain"
+                  />
+                </motion.div>
+                <motion.div
+                  className="h-8 w-24 sm:h-10 sm:w-28"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <img
+                    src="/footer-logo-7.svg"
+                    alt="Google Play"
+                    className="w-full h-full object-contain"
+                  />
+                </motion.div>
+              </div>
+              <div className="font-medium text-[#4a4b4d] text-xs sm:text-sm leading-relaxed max-w-xs">
+                <p className="mb-1">Also available on:</p>
+                <p className="mb-1">Apple TV • Android TV • Chromecast</p>
+                <p>Samsung, LG, Roku, Fire TV coming soon</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-200 pt-[33px]">
+        <motion.div
+          variants={itemVariants}
+          className="border-t border-gray-200 pt-6 sm:pt-8 lg:pt-10 w-full"
+        >
           <div className="text-center">
-            <p className="font-medium text-[#6a7282] text-[12px] leading-[19.965px]">
+            <p className="font-medium text-[#6a7282] text-xs sm:text-sm leading-relaxed">
               Copyright © 2025 Kahf Kids. All rights reserved.
             </p>
           </div>
-        </div>
-      </AnimatedSection>
+        </motion.div>
+      </motion.div>
     </footer>
   );
 };
