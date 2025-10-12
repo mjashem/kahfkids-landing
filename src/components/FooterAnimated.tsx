@@ -39,7 +39,7 @@ const FooterAnimated = () => {
         {/* Main Footer Content */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col md:flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-16 w-full max-w-7xl items-center md:items-center lg:items-start"
+          className="flex flex-col md:flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-16 w-full max-w-6xl items-center md:items-center lg:items-start justify-center md:justify-center lg:justify-start text-center md:text-center lg:text-left"
         >
           {/* Logo and Description */}
           <motion.div
