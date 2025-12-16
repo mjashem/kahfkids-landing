@@ -99,7 +99,14 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                       textShadow: "0 0 20px rgba(255, 72, 72, 0.5)"
                     }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >Safe & Fun</motion.span> Edutainment Hub for Kids
+                  >Safe & Fun</motion.span> Edutainment Hub for Kids with <motion.span
+                    className="text-[#ff4848] inline-block"
+                    whileHover={{
+                      scale: 1.1,
+                      textShadow: "0 0 20px rgba(255, 72, 72, 0.5)"
+                    }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >Smart Parental Control</motion.span>
                 </motion.h1>
 
                 {/* Description */}
@@ -278,22 +285,22 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                   </motion.a>
                 </div>
                 <motion.div
-                    className="hidden lg:flex items-center justify-center w-10 sm:w-12 lg:w-14 h-10 sm:h-12 lg:h-14 ml-4 sm:ml-8 lg:ml-12 mt-8 sm:mt-10 lg:mt-12"
-                    animate={{
-                      rotate: [0, 360],
-                      scale: [1, 1.1, 1]
-                    }}
-                    transition={{
-                      duration: 8,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                  >
-                    <img
-                      src="/decorative-element-hero-3.svg"
-                      alt="Decorative element 3"
-                      className="w-full h-full object-contain"
-                    />
+                  className="hidden lg:flex items-center justify-center w-10 sm:w-12 lg:w-14 h-10 sm:h-12 lg:h-14 ml-4 sm:ml-8 lg:ml-12 mt-8 sm:mt-10 lg:mt-12"
+                  animate={{
+                    rotate: [0, 360],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                >
+                  <img
+                    src="/decorative-element-hero-3.svg"
+                    alt="Decorative element 3"
+                    className="w-full h-full object-contain"
+                  />
                 </motion.div>
               </motion.div>
             </AnimatedSection>
