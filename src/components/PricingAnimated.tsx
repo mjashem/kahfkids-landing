@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { AnimatedSection } from './AnimatedSection';
 
 const PricingAnimated = () => {
+  const base = import.meta.env.BASE_URL;
   const pricingPlans = [
     {
       name: "Free",
@@ -74,7 +75,7 @@ const PricingAnimated = () => {
 
   const TickIcon = () => (
     <img
-      src="/pricing-illustration.svg"
+      src={`${base}/pricing-illustration.svg`}
       alt="tick"
       className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0"
     />

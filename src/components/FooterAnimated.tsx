@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { AnimatedSection } from './AnimatedSection';
 
 const FooterAnimated = () => {
+  const base = import.meta.env.BASE_URL;
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -50,7 +51,7 @@ const FooterAnimated = () => {
               <div className="flex flex-col gap-4 sm:gap-6 items-center sm:items-center md:items-center lg:items-start">
                 <div className="h-12 w-16 sm:h-14 sm:w-20">
                   <img
-                    src="/footer-logo-1.svg"
+                    src={`${base}/footer-logo-1.svg`}
                     alt="Kahf Kids Logo"
                     className="w-full h-full object-contain"
                   />
@@ -176,7 +177,7 @@ const FooterAnimated = () => {
                 >
                   <div className="w-5 h-5 sm:w-6 sm:h-6">
                     <img
-                      src="/footer-logo-2.svg"
+                      src={`${base}/footer-logo-2.svg`}
                       alt="Facebook"
                       className="w-full h-full object-contain"
                     />
@@ -193,7 +194,7 @@ const FooterAnimated = () => {
                 >
                   <div className="w-5 h-5 sm:w-6 sm:h-6">
                     <img
-                      src="/footer-logo-3.svg"
+                      src={`${base}/footer-logo-3.svg`}
                       alt="Twitter"
                       className="w-full h-full object-contain"
                     />
@@ -210,7 +211,7 @@ const FooterAnimated = () => {
                 >
                   <div className="w-5 h-5 sm:w-6 sm:h-6">
                     <img
-                      src="/footer-logo-4.svg"
+                      src={`${base}/footer-logo-4.svg`}
                       alt="Instagram"
                       className="w-full h-full object-contain"
                     />
@@ -227,7 +228,7 @@ const FooterAnimated = () => {
                 >
                   <div className="w-5 h-5 sm:w-6 sm:h-6">
                     <img
-                      src="/footer-logo-5.svg"
+                      src={`${base}/footer-logo-5.svg`}
                       alt="YouTube"
                       className="w-full h-full object-contain"
                     />
@@ -248,7 +249,7 @@ const FooterAnimated = () => {
                   transition={{ type: "spring" as const, stiffness: 400 }}
                 >
                   <img
-                    src="/footer-logo-6.svg"
+                    src={`${base}/footer-logo-6.svg`}
                     alt="App Store"
                     className="w-full h-full object-contain"
                   />
@@ -259,7 +260,7 @@ const FooterAnimated = () => {
                   transition={{ type: "spring" as const, stiffness: 400 }}
                 >
                   <img
-                    src="/footer-logo-7.svg"
+                    src={`${base}/footer-logo-7.svg`}
                     alt="Google Play"
                     className="w-full h-full object-contain"
                   />

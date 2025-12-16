@@ -4,35 +4,65 @@ interface Props {
 	currentPage?: string;
 }
 
-const { currentPage = 'home' } = Astro.props;
+const { currentPage = "home" } = Astro.props;
+
+// Import logo from public directory
+import logo from "./public/logo-main.svg";
 ---
 
-<header class="sticky top-0 w-full bg-white/95 backdrop-blur-sm z-50 transition-all duration-500 ease-out" id="navbar" style="box-shadow: 0 2px 8px rgba(0,0,0,var(--shadow-opacity, 0.08));">
+<header
+	class="sticky top-0 w-full bg-white/95 backdrop-blur-sm z-50 transition-all duration-500 ease-out"
+	id="navbar"
+	style="box-shadow: 0 2px 8px rgba(0,0,0,var(--shadow-opacity, 0.08));"
+>
 	<nav class="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
 		<div class="flex items-center justify-between h-[53.18px] py-[40px]">
 			<!-- Logo -->
 			<div class="h-[53.18px] w-[78.43px] relative shrink-0">
 				<img
-					src="/logo-main.svg"
+					src={logo.src}
 					alt="Kahf Kids Logo"
 					class="w-full h-full object-contain"
 				/>
 			</div>
 
 			<!-- Desktop Navigation -->
-			<div class="hidden md:flex items-center justify-end gap-[100px]">
+			<div
+				class="hidden md:flex items-center justify-e101px101pxn01px0d ga 0-[10 0px]"
+			>
 				<!-- Nav Links -->
-				<div class="flex items-center gap-[50px] font-normal text-[#222222] text-[16px]">
-					<a href="#home" class="hover:text-[#ff4848] transition-colors">Home</a>
-					<a href="#features" class="hover:text-[#ff4848] transition-colors">Features</a>
-					<a href="#pricing" class="hover:text-[#ff4848] transition-colors">Pricing</a>
-					<a href="#reviews" class="hover:text-[#ff4848] transition-colors">Reviews</a>
+				<div
+					class="flex items-center gap-[50px] font-normal text-[#222222] text-[16px]"
+				>
+					<a
+						href="#home"
+						class="hover:text-[#ff4848] transition-colors">Home</a
+					>
+					<a
+						href="#features"
+						class="hover:text-[#ff4848] transition-colors"
+						>Features</a
+					>
+					<a
+						href="#pricing"
+						class="hover:text-[#ff4848] transition-colors"
+						>Pricing</a
+					>
+					<a
+						href="#reviews"
+						class="hover:text-[#ff4848] transition-colors"
+						>Reviews</a
+					>
 				</div>
 
 				<!-- Kids Courses Button -->
-				<div class="bg-white border border-[#ff4848] border-solid rounded-[10px] h-[50px] w-[129px] flex items-center justify-center px-[16px] py-[14px] hover:bg-[#ff4848] transition-colors group cursor-pointer">
+				<div
+					class="bg-white border border-[#ff4848] border-solid rounded-[10px] h-[50px] w-[129px] flex items-center justify-center px-[16px] py-[14px] hover:bg-[#ff4848] transition-colors group cursor-pointer"
+				>
 					<div class="flex items-center gap-[4px]">
-						<span class="font-medium text-[#ff4848] text-[14px] group-hover:text-white transition-colors">
+						<span
+							class="font-medium text-[#ff4848] text-[14px] group-hover:text-white transition-colors"
+						>
 							Kids Courses
 						</span>
 					</div>
@@ -45,14 +75,26 @@ const { currentPage = 'home' } = Astro.props;
 				aria-label="Toggle mobile menu"
 				id="mobile-menu-button"
 			>
-				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+				<svg
+					class="w-6 h-6"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M4 6h16M4 12h16M4 18h16"></path>
 				</svg>
 			</button>
 		</div>
 
 		<!-- Mobile Navigation -->
-		<div class="hidden md:hidden border-t border-gray-100 pt-4 pb-6" id="mobile-menu">
+		<div
+			class="hidden md:hidden border-t border-gray-100 pt-4 pb-6"
+			id="mobile-menu"
+		>
 			<div class="flex flex-col items-center space-y-4">
 				<a
 					href="#home"
@@ -78,9 +120,13 @@ const { currentPage = 'home' } = Astro.props;
 				>
 					Reviews
 				</a>
-				<div class="bg-white border border-[#ff4848] border-solid rounded-[10px] h-[50px] w-[129px] flex items-center justify-center px-[16px] py-[14px] hover:bg-[#ff4848] transition-colors group cursor-pointer">
+				<div
+					class="bg-white border border-[#ff4848] border-solid rounded-[10px] h-[50px] w-[129px] flex items-center justify-center px-[16px] py-[14px] hover:bg-[#ff4848] transition-colors group cursor-pointer"
+				>
 					<div class="flex items-center gap-[4px]">
-						<span class="font-medium text-[#ff4848] text-[14px] group-hover:text-white transition-colors">
+						<span
+							class="font-medium text-[#ff4848] text-[14px] group-hover:text-white transition-colors"
+						>
 							Kids Courses
 						</span>
 					</div>
@@ -91,15 +137,15 @@ const { currentPage = 'home' } = Astro.props;
 </header>
 
 <script>
-	document.addEventListener('DOMContentLoaded', () => {
-		const mobileMenuButton = document.getElementById('mobile-menu-button');
-		const mobileMenu = document.getElementById('mobile-menu');
-		const navbar = document.getElementById('navbar');
+	document.addEventListener("DOMContentLoaded", () => {
+		const mobileMenuButton = document.getElementById("mobile-menu-button");
+		const mobileMenu = document.getElementById("mobile-menu");
+		const navbar = document.getElementById("navbar");
 
 		// Mobile menu toggle
 		if (mobileMenuButton && mobileMenu) {
-			mobileMenuButton.addEventListener('click', () => {
-				mobileMenu.classList.toggle('hidden');
+			mobileMenuButton.addEventListener("click", () => {
+				mobileMenu.classList.toggle("hidden");
 			});
 		}
 
@@ -113,14 +159,18 @@ const { currentPage = 'home' } = Astro.props;
 
 				if (scrollY <= startFade) {
 					// No shadow when at top
-					navbar.style.setProperty('--shadow-opacity', '0');
+					navbar.style.setProperty("--shadow-opacity", "0");
 				} else if (scrollY >= endFade) {
 					// Full shadow when scrolled
-					navbar.style.setProperty('--shadow-opacity', '0.08');
+					navbar.style.setProperty("--shadow-opacity", "0.08");
 				} else {
 					// Gradual shadow opacity based on scroll position
-					const opacity = ((scrollY - startFade) / (endFade - startFade)) * 0.08;
-					navbar.style.setProperty('--shadow-opacity', opacity.toString());
+					const opacity =
+						((scrollY - startFade) / (endFade - startFade)) * 0.08;
+					navbar.style.setProperty(
+						"--shadow-opacity",
+						opacity.toString()
+					);
 				}
 			};
 
@@ -128,7 +178,7 @@ const { currentPage = 'home' } = Astro.props;
 			handleScroll();
 
 			// Listen for scroll events
-			window.addEventListener('scroll', handleScroll);
+			window.addEventListener("scroll", handleScroll);
 		}
 	});
 </script>

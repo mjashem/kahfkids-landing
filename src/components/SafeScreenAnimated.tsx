@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { AnimatedSection } from './AnimatedSection';
 
 const SafeScreenAnimated = () => {
+  const base = import.meta.env.BASE_URL;
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -125,7 +126,7 @@ const SafeScreenAnimated = () => {
                 className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0"
               >
                 <img
-                  src="/tick-icon-1.svg"
+                  src={`${base}/tick-icon-1.svg`}
                   alt="Checkmark"
                   className="w-full h-full filter brightness-0 invert"
                 />
@@ -158,7 +159,7 @@ const SafeScreenAnimated = () => {
             className="w-1/2 sm:w-[170px] md:w-[175px] lg:w-[180px] h-12 sm:h-11 md:h-12 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
           >
             <img
-              src="/app-store-badge.svg"
+              src={`${base}/app-store-badge.svg`}
               alt="Download on App Store"
               className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
             />
@@ -178,7 +179,7 @@ const SafeScreenAnimated = () => {
             className="w-1/2 sm:w-[170px] md:w-[175px] lg:w-[180px] h-12 sm:h-11 md:h-12 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
           >
             <img
-              src="/google-play-badge.svg"
+              src={`${base}/google-play-badge.svg`}
               alt="Get it on Google Play"
               className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
             />

@@ -2,15 +2,16 @@ import { motion } from 'framer-motion';
 import { AnimatedSection } from './AnimatedSection';
 
 const DevicesAnimated = () => {
+  const base = import.meta.env.BASE_URL;
   const devicePlatforms = [
-    { logo: "/roku-logo.png", name: "Roku" },
-    { logo: "/firetv-logo.png", name: "FireTV" },
-    { logo: "/appletv-logo.png", name: "Apple TV" },
-    { logo: "/ios-logo.png", name: "iOS" },
-    { logo: "/android-logo.png", name: "Android" },
-    { logo: "/windows-logo.png", name: "Windows" },
-    { logo: "/lg-logo.png", name: "LG" },
-    { logo: "/sony-logo.png", name: "Sony" }
+    { logo: `${base}/roku-logo.png`, name: "Roku" },
+    { logo: `${base}/firetv-logo.png`, name: "FireTV" },
+    { logo: `${base}/appletv-logo.png`, name: "Apple TV" },
+    { logo: `${base}/ios-logo.png`, name: "iOS" },
+    { logo: `${base}/android-logo.png`, name: "Android" },
+    { logo: `${base}/windows-logo.png`, name: "Windows" },
+    { logo: `${base}/lg-logo.png`, name: "LG" },
+    { logo: `${base}/sony-logo.png`, name: "Sony" }
   ];
 
   const containerVariants = {
@@ -59,7 +60,7 @@ const DevicesAnimated = () => {
         {/* Device Group Image */}
         <AnimatedSection animation="scaleIn" delay={0.1} className="relative w-full max-w-2xl lg:max-w-4xl h-64 sm:h-80 lg:h-96 flex items-center justify-center">
           <motion.img
-            src="/tv-mockup.png"
+            src={`${base}/tv-mockup.png`}
             alt="Kahf Kids on all devices - TV, MacBook, iPad, and iPhone"
             className="w-full h-full object-contain"
             whileHover={{
@@ -77,14 +78,14 @@ const DevicesAnimated = () => {
             className="flex gap-4 sm:gap-6 items-center"
           >
             <motion.img
-              src="/devices-background.svg"
+              src={`${base}/devices-background.svg`}
               alt="App Store"
               className="h-10 sm:h-12 w-32 sm:w-40 object-contain"
               whileHover={{ y: -4, scale: 1.05 }}
               transition={{ duration: 0.2 }}
             />
             <motion.img
-              src="/devices-illustration.svg"
+              src={`${base}/devices-illustration.svg`}
               alt="Google Play"
               className="h-10 sm:h-12 w-32 sm:w-40 object-contain"
               whileHover={{ y: -4, scale: 1.05 }}

@@ -7,6 +7,7 @@ interface HeroAnimatedProps {
 }
 
 const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
+  const base = import.meta.env.BASE_URL;
   return (
     <section
       id="home"
@@ -53,7 +54,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                     }}
                   >
                     <img
-                      src="/decorative-element-hero-1.svg"
+                      src={`${base}/decorative-element-hero-1.svg`}
                       alt="Decorative element 1"
                       className="w-full h-full object-contain mr-2 sm:mr-4 lg:mr-6 -mb-2 sm:-mb-4 lg:-mb-6"
                     />
@@ -78,7 +79,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                     }}
                   >
                     <img
-                      src="/decorative-element-hero-2.svg"
+                      src={`${base}/decorative-element-hero-2.svg`}
                       alt="Decorative element 2"
                       className="w-full h-full object-contain"
                     />
@@ -210,7 +211,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
 
                   {/* Diamond Icon */}
                   <motion.img
-                    src="/diamond-icon.svg"
+                    src={`${base}/diamond-icon.svg`}
                     alt="Diamond"
                     className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 flex-shrink-0"
                     animate={{
@@ -259,7 +260,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                     }}
                   >
                     <img
-                      src="/app-store-badge.svg"
+                      src={`${base}/app-store-badge.svg`}
                       alt="Download on App Store"
                       className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
                     />
@@ -278,7 +279,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                     }}
                   >
                     <img
-                      src="/google-play-badge.svg"
+                      src={`${base}/google-play-badge.svg`}
                       alt="Get it on Google Play"
                       className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
                     />
@@ -297,7 +298,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
                   }}
                 >
                   <img
-                    src="/decorative-element-hero-3.svg"
+                    src={`${base}/decorative-element-hero-3.svg`}
                     alt="Decorative element 3"
                     className="w-full h-full object-contain"
                   />
@@ -319,7 +320,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
             >
               <div className="relative w-full lg:w-auto origin-top -mb-12 sm:-mb-16 md:-mb-20 lg:-mb-24 xl:-mb-32 -translate-x-6 lg:transform lg:translate-x-8">
                 <img
-                  src="/iphone-mockup.png"
+                  src={`${base}/iphone-mockup.png`}
                   alt="iPhone 11 with Kahf Kids App"
                   className="w-full h-auto object-contain max-w-[320px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[450px] xl:max-w-[520px]"
                 />

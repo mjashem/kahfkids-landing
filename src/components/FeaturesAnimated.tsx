@@ -1,142 +1,145 @@
 import { AnimatedSection } from './AnimatedSection';
 
-// Card data structure
-const cardsData = [
+const FeaturesAnimated = () => {
+  const base = import.meta.env.BASE_URL;
+
+  // Card data structure
+  const cardsData = [
+    {
+      id: 1,
+      title: "Replace Unsafe, Uncontrolled YouTube",
+      features: [
+        "21,000+ safe and handpicked videos. Reviewed by Mufties.",
+        "No inappropriate clips, adult jokes, scary scenes or addictive content.",
+        "Only Islamic, educational, and child-friendly content."
+      ],
+      image: `${base}/feature-image-1.png`,
+      imageAlt: "Safe YouTube videos feature",
+      backgroundSvg: `${base}/feature-background-1.svg`,
+      tickIcon: `${base}/tick-icon-1.svg`
+    },
   {
-    id: 1,
-    title: "Replace Unsafe, Uncontrolled YouTube",
-    features: [
-      "21,000+ safe and handpicked videos. Reviewed by Mufties.",
-      "No inappropriate clips, adult jokes, scary scenes or addictive content.",
-      "Only Islamic, educational, and child-friendly content."
-    ],
-    image: "/feature-image-1.png",
-    imageAlt: "Safe YouTube videos feature",
-    backgroundSvg: "/feature-background-1.svg",
-    tickIcon: "/tick-icon-1.svg"
-  },
-  {
-    id: 2,
-    title: "Only Watch Videos Parents Add",
-    features: [
-      "You choose which YouTube videos or playlists your child can watch.",
-      "Kids cannot open any outside content.",
-      "You can add or remove videos anytime."
-    ],
-    image: "/feature-image-1-hover.png",
-    imageAlt: "Parent-controlled video selection",
-    backgroundSvg: "/feature-background-2.svg",
-    tickIcon: "/tick-icon-2.svg"
-  },
-  {
-    id: 3,
-    title: "Block Addictive Games",
-    features: [
-      "Block PUBG, Free Fire, Minecraft, and more in one tap.",
-      "Games stay on the phone but cannot open without permission.",
-      "Kids learn healthy habits and stop overplaying."
-    ],
-    image: "/feature-image-2.png",
-    imageAlt: "Game blocking feature",
-    backgroundSvg: "/feature-background-3.svg",
-    tickIcon: "/tick-icon-3.svg"
-  },
-  {
-    id: 4,
-    title: "Set Daily Time Limits",
-    features: [
-      "Control how long your child can watch or play each day.",
-      "Videos and apps stop automatically when time is up.",
-      "No shouting, no arguments, no stress."
-    ],
-    image: "/feature-image-2-hover.png",
-    imageAlt: "Time limit controls",
-    backgroundSvg: "/feature-background-4.svg",
-    tickIcon: "/tick-icon-4.svg"
-  },
-  {
-    id: 5,
-    title: "Block Harmful Apps & Websites",
-    features: [
-      "Allow only the apps and sites you trust.",
-      "Kids cannot open anything unsafe or unapproved.",
-      "No accidental browsing or algorithm-based suggestions."
-    ],
-    image: "/feature-image-3.png",
-    imageAlt: "App and website blocking",
-    backgroundSvg: "/feature-background-5.svg",
-    tickIcon: "/tick-icon-5.svg"
-  },
-  {
-    id: 6,
-    title: "Focus on Study Time & Bed Time",
-    features: [
-      "Automatically block distractions during study hours.",
-      "Bedtime mode blocks everything except emergency calls.",
-      "Children sleep and study without screen interruptions."
-    ],
-    image: "/feature-image-3-hover.png",
-    imageAlt: "Study and bedtime mode",
-    backgroundSvg: "/feature-background-6.svg",
-    tickIcon: "/tick-icon-6.svg"
-  },
-  {
-    id: 7,
-    title: "Courses, Drawpads & Brain-Boosting Games",
-    features: [
-      "Kids can learn, draw, create, and solve activities.",
-      "Islamic studies, science tools, and creativity apps included.",
-      "Every feature promotes growth—not distraction."
-    ],
-    image: "/feature-image-1.png",
-    imageAlt: "Educational activities",
-    backgroundSvg: "/feature-background-1.svg",
-    tickIcon: "/tick-icon-1.svg"
-  },
-  {
-    id: 8,
-    title: "Daily Habit of Qur'an",
-    features: [
-      "Kids can recite, listen, and memorize Qur'an easily.",
-      "Includes translation, loop for memorization, notes, and bookmarks.",
-      "Simple and suitable for young learners."
-    ],
-    images: [
-      "/feature-image-1-hover.png",
-      "/feature-image-1-active.png"
-    ],
-    imageAlt: ["Quran app interface", "Quran features"],
-    isStacked: true,
-    backgroundSvg: "/feature-background-2.svg",
-    tickIcon: "/tick-icon-2.svg"
-  },
-  {
-    id: 9,
-    title: "Parenting Tips, Support & Consultancy",
-    features: [
-      "Get guidance on safe digital parenting.",
-      "Easy tips for building good habits and character.",
-      "Support for raising children in the digital age."
-    ],
-    image: "/feature-image-2.png",
-    imageAlt: "Parenting support resources",
-    backgroundSvg: "/feature-background-3.svg",
-    tickIcon: "/tick-icon-3.svg"
-  },
-  {
-    id: 10,
-    title: "PIN & Password Protected Parental Panel",
-    features: [
-      "All settings are locked behind a PIN or password.",
-      "Kids cannot change time limits, remove blocks, or access controls.",
-      "Your rules stay safe and secure."
-    ],
-    image: "/feature-image-2-hover.png",
-    imageAlt: "Secure parental control panel",
-    backgroundSvg: "/feature-background-4.svg",
-    tickIcon: "/tick-icon-4.svg"
-  }
-];
+      id: 2,
+      title: "Only Watch Videos Parents Add",
+      features: [
+        "You choose which YouTube videos or playlists your child can watch.",
+        "Kids cannot open any outside content.",
+        "You can add or remove videos anytime."
+      ],
+      image: `${base}/feature-image-1-hover.png`,
+      imageAlt: "Parent-controlled video selection",
+      backgroundSvg: `${base}/feature-background-2.svg`,
+      tickIcon: `${base}/tick-icon-2.svg`
+    },
+    {
+      id: 3,
+      title: "Block Addictive Games",
+      features: [
+        "Block PUBG, Free Fire, Minecraft, and more in one tap.",
+        "Games stay on the phone but cannot open without permission.",
+        "Kids learn healthy habits and stop overplaying."
+      ],
+      image: `${base}/feature-image-2.png`,
+      imageAlt: "Game blocking feature",
+      backgroundSvg: `${base}/feature-background-3.svg`,
+      tickIcon: `${base}/tick-icon-3.svg`
+    },
+    {
+      id: 4,
+      title: "Set Daily Time Limits",
+      features: [
+        "Control how long your child can watch or play each day.",
+        "Videos and apps stop automatically when time is up.",
+        "No shouting, no arguments, no stress."
+      ],
+      image: `${base}/feature-image-2-hover.png`,
+      imageAlt: "Time limit controls",
+      backgroundSvg: `${base}/feature-background-4.svg`,
+      tickIcon: `${base}/tick-icon-4.svg`
+    },
+    {
+      id: 5,
+      title: "Block Harmful Apps & Websites",
+      features: [
+        "Allow only the apps and sites you trust.",
+        "Kids cannot open anything unsafe or unapproved.",
+        "No accidental browsing or algorithm-based suggestions."
+      ],
+      image: `${base}/feature-image-3.png`,
+      imageAlt: "App and website blocking",
+      backgroundSvg: `${base}/feature-background-5.svg`,
+      tickIcon: `${base}/tick-icon-5.svg`
+    },
+    {
+      id: 6,
+      title: "Focus on Study Time & Bed Time",
+      features: [
+        "Automatically block distractions during study hours.",
+        "Bedtime mode blocks everything except emergency calls.",
+        "Children sleep and study without screen interruptions."
+      ],
+      image: `${base}/feature-image-3-hover.png`,
+      imageAlt: "Study and bedtime mode",
+      backgroundSvg: `${base}/feature-background-6.svg`,
+      tickIcon: `${base}/tick-icon-6.svg`
+    },
+    {
+      id: 7,
+      title: "Courses, Drawpads & Brain-Boosting Games",
+      features: [
+        "Kids can learn, draw, create, and solve activities.",
+        "Islamic studies, science tools, and creativity apps included.",
+        "Every feature promotes growth—not distraction."
+      ],
+      image: `${base}/feature-image-1.png`,
+      imageAlt: "Educational activities",
+      backgroundSvg: `${base}/feature-background-1.svg`,
+      tickIcon: `${base}/tick-icon-1.svg`
+    },
+    {
+      id: 8,
+      title: "Daily Habit of Qur'an",
+      features: [
+        "Kids can recite, listen, and memorize Qur'an easily.",
+        "Includes translation, loop for memorization, notes, and bookmarks.",
+        "Simple and suitable for young learners."
+      ],
+      images: [
+        `${base}/feature-image-1-hover.png`,
+        `${base}/feature-image-1-active.png`
+      ],
+      imageAlt: ["Quran app interface", "Quran features"],
+      isStacked: true,
+      backgroundSvg: `${base}/feature-background-2.svg`,
+      tickIcon: `${base}/tick-icon-2.svg`
+    },
+    {
+      id: 9,
+      title: "Parenting Tips, Support & Consultancy",
+      features: [
+        "Get guidance on safe digital parenting.",
+        "Easy tips for building good habits and character.",
+        "Support for raising children in the digital age."
+      ],
+      image: `${base}/feature-image-2.png`,
+      imageAlt: "Parenting support resources",
+      backgroundSvg: `${base}/feature-background-3.svg`,
+      tickIcon: `${base}/tick-icon-3.svg`
+    },
+    {
+      id: 10,
+      title: "PIN & Password Protected Parental Panel",
+      features: [
+        "All settings are locked behind a PIN or password.",
+        "Kids cannot change time limits, remove blocks, or access controls.",
+        "Your rules stay safe and secure."
+      ],
+      image: `${base}/feature-image-2-hover.png`,
+      imageAlt: "Secure parental control panel",
+      backgroundSvg: `${base}/feature-background-4.svg`,
+      tickIcon: `${base}/tick-icon-4.svg`
+    }
+  ];
 
 // Feature Section Component
 const FeatureSection = ({
@@ -272,8 +275,7 @@ const FeatureSection = ({
   );
 };
 
-const FeaturesAnimated = () => {
-  return (
+return (
     <div id="features" className="bg-[#faefef] py-12 lg:py-20">
       {/* Header */}
       <AnimatedSection animation="fadeUp" delay={0} duration={0.25} threshold={0.3}>
