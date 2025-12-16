@@ -268,7 +268,7 @@ const ReviewsAnimated = () => {
 
   
   return (
-    <div className="relative bg-gradient-to-br from-[#fef6f6] via-[#fef2f2] to-[#fefefe] py-16 lg:py-24 overflow-hidden">
+    <div id="reviews" className="relative bg-gradient-to-br from-[#fef6f6] via-[#fef2f2] to-[#fefefe] py-16 lg:py-24 overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div

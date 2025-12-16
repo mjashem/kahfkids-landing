@@ -7,7 +7,7 @@ interface Props {
 const { currentPage = 'home' } = Astro.props;
 ---
 
-<header class="relative w-full bg-white z-50">
+<header class="sticky top-0 w-full bg-white/95 backdrop-blur-sm z-50 transition-all duration-500 ease-out" id="navbar" style="box-shadow: 0 2px 8px rgba(0,0,0,var(--shadow-opacity, 0.08));">
 	<nav class="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
 		<div class="flex items-center justify-between h-[53.18px] py-[40px]">
 			<!-- Logo -->
@@ -24,8 +24,9 @@ const { currentPage = 'home' } = Astro.props;
 				<!-- Nav Links -->
 				<div class="flex items-center gap-[50px] font-normal text-[#222222] text-[16px]">
 					<a href="#home" class="hover:text-[#ff4848] transition-colors">Home</a>
-					<a href="#videos" class="hover:text-[#ff4848] transition-colors">Videos</a>
+					<a href="#features" class="hover:text-[#ff4848] transition-colors">Features</a>
 					<a href="#pricing" class="hover:text-[#ff4848] transition-colors">Pricing</a>
+					<a href="#reviews" class="hover:text-[#ff4848] transition-colors">Reviews</a>
 				</div>
 
 				<!-- Kids Courses Button -->
@@ -60,16 +61,22 @@ const { currentPage = 'home' } = Astro.props;
 					Home
 				</a>
 				<a
-					href="#videos"
+					href="#features"
 					class="text-[#222222] text-[16px] font-normal hover:text-[#ff4848] transition-colors"
 				>
-					Videos
+					Features
 				</a>
 				<a
 					href="#pricing"
 					class="text-[#222222] text-[16px] font-normal hover:text-[#ff4848] transition-colors"
 				>
 					Pricing
+				</a>
+				<a
+					href="#reviews"
+					class="text-[#222222] text-[16px] font-normal hover:text-[#ff4848] transition-colors"
+				>
+					Reviews
 				</a>
 				<div class="bg-white border border-[#ff4848] border-solid rounded-[10px] h-[50px] w-[129px] flex items-center justify-center px-[16px] py-[14px] hover:bg-[#ff4848] transition-colors group cursor-pointer">
 					<div class="flex items-center gap-[4px]">
@@ -87,11 +94,41 @@ const { currentPage = 'home' } = Astro.props;
 	document.addEventListener('DOMContentLoaded', () => {
 		const mobileMenuButton = document.getElementById('mobile-menu-button');
 		const mobileMenu = document.getElementById('mobile-menu');
+		const navbar = document.getElementById('navbar');
 
+		// Mobile menu toggle
 		if (mobileMenuButton && mobileMenu) {
 			mobileMenuButton.addEventListener('click', () => {
 				mobileMenu.classList.toggle('hidden');
 			});
+		}
+
+		// Navbar scroll effect
+		if (navbar) {
+			const handleScroll = () => {
+				const scrollY = window.scrollY;
+				// Start fade in at 15px, fully visible by 40px
+				const startFade = 15;
+				const endFade = 40;
+
+				if (scrollY <= startFade) {
+					// No shadow when at top
+					navbar.style.setProperty('--shadow-opacity', '0');
+				} else if (scrollY >= endFade) {
+					// Full shadow when scrolled
+					navbar.style.setProperty('--shadow-opacity', '0.08');
+				} else {
+					// Gradual shadow opacity based on scroll position
+					const opacity = ((scrollY - startFade) / (endFade - startFade)) * 0.08;
+					navbar.style.setProperty('--shadow-opacity', opacity.toString());
+				}
+			};
+
+			// Initial check
+			handleScroll();
+
+			// Listen for scroll events
+			window.addEventListener('scroll', handleScroll);
 		}
 	});
 </script>

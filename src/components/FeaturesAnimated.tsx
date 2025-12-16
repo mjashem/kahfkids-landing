@@ -274,7 +274,7 @@ const FeatureSection = ({
 
 const FeaturesAnimated = () => {
   return (
-    <div className="bg-[#faefef] py-12 lg:py-20">
+    <div id="features" className="bg-[#faefef] py-12 lg:py-20">
       {/* Header */}
       <AnimatedSection animation="fadeUp" delay={0} duration={0.25} threshold={0.3}>
         <div className="max-w-6xl mx-auto text-center py-8 lg:py-12 px-4 sm:px-6 lg:px-8">
