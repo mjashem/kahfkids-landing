@@ -40,15 +40,15 @@ const FooterAnimated = () => {
         {/* Main Footer Content */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col md:flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-16 w-full max-w-6xl items-center md:items-center lg:items-start justify-center md:justify-center lg:justify-start text-center md:text-center lg:text-left"
+          className="flex flex-col md:flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-16 w-full max-w-6xl items-center md:items-center justify-center md:justify-center text-center md:text-center"
         >
           {/* Logo and Description */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col gap-4 sm:gap-6 w-full lg:w-1/4 xl:w-1/5 items-center sm:items-center md:items-center lg:items-start text-center lg:text-left"
+            className="flex flex-col gap-4 sm:gap-6 w-full lg:w-1/4 xl:w-1/5 items-center text-center"
           >
-            <div className="flex flex-col gap-6 sm:gap-8 items-center sm:items-center md:items-center lg:items-start">
-              <div className="flex flex-col gap-4 sm:gap-6 items-center sm:items-center md:items-center lg:items-start">
+            <div className="flex flex-col gap-6 sm:gap-8 items-center">
+              <div className="flex flex-col gap-4 sm:gap-6 items-center">
                 <div className="h-12 w-16 sm:h-14 sm:w-20">
                   <img
                     src={`${base}/footer-logo-1.svg`}
@@ -66,7 +66,7 @@ const FooterAnimated = () => {
           {/* Navigation and Support - Always Row Layout, Centered on Medium */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-row lg:flex-row gap-4 sm:gap-6 lg:gap-8 w-full lg:w-1/3 items-start md:items-start lg:items-start justify-center md:justify-center lg:justify-start text-center lg:text-left"
+            className="flex flex-row lg:flex-row gap-4 sm:gap-6 lg:gap-8 w-full lg:w-1/3 items-center justify-center text-center"
           >
             {/* Navigation */}
             <div className="flex-1 max-w-xs">
@@ -158,11 +158,11 @@ const FooterAnimated = () => {
           {/* Social Media and App Stores */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col gap-8 sm:gap-10 w-full lg:w-1/3 xl:w-1/4 items-center sm:items-center md:items-center lg:items-start text-center lg:text-left"
+            className="flex flex-col gap-8 sm:gap-10 w-full lg:w-1/3 xl:w-1/4 items-center text-center"
           >
             {/* Social Media */}
-            <div className="flex flex-col gap-4 sm:gap-6 w-full items-center sm:items-center md:items-center lg:items-start">
-              <div className="flex flex-col gap-3 sm:gap-4 items-center sm:items-center md:items-center lg:items-start">
+            <div className="flex flex-col gap-4 sm:gap-6 w-full items-center">
+              <div className="flex flex-col gap-3 sm:gap-4 items-center">
                 <h4 className="font-semibold text-black text-sm sm:text-base leading-relaxed whitespace-nowrap">Follow Us</h4>
               </div>
               <div className="flex gap-3 sm:gap-4">
@@ -240,7 +240,7 @@ const FooterAnimated = () => {
             {/* App Store Badges */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col gap-4 sm:gap-6 w-full items-center sm:items-center md:items-center lg:items-start"
+              className="flex flex-col gap-4 sm:gap-6 w-full items-center"
             >
               <div className="flex gap-2 sm:gap-3">
                 <motion.div
