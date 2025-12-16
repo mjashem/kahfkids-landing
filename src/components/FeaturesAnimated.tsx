@@ -165,19 +165,29 @@ const FeatureSection = ({
             </div>
 
             {/* Title with background */}
-            <div
-              className="relative mb-6 h-12 lg:h-16 flex items-center"
-              style={{
-                backgroundImage: `url(${feature.backgroundSvg})`,
-                backgroundSize: 'contain',
-                backgroundPosition: 'left center',
-                backgroundRepeat: 'no-repeat'
-              }}
+            <AnimatedSection
+              animation={isLeft ? "slideRight" : "slideLeft"}
+              delay={index * 0.01}
+              duration={0.25}
+              threshold={0.3}
             >
-              <h3 className="absolute top-1 left-8 lg:left-10 text-xl lg:text-3xl font-semibold text-[#fffbfb] leading-normal capitalize tracking-[-0.28px] z-10">
+              <h3
+                className="mb-6 text-xl lg:text-2xl font-semibold leading-tight capitalize tracking-[-0.28px] inline-block"
+                style={{
+                  backgroundImage: `url(${feature.backgroundSvg})`,
+                  backgroundSize: '100% 100%',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                  color: '#fffbfb',
+                  paddingLeft: '2.5rem',
+                  paddingRight: '2rem',
+                  paddingTop: '0.5rem',
+                  paddingBottom: '0.5rem'
+                }}
+              >
                 {feature.title}
               </h3>
-            </div>
+            </AnimatedSection>
 
             {/* Features List */}
             <div className="space-y-4">
@@ -185,7 +195,9 @@ const FeatureSection = ({
                 <AnimatedSection
                   key={`${feature.id}-feature-${featureIndex}`}
                   animation="fadeIn"
-                  delay={index * 0.1 + featureIndex * 0.05}
+                  delay={index * 0.01 + featureIndex * 0.005}
+                  duration={0.2}
+                  threshold={0.3}
                 >
                   <div className="flex items-center gap-3 lg:gap-4">
                     <div className="flex-shrink-0 w-5 h-5 lg:w-6 lg:h-6">
@@ -205,13 +217,15 @@ const FeatureSection = ({
           </div>
 
           {/* Visual Column */}
-          <div className="flex-1 lg:max-w-[400px]">
+          <div className="flex-1 lg:max-w-[450px]">
             <AnimatedSection
               animation={isLeft ? "slideRight" : "slideLeft"}
-              delay={index * 0.1 + 0.2}
+              delay={index * 0.01 + 0.02}
+              duration={0.25}
+              threshold={0.3}
             >
               <div
-                className="relative rounded-2xl overflow-hidden w-full h-[250px] sm:h-[300px] lg:h-[350px] group transition-all duration-300 ease-out hover:scale-105 hover:shadow-2xl"
+                className="relative rounded-2xl overflow-hidden w-full h-[280px] sm:h-[340px] lg:h-[380px] group transition-all duration-300 ease-out hover:scale-105 hover:shadow-2xl"
                 style={{ willChange: 'transform' }}
               >
                 {feature.isStacked ? (
@@ -262,7 +276,7 @@ const FeaturesAnimated = () => {
   return (
     <div className="bg-[#faefef] py-12 lg:py-20">
       {/* Header */}
-      <AnimatedSection animation="fadeUp" delay={0}>
+      <AnimatedSection animation="fadeUp" delay={0} duration={0.25} threshold={0.3}>
         <div className="max-w-6xl mx-auto text-center py-8 lg:py-12 px-4 sm:px-6 lg:px-8">
           <h2 className="font-semibold text-[#222222] tracking-[-0.42px] mb-6 lg:mb-8 capitalize"
               style={{
