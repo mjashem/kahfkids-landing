@@ -39,13 +39,13 @@ const DevicesAnimated = () => {
   };
 
   return (
-    <div className="bg-[#f8f0f0] py-16 sm:py-20 lg:py-24 min-h-screen flex items-center justify-center">
+    <div className="bg-[#f8f0f0] py-12 sm:py-16 lg:py-20 flex items-center justify-center">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-12 sm:gap-16 lg:gap-20 items-center w-full"
+        className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-8 sm:gap-12 lg:gap-16 items-center w-full"
       >
         <AnimatedSection animation="fadeUp" delay={0} className="text-center max-w-4xl lg:max-w-5xl">
           <h2 className="text-2xl sm:text-3xl lg:text-5xl font-semibold text-[#2c2626] leading-tight lg:leading-[70px] capitalize tracking-tight mb-4 sm:mb-6">
@@ -70,7 +70,7 @@ const DevicesAnimated = () => {
         </AnimatedSection>
 
         {/* Platform Logos */}
-        <AnimatedSection animation="fadeUp" delay={0.2} className="flex flex-col gap-8 sm:gap-12 items-center w-full max-w-4xl">
+        <AnimatedSection animation="fadeUp" delay={0.2} className="flex flex-col gap-6 sm:gap-8 items-center w-full max-w-4xl">
           {/* App Store and Google Play Badges */}
           <motion.div
             variants={containerVariants}
