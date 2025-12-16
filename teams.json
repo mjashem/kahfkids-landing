@@ -1,0 +1,16 @@
+{
+  "teams": [
+    {
+      "name": "github-pages-deployment",
+      "description": "Team implementing GitHub Pages deployment for Kahf Kids landing page",
+      "created": "2025-12-16",
+      "responsibilities": [
+        "Configure GitHub Actions workflows for deployment",
+        "Set up static site build process",
+        "Manage deployment to GitHub Pages",
+        "Monitor deployment status and troubleshoot issues",
+        "Ensure proper build configuration for production"
+      ]
+    }
+  ]
+}

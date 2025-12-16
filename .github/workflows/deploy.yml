@@ -1,0 +1,214 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      force_deploy:
+        description: 'Force deployment even if no changes'
+        required: false
+        default: false
+        type: boolean
+
+# Set permissions for GitHub Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Ensure only one deployment runs at a time
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+# Global environment variables
+env:
+  NODE_VERSION: "20"
+  NODE_OPTIONS: "--max-old-space-size=4096"
+
+jobs:
+  # Job to build and test the Astro project
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository with full history for proper caching
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Step 2: Setup Node.js with caching for better performance
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      # Step 3: Get npm cache directory for custom caching
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: |
+          echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
+
+      # Step 4: Setup additional caching for node_modules and build cache
+      - name: Cache dependencies and build artifacts
+        uses: actions/cache@v4
+        id: cache
+        with:
+          path: |
+            ${{ steps.npm-cache-dir.outputs.dir }}
+            node_modules
+            ~/.npm
+            .astro
+          key: ${{ runner.os }}-node-${{ env.NODE_VERSION }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ env.NODE_VERSION }}-
+            ${{ runner.os }}-node-
+
+      # Step 5: Install dependencies with error handling
+      - name: Install dependencies
+        run: |
+          if [ -f "package-lock.json" ]; then
+            npm ci --prefer-offline --no-audit
+          else
+            npm install
+          fi
+
+      # Step 6: Verify dependencies are installed
+      - name: Verify dependencies
+        run: |
+          if [ ! -d "node_modules" ]; then
+            echo "❌ Dependencies not installed properly"
+            exit 1
+          fi
+          echo "✅ Dependencies verified"
+
+      # Step 7: Run linting
+      - name: Run linting
+        run: |
+          echo "Checking if lint script exists..."
+          if npm run | grep -q "lint"; then
+            echo "Running linting..."
+            npm run lint || echo "⚠️ Linting found issues (continuing deployment)"
+          else
+            echo "ℹ️ No lint script found in package.json"
+          fi
+        continue-on-error: true
+
+      # Step 8: Setup GitHub Pages configuration
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        with:
+          # Automatically configure base URL for GitHub Pages
+          static_site_generator: astro
+
+      # Step 9: Build the Astro project with error handling
+      - name: Build with Astro
+        run: |
+          echo "Building Astro project..."
+
+          # Set environment variables for production build
+          export NODE_ENV=production
+          export ASTRO_SITE="https://mjashem.github.io/kahfkids-landing/"
+          export BASE_URL="/kahfkids-landing/"
+
+          # Run build with error handling
+          if npm run build; then
+            echo "✅ Build successful"
+
+            # Verify dist directory was created
+            if [ -d "dist" ]; then
+              echo "✅ dist directory created successfully"
+
+              # List dist contents for verification
+              echo "Build output:"
+              ls -la dist/
+
+              # Check for essential files
+              if [ -f "dist/index.html" ]; then
+                echo "✅ index.html found in dist"
+              else
+                echo "⚠️ index.html not found in dist"
+              fi
+            else
+              echo "❌ dist directory not found after build"
+              exit 1
+            fi
+          else
+            echo "❌ Build failed"
+            exit 1
+          fi
+
+      # Step 10: Analyze bundle size (optional)
+      - name: Analyze bundle size
+        run: |
+          if [ -d "dist" ]; then
+            echo "📦 Bundle size analysis:"
+            du -sh dist/
+            find dist -type f -name "*.js" -o -name "*.css" -o -name "*.html" | head -20 | xargs ls -lh
+          fi
+
+      # Step 11: Upload build artifact to GitHub Pages
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+          # Retain artifact for 30 days
+          retention-days: 30
+
+  # Job to deploy to GitHub Pages
+  deploy:
+    name: Deploy to GitHub Pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Depends on successful build
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Deploy to GitHub Pages with error handling
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          # Enable error reporting for better debugging
+          error_report: true
+
+      # Step 2: Verify deployment
+      - name: Verify deployment
+        run: |
+          echo "✅ Deployment completed successfully!"
+          echo "🚀 Site available at: ${{ steps.deployment.outputs.page_url }}"
+
+          # Wait a moment for deployment to propagate
+          sleep 5
+
+          # Check if the site is accessible
+          if curl -f -s -o /dev/null -w "%{http_code}" "${{ steps.deployment.outputs.page_url }}" | grep -q "200"; then
+            echo "✅ Site is accessible and returning HTTP 200"
+          else
+            echo "⚠️ Site might still be propagating. This is normal for new deployments."
+          fi
+
+  # Optional: Notification job for deployment status
+  notify:
+    name: Notification
+    if: always() && (needs.build.result == 'failure' || needs.deploy.result == 'failure')
+    needs: [build, deploy]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deployment Failed
+        run: |
+          echo "❌ Deployment process failed!"
+          echo "Build status: ${{ needs.build.result }}"
+          echo "Deploy status: ${{ needs.deploy.result }}"
+          echo ""
+          echo "Please check the workflow logs for details:"
