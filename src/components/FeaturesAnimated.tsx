@@ -151,22 +151,13 @@ const FeatureSection = ({
   index: number;
   isLeft: boolean;
 }) => {
-  const sectionNumber = String(index + 1).padStart(2, '0');
-
   return (
-    <div className="py-8 md:py-12 lg:py-16">
+    <div className="py-4 md:py-6 lg:py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 ${isLeft ? '' : 'lg:flex-row-reverse'}`}>
+        <div className={`flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-12 ${isLeft ? '' : 'lg:flex-row-reverse'}`}>
 
           {/* Content Column */}
           <div className="flex-1 lg:max-w-[525px]">
-            {/* Number Badge */}
-            <div className="mb-6 flex items-center">
-              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-[#FF6B6B] rounded-full flex items-center justify-center text-white font-bold text-lg lg:text-xl">
-                {sectionNumber}
-              </div>
-            </div>
-
             {/* Title with background */}
             <AnimatedSection
               animation={isLeft ? "slideRight" : "slideLeft"}
@@ -228,7 +219,7 @@ const FeatureSection = ({
               threshold={0.3}
             >
               <div
-                className="relative rounded-2xl overflow-hidden w-full h-[280px] sm:h-[340px] lg:h-[380px] group transition-all duration-300 ease-out hover:scale-105 hover:shadow-2xl"
+                className="relative rounded-2xl overflow-hidden w-full h-[220px] sm:h-[260px] lg:h-[300px] group transition-all duration-300 ease-out hover:scale-105 hover:shadow-2xl"
                 style={{ willChange: 'transform' }}
               >
                 {feature.isStacked ? (
