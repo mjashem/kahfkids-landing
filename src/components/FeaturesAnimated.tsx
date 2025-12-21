@@ -154,7 +154,7 @@ const FeatureSection = ({
   return (
     <div className="py-4 md:py-6 lg:py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-12 ${isLeft ? '' : 'lg:flex-row-reverse'}`}>
+        <div className={`flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between gap-8 lg:gap-12 text-center lg:text-left ${isLeft ? '' : 'lg:flex-row-reverse'}`}>
 
           {/* Content Column */}
           <div className="flex-1 lg:max-w-[525px]">
