@@ -1,49 +1,79 @@
 import { motion } from 'framer-motion';
 import { AnimatedSection } from './AnimatedSection';
 
+// Pricing plan interface
+interface PricingPlan {
+  name: string;
+  price: string;
+  priceNote?: string;
+  features: string[];
+  buttonText: string;
+  isPopular?: boolean;
+  isBestValue?: boolean;
+  badge?: string;
+  borderColor: string;
+  isProminent?: boolean;
+}
+
 const PricingAnimated = () => {
   const base = import.meta.env.BASE_URL;
-  const pricingPlans = [
+  const pricingPlans: PricingPlan[] = [
     {
       name: "Free",
-      price: "$ 0",
+      price: "$0",
       features: [
-        "Block up to 3 specific apps for a set time.",
-        "Keep your child safe — they can't exit this app.",
-        "Block inappropriate websites from predefined categories.",
-        "Access to curated safe content."
+        "21,000+ Curated Safe YouTube Videos",
+        "Drawing Activities",
+        "Digital Qur'an — read, recite, memorize",
+        "Brain-Boosting Games",
+        "Wallpapers, Calculators",
+        "Video Watch Time Limit",
+        "Video Filters — age, language, etc",
+        "Games — on/off",
+        "Quizzes"
       ],
-      buttonText: "Get Started",
-      isPopular: false,
+      buttonText: "Install Free",
       borderColor: "border-[#e0e0e0]"
     },
     {
-      name: "Monthly",
-      price: "$ 4.50",
+      name: "Monthly Premium",
+      price: "$5",
+      priceNote: "/month",
       features: [
-        "Block specific apps for a set time or permanently.",
-        "Keep your child safe — they can't exit this app.",
-        "Block inappropriate & harmful websites.",
-        "easily add personalized YouTube videos for kids."
+        "Everything in Free Plan +",
+        "Block Apps, Games & Websites permanently",
+        "Fix time limit of Games / App usage",
+        "Create schedules for Study Time, Bed Time, etc",
+        "Add your own videos / playlists",
+        "Video feed — on/off",
+        "Lock kids' device",
+        "Uninstall protection (Android only)"
       ],
       buttonText: "Buy Premium for Monthly",
-      isPopular: false,
-      borderColor: "border-[#e6d6d6]"
+      isPopular: true,
+      badge: "Most Popular",
+      borderColor: "border-[#E05C41]"
     },
     {
-      name: "Yearly",
-      price: "$ 3.50",
-      priceNote: "per month",
+      name: "Yearly Premium",
+      price: "$2.50",
+      priceNote: "/month",
       features: [
-        "Block specific apps for a set time or permanently.",
-        "Keep your child safe — they can't exit this app.",
-        "Block inappropriate & harmful websites.",
-        "easily add personalized YouTube videos for kids."
+        "Everything in Free Plan +",
+        "Block Apps, Games & Websites permanently",
+        "Fix time limit of Games / App usage",
+        "Create schedules for Study Time, Bed Time, etc",
+        "Add your own videos / playlists",
+        "Video feed — on/off",
+        "Lock kids' device",
+        "Uninstall protection (Android only)",
+        "Save 50% compared to Monthly"
       ],
       buttonText: "Buy Premium for Yearly",
-      isPopular: true,
-      discount: "Save 20%",
-      borderColor: "border-[#ff4848]"
+      isBestValue: true,
+      badge: "Best Value",
+      borderColor: "border-[#E05C41]",
+      isProminent: true
     }
   ];
 
@@ -107,7 +137,7 @@ const PricingAnimated = () => {
 
           <motion.div
             variants={containerVariants}
-            className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center justify-center w-full"
+            className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch justify-center w-full"
           >
             {pricingPlans.map((plan, index) => (
               <motion.div
@@ -115,19 +145,19 @@ const PricingAnimated = () => {
                 variants={itemVariants}
                 whileHover={{
                   y: -8,
-                  scale: 1.02,
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-                  transition: {
-                    type: "spring" as const,
-                    stiffness: 300,
-                    damping: 20
-                  }
+                  transition: { duration: 0.3 }
                 }}
-                className={`relative bg-white border-2 ${plan.borderColor} rounded-2xl p-6 sm:p-8 w-full max-w-sm sm:max-w-md lg:max-w-lg shadow-lg hover:shadow-2xl transition-shadow duration-300`}
+                className={`relative bg-white border-2 ${plan.borderColor} rounded-2xl p-6 sm:p-8 w-full shadow-lg hover:shadow-2xl transition-shadow duration-300 ${
+                  plan.isProminent
+                    ? 'border-4 max-w-sm sm:max-w-lg lg:max-w-xl'
+                    : 'max-w-sm sm:max-w-md lg:max-w-lg'
+                }`}
               >
-                {plan.isPopular && (
-                  <div className="absolute -top-3 sm:-top-2 right-4 sm:right-6 bg-[#ff4848] text-white px-3 py-2 sm:px-4 sm:py-3 rounded-t-lg rounded-bl-lg z-10">
-                    <span className="text-xs sm:text-sm font-medium">{plan.discount}</span>
+                {plan.badge && (
+                  <div className="absolute -top-3 sm:-top-2 right-4 sm:right-6 bg-[#E05C41] text-white px-3 py-2 sm:px-4 sm:py-3 rounded-t-lg rounded-bl-lg z-10 shadow-md">
+                    <span className="text-xs sm:text-sm font-medium">
+                      {plan.badge}
+                    </span>
                   </div>
                 )}
 
@@ -148,7 +178,7 @@ const PricingAnimated = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-4 sm:space-y-6">
+                  <div className="space-y-3 sm:space-y-4">
                     {plan.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex gap-3 items-start">
                         <TickIcon />
@@ -164,8 +194,8 @@ const PricingAnimated = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className={`w-full py-3 sm:py-4 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium transition-all duration-300 transform ${
-                        plan.isPopular
-                          ? 'bg-[#ff4848] text-white hover:bg-[#e03333] hover:shadow-lg'
+                        plan.isPopular || plan.isBestValue
+                          ? 'bg-[#E05C41] text-white hover:bg-[#c94d32] hover:shadow-lg'
                           : plan.name === 'Free'
                           ? 'bg-[#666666] text-white hover:bg-[#555555] hover:shadow-lg'
                           : 'bg-[#222222] text-white hover:bg-[#333333] hover:shadow-lg'
