@@ -1,6 +1,6 @@
 import { AnimatedSection } from './AnimatedSection';
-import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { motion } from 'framer-motion';
 
 // Statistics data interface
 interface StatItem {
@@ -19,7 +19,7 @@ interface Review {
   highlight?: string;
 }
 
-// Statistics data
+// Statistics data - moved outside component to prevent recreation
 const statisticsData: StatItem[] = [
   {
     id: 1,
@@ -55,7 +55,7 @@ const statisticsData: StatItem[] = [
   }
 ];
 
-// Review data
+// Review data - moved outside component to prevent recreation
 const reviewsData: Review[] = [
   {
     id: 1,
@@ -94,8 +94,26 @@ const reviewsData: Review[] = [
   }
 ];
 
-// Star rating component
-const StarRating = ({ rating, size = "normal" }: { rating: number; size?: "small" | "normal" | "large" }) => {
+// Helper to detect device performance
+const usePerformanceDetection = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isLowEndDevice, setIsLowEndDevice] = useState(false);
+
+  useEffect(() => {
+    const mobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+    const lowEnd = typeof window !== 'undefined' &&
+      (navigator.hardwareConcurrency || 4) < 4;
+
+    setIsMobile(mobile);
+    setIsLowEndDevice(lowEnd);
+  }, []);
+
+  return { isMobile, isLowEndDevice };
+};
+
+// Star rating component - memoized to prevent unnecessary re-renders
+const StarRating = React.memo(({ rating, size = "normal" }: { rating: number; size?: "small" | "normal" | "large" }) => {
+  const { isMobile } = usePerformanceDetection();
   const sizeClasses = {
     small: "w-4 h-4",
     normal: "w-5 h-5",
@@ -113,25 +131,31 @@ const StarRating = ({ rating, size = "normal" }: { rating: number; size?: "small
             rotate: 0,
             transition: {
               delay: i * 0.1,
-              type: "spring",
-              stiffness: 200,
-              damping: 15
+              type: isMobile ? ("tween" as const) : ("spring" as const),
+              ...(isMobile
+                ? { duration: 0.2, ease: [0.25, 0.1, 0.25, 1.0] as const }
+                : { stiffness: 200, damping: 15 }
+              )
             }
           }}
           className={`${sizeClasses[size]} ${i < rating ? 'text-yellow-400 drop-shadow-sm' : 'text-gray-300'}`}
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
+          style={{ transform: 'translateZ(0)', willChange: 'transform, opacity' }}
         >
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
         </motion.svg>
       ))}
     </div>
   );
-};
+});
+StarRating.displayName = 'StarRating';
 
 // Stat Card Component
-const StatCard = ({ stat, index }: { stat: StatItem; index: number }) => {
+const StatCard = React.memo(({ stat, index }: { stat: StatItem; index: number }) => {
+  const { isMobile } = usePerformanceDetection();
+
   return (
     <AnimatedSection
       animation="fadeUp"
@@ -140,11 +164,12 @@ const StatCard = ({ stat, index }: { stat: StatItem; index: number }) => {
       threshold={0.2}
     >
       <motion.div
-        whileHover={{
+        whileHover={!isMobile ? {
           scale: 1.05,
           transition: { type: "spring", stiffness: 400, damping: 25 }
-        }}
+        } : undefined}
         className="bg-white rounded-xl p-4 sm:p-5 shadow-md hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
+        style={{ transform: 'translateZ(0)', willChange: isMobile ? 'auto' : 'transform' }}
       >
         {/* Background gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#ff4848]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -187,14 +212,16 @@ const StatCard = ({ stat, index }: { stat: StatItem; index: number }) => {
       </motion.div>
     </AnimatedSection>
   );
-};
+});
+StatCard.displayName = 'StatCard';
 
-// Review Card Component
-const ReviewCard = ({ review, isActive, isNext, isPrev }: {
+// Review Card Component - memoized with optimized animations
+const ReviewCard = React.memo(({ review, isActive, isNext, isPrev, isMobile }: {
   review: Review;
   isActive: boolean;
   isNext?: boolean;
   isPrev?: boolean;
+  isMobile: boolean;
 }) => {
   const cardVariants = {
     active: {
@@ -202,31 +229,36 @@ const ReviewCard = ({ review, isActive, isNext, isPrev }: {
       x: 0,
       opacity: 1,
       zIndex: 10,
-      filter: "blur(0px)",
-      transition: { type: "spring", stiffness: 300, damping: 30 }
+      // Remove blur filter on mobile - use opacity only for better performance
+      transition: isMobile
+        ? { duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] as const }
+        : { type: "spring" as const, stiffness: 300, damping: 30 }
     },
     next: {
       scale: 0.85,
       x: "-20%",
       opacity: 0.7,
       zIndex: 5,
-      filter: "blur(0.5px)",
-      transition: { type: "spring", stiffness: 300, damping: 30 }
+      transition: isMobile
+        ? { duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] as const }
+        : { type: "spring" as const, stiffness: 300, damping: 30 }
     },
     prev: {
       scale: 0.85,
       x: "20%",
       opacity: 0.7,
       zIndex: 5,
-      filter: "blur(0.5px)",
-      transition: { type: "spring", stiffness: 300, damping: 30 }
+      transition: isMobile
+        ? { duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] as const }
+        : { type: "spring" as const, stiffness: 300, damping: 30 }
     },
     hidden: {
       scale: 0.8,
       opacity: 0,
       zIndex: 1,
-      filter: "blur(2px)",
-      transition: { type: "spring", stiffness: 300, damping: 30 }
+      transition: isMobile
+        ? { duration: 0.2, ease: [0.25, 0.1, 0.25, 1.0] as const }
+        : { type: "spring" as const, stiffness: 300, damping: 30 }
     }
   };
 
@@ -234,10 +266,10 @@ const ReviewCard = ({ review, isActive, isNext, isPrev }: {
     <motion.div
       variants={cardVariants}
       animate={isActive ? "active" : isNext ? "next" : isPrev ? "prev" : "hidden"}
-      whileHover={isActive ? {
+      whileHover={!isMobile && isActive ? {
         scale: 1.02,
         transition: { type: "spring", stiffness: 400, damping: 25 }
-      } : {}}
+      } : undefined}
       className={`absolute w-full h-full flex flex-col ${isActive ? 'cursor-default' : 'cursor-pointer'
         }`}
       onClick={() => {
@@ -246,36 +278,30 @@ const ReviewCard = ({ review, isActive, isNext, isPrev }: {
           window.dispatchEvent(event);
         }
       }}
+      style={{ transform: 'translateZ(0)', willChange: 'transform, opacity' }}
     >
       <div className="relative bg-gradient-to-br from-white via-white to-[#fef7f7] rounded-3xl p-5 shadow-2xl h-full flex flex-col overflow-hidden group">
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-[#ff4848]/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#ff4848]/10 to-transparent rounded-bl-3xl" />
 
         {review.highlight && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mb-4 relative z-10"
-          >
+          <div className="mb-4 relative z-10">
             <span className="inline-flex items-center gap-1 bg-gradient-to-r from-[#ff4848] to-[#ff6b6b] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
               <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
               {review.highlight}
             </span>
-          </motion.div>
+          </div>
         )}
 
         <div className="mb-3 relative z-10">
-          <motion.svg
-            initial={{ opacity: 0, rotate: -5 }}
-            animate={{ opacity: 0.1, rotate: 0 }}
-            transition={{ delay: 0.3 }}
+          <svg
             className="w-10 h-10 text-[#ff4848]"
             fill="currentColor"
             viewBox="0 0 24 24"
+            style={{ opacity: 0.1 }}
           >
             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-          </motion.svg>
+          </svg>
         </div>
 
         <div className="mb-3 relative z-10">
@@ -283,38 +309,23 @@ const ReviewCard = ({ review, isActive, isNext, isPrev }: {
         </div>
 
         <div className="flex-grow mb-2 relative z-10">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-[#2d2d2d] leading-relaxed text-base font-medium italic"
-          >
+          <p className="text-[#2d2d2d] leading-relaxed text-base font-medium italic">
             {review.review}
-          </motion.p>
+          </p>
         </div>
 
         <div className="relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="flex items-center justify-between pt-2 border-t border-[#ff4848]/10"
-          >
+          <div className="flex items-center justify-between pt-2 border-t border-[#ff4848]/10">
             <div>
               <p className="font-bold text-[#222222] text-lg">{review.username}</p>
               <p className="text-sm text-[#ff4848] font-medium">Verified Parent</p>
             </div>
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.6, type: "spring" }}
-              className="w-10 h-10 bg-gradient-to-br from-[#ff4848] to-[#ff6b6b] rounded-full flex items-center justify-center"
-            >
+            <div className="w-10 h-10 bg-gradient-to-br from-[#ff4848] to-[#ff6b6b] rounded-full flex items-center justify-center">
               <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
               </svg>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
 
         <motion.div
@@ -326,11 +337,13 @@ const ReviewCard = ({ review, isActive, isNext, isPrev }: {
       </div>
     </motion.div>
   );
-};
+});
+ReviewCard.displayName = 'ReviewCard';
 
 const SocialProofAnimated = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const { isMobile, isLowEndDevice } = usePerformanceDetection();
 
   // Auto-rotate reviews continuously
   useEffect(() => {
@@ -360,43 +373,61 @@ const SocialProofAnimated = () => {
     return () => window.removeEventListener('goToReview', handleGoToReview);
   }, []);
 
-  const goToSlide = (index: number) => {
+  // Memoize navigation handlers to prevent recreation
+  const goToSlide = useCallback((index: number) => {
     setCurrentIndex(index);
-  };
+  }, []);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + reviewsData.length) % reviewsData.length);
-  };
+  }, []);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % reviewsData.length);
-  };
+  }, []);
 
   return (
     <div id="social-proof" className="bg-gradient-to-br from-[#fafafa] via-[#fef6f6] to-[#fefefe] py-16 lg:py-24 relative overflow-hidden">
-      {/* Decorative background elements */}
+      {/* Decorative background elements - optimized for mobile */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            rotate: [0, 360],
-            transition: { duration: 50, repeat: Infinity, ease: "linear" }
-          }}
-          className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-[#ff4848]/3 to-transparent rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            rotate: [360, 0],
-            transition: { duration: 60, repeat: Infinity, ease: "linear" }
-          }}
-          className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-tl from-[#ff4848]/3 to-transparent rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            rotate: [0, 360],
-            transition: { duration: 70, repeat: Infinity, ease: "linear" }
-          }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-[#ff4848]/2 to-transparent rounded-full blur-3xl"
-        />
+        {/* Only show 1 background on mobile, 3 on desktop */}
+        {isMobile || isLowEndDevice ? (
+          <motion.div
+            animate={{
+              rotate: [0, 360],
+              transition: { duration: 100, repeat: Infinity, ease: "linear" }
+            }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-[#ff4848]/2 to-transparent rounded-full blur-3xl"
+            style={{ contain: 'layout style paint' }}
+          />
+        ) : (
+          <>
+            <motion.div
+              animate={{
+                rotate: [0, 360],
+                transition: { duration: 50, repeat: Infinity, ease: "linear" }
+              }}
+              className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-[#ff4848]/3 to-transparent rounded-full blur-3xl"
+              style={{ contain: 'layout style paint' }}
+            />
+            <motion.div
+              animate={{
+                rotate: [360, 0],
+                transition: { duration: 60, repeat: Infinity, ease: "linear" }
+              }}
+              className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-tl from-[#ff4848]/3 to-transparent rounded-full blur-3xl"
+              style={{ contain: 'layout style paint' }}
+            />
+            <motion.div
+              animate={{
+                rotate: [0, 360],
+                transition: { duration: 70, repeat: Infinity, ease: "linear" }
+              }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-[#ff4848]/2 to-transparent rounded-full blur-3xl"
+              style={{ contain: 'layout style paint' }}
+            />
+          </>
+        )}
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -529,22 +560,25 @@ const SocialProofAnimated = () => {
         <div className="relative max-w-4xl mx-auto">
           <div className="relative h-[400px] md:h-[350px] mb-16">
             <div className="absolute inset-0 flex items-center justify-center">
-              <AnimatePresence>
-                {reviewsData.map((review, index) => {
-                  const prevIndex = (currentIndex - 1 + reviewsData.length) % reviewsData.length;
-                  const nextIndex = (currentIndex + 1) % reviewsData.length;
+              {/* Only render visible cards (active, next, prev) for better performance */}
+              {reviewsData.map((review, index) => {
+                const prevIndex = (currentIndex - 1 + reviewsData.length) % reviewsData.length;
+                const nextIndex = (currentIndex + 1) % reviewsData.length;
+                const isVisible = index === currentIndex || index === prevIndex || index === nextIndex;
 
-                  return (
-                    <ReviewCard
-                      key={review.id}
-                      review={review}
-                      isActive={index === currentIndex}
-                      isNext={index === nextIndex}
-                      isPrev={index === prevIndex}
-                    />
-                  );
-                })}
-              </AnimatePresence>
+                if (!isVisible) return null;
+
+                return (
+                  <ReviewCard
+                    key={review.id}
+                    review={review}
+                    isActive={index === currentIndex}
+                    isNext={index === nextIndex}
+                    isPrev={index === prevIndex}
+                    isMobile={isMobile}
+                  />
+                );
+              })}
             </div>
           </div>
 
