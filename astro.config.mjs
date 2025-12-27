@@ -23,13 +23,26 @@ export default defineConfig({
     plugins: [tailwindcss()],
     build: {
       rollupOptions: {
+        output: {
+          manualChunks: {
+            'framer-motion': ['framer-motion'],
+            'react-vendor': ['react', 'react-dom'],
+          },
+        },
         onwarn(warning, warn) {
           if (warning.code === 'DYNAMIC_IMPORT') {
             return;
           }
           warn(warning);
         }
-      }
+      },
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        },
+      },
     }
     // REMOVED: Don't manually define BASE_URL - Astro handles this
   }

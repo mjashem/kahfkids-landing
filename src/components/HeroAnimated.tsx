@@ -39,7 +39,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '', iphoneMocku
                 <div className="flex flex-row items-center lg:items-start gap-2 sm:gap-3 md:gap-4 lg:gap-4 justify-end lg:justify-end -mb-2 sm:-mb-4 lg:-mb-8 mr-2 sm:mr-4 lg:mr-44">
                   <motion.div
                     className="flex h-12 sm:h-14 md:h-16 lg:h-[100px] items-center justify-center w-8 sm:w-9 md:w-10 lg:w-[50px]"
-                    style={{ transform: 'rotate(13.97deg)' }}
+                    style={{ transform: 'translateZ(0)', willChange: 'transform' }}
                     animate={{
                       rotate: [13.97, 18.97, 13.97],
                       y: [0, -3, 0]
@@ -63,7 +63,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '', iphoneMocku
                   </motion.div>
                   <motion.div
                     className="flex h-16 sm:h-18 md:h-20 lg:h-[120px] items-center justify-center w-10 sm:w-11 md:w-12 lg:w-[60px]"
-                    style={{ transform: 'rotate(344.472deg)' }}
+                    style={{ transform: 'translateZ(0)', willChange: 'transform' }}
                     animate={{
                       rotate: [344.472, 339.472, 344.472],
                       y: [0, 5, 0]
@@ -134,6 +134,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '', iphoneMocku
                 {/* Buy Premium Button */}
                 <motion.button
                   className="relative bg-[#ff4848] rounded-lg px-3 sm:px-4 md:px-5 py-2 sm:py-3 md:py-4 h-9 sm:h-11 md:h-12 flex items-center gap-1 sm:gap-2 w-full sm:w-[157px] justify-center cursor-pointer overflow-hidden shadow-lg whitespace-nowrap"
+                  style={{ transform: 'translateZ(0)', willChange: 'transform, box-shadow' }}
                   animate={{
                     scale: [1, 1.08, 1],
                     boxShadow: [

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 interface AnimatedSectionProps {
   children: React.ReactNode;
@@ -42,6 +43,12 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   threshold = 0.1
 }) => {
   const { ref, isVisible } = useScrollAnimation({ threshold });
+  const prefersReducedMotion = useReducedMotion();
+
+  // Skip animation if user prefers reduced motion
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div
@@ -55,6 +62,7 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
         delay,
         ease: [0.25, 0.1, 0.25, 1.0]
       }}
+      style={{ willChange: 'transform, opacity' }}
     >
       {children}
     </motion.div>
