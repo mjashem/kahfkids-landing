@@ -53,20 +53,25 @@ const base = import.meta.env.BASE_URL;
 						class="hover:text-[#ff4848] transition-colors"
 						>Reviews</a
 					>
+					<a
+						href="https://kahfkids.com/learn"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="hover:text-[#ff4848] transition-colors"
+						>Course</a
+					>
 				</div>
 
-				<!-- Kids Courses Button -->
-				<div
-					class="bg-white border border-[#ff4848] border-solid rounded-[10px] h-[50px] w-[129px] flex items-center justify-center px-[16px] py-[14px] hover:bg-[#ff4848] transition-colors group cursor-pointer"
+				<!-- Download App Button -->
+				<a
+					href="#"
+					id="download-app-btn-desktop"
+					class="download-app-btn bg-[#ff4848] text-white rounded-[10px] h-[50px] px-[24px] flex items-center justify-center hover:bg-[#e63e3e] transition-colors shadow-sm hover:shadow-md"
+					target="_blank"
+					rel="noopener noreferrer"
 				>
-					<div class="flex items-center gap-[4px]">
-						<span
-							class="font-medium text-[#ff4848] text-[14px] group-hover:text-white transition-colors"
-						>
-							Kids Courses
-						</span>
-					</div>
-				</div>
+					<span class="font-medium text-[14px]">Download App</span>
+				</a>
 			</div>
 
 			<!-- Mobile Menu Button -->
@@ -120,24 +125,81 @@ const base = import.meta.env.BASE_URL;
 				>
 					Reviews
 				</a>
-				<div
-					class="bg-white border border-[#ff4848] border-solid rounded-[10px] h-[50px] w-[129px] flex items-center justify-center px-[16px] py-[14px] hover:bg-[#ff4848] transition-colors group cursor-pointer"
+				<a
+					href="https://kahfkids.com/learn"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-[#222222] text-[16px] font-normal hover:text-[#ff4848] transition-colors"
 				>
-					<div class="flex items-center gap-[4px]">
-						<span
-							class="font-medium text-[#ff4848] text-[14px] group-hover:text-white transition-colors"
-						>
-							Kids Courses
-						</span>
-					</div>
-				</div>
+					Course
+				</a>
+
+				<!-- Download App Button - Mobile -->
+				<a
+					href="#"
+					id="download-app-btn-mobile"
+					class="download-app-btn bg-[#ff4848] text-white rounded-[10px] h-[50px] px-[24px] flex items-center justify-center hover:bg-[#e63e3e] transition-colors shadow-sm w-full max-w-[200px]"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<span class="font-medium text-[14px]">Download App</span>
+				</a>
 			</div>
 		</div>
 	</nav>
 </header>
 
 <script>
+	// OS Detection Function
+	function detectOS(): "ios" | "android" | "unknown" {
+		const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
+
+		// iOS detection (iPhone, iPad, iPod)
+		if (/iPad|iPhone|iPod/.test(userAgent) && !(window as any).MSStream) {
+			return "ios";
+		}
+
+		// Android detection
+		if (/android/i.test(userAgent)) {
+			return "android";
+		}
+
+		return "unknown";
+	}
+
+	// App store URLs (update these with actual URLs when available)
+	const APP_STORE_URLS = {
+		ios: "#", // Replace with actual App Store URL
+		android: "#", // Replace with actual Google Play URL
+	};
+
+	// Update download button based on detected OS
+	function updateDownloadButton() {
+		const os = detectOS();
+		const desktopBtn = document.getElementById("download-app-btn-desktop") as HTMLAnchorElement | null;
+		const mobileBtn = document.getElementById("download-app-btn-mobile") as HTMLAnchorElement | null;
+
+		[desktopBtn, mobileBtn].forEach((btn) => {
+			if (!btn) return;
+
+			const span = btn.querySelector("span");
+			if (!span) return;
+
+			if (os === "ios") {
+				btn.href = APP_STORE_URLS.ios;
+				span.textContent = "Download on App Store";
+			} else {
+				// Android and desktop: link to Play Store
+				btn.href = APP_STORE_URLS.android;
+				span.textContent = "Get it on Google Play";
+			}
+		});
+	}
+
 	document.addEventListener("DOMContentLoaded", () => {
+		// Initialize OS-based download buttons
+		updateDownloadButton();
+
 		const mobileMenuButton = document.getElementById("mobile-menu-button");
 		const mobileMenu = document.getElementById("mobile-menu");
 		const navbar = document.getElementById("navbar");
