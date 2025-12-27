@@ -3,7 +3,21 @@
 interface Props {}
 
 import HeroAnimated from './HeroAnimated';
+import { getImage } from 'astro:assets';
+import iphoneMockupSrc from '../assets/iphone-mockup.png';
+
 const {} = Astro.props;
+
+// Pre-optimize iPhone mockup to WebP
+const optimizedImage = await getImage({
+  src: iphoneMockupSrc,
+  format: 'webp',
+  quality: 85,
+  width: 450,
+  height: 600,
+});
+
+const iphoneMockup = optimizedImage.src;
 ---
 
-<HeroAnimated client:load />
+<HeroAnimated client:load iphoneMockup={iphoneMockup} />

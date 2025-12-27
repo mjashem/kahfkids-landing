@@ -1,5 +1,18 @@
 ---
 import DevicesAnimated from './DevicesAnimated.tsx';
+import { getImage } from 'astro:assets';
+import tvMockupSrc from '../assets/tv-mockup.png';
+
+// Pre-optimize TV mockup to WebP
+const optimizedImage = await getImage({
+  src: tvMockupSrc,
+  format: 'webp',
+  quality: 85,
+  width: 800,
+  height: 450,
+});
+
+const tvMockup = optimizedImage.src;
 ---
 
-<DevicesAnimated client:load />
+<DevicesAnimated client:load tvMockup={tvMockup} />

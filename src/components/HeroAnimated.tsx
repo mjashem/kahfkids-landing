@@ -4,10 +4,12 @@ import { AnimatedSection } from './AnimatedSection';
 
 interface HeroAnimatedProps {
   className?: string;
+  iphoneMockup?: string;
 }
 
-const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
+const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '', iphoneMockup }) => {
   const base = import.meta.env.BASE_URL;
+  const mockupSrc = iphoneMockup || `${base}/iphone-mockup.png`;
   return (
     <section
       id="home"
@@ -320,7 +322,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '' }) => {
             >
               <div className="relative w-full lg:w-auto origin-top -mb-12 sm:-mb-16 md:-mb-20 lg:-mb-24 xl:-mb-32 -translate-x-6 lg:transform lg:translate-x-8">
                 <img
-                  src={`${base}/iphone-mockup.png`}
+                  src={mockupSrc}
                   alt="iPhone 11 with Kahf Kids App"
                   className="w-full h-auto object-contain max-w-[320px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[450px] xl:max-w-[520px]"
                 />

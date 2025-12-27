@@ -1,7 +1,16 @@
 import { AnimatedSection } from './AnimatedSection';
 
-const FeaturesAnimated = () => {
+interface FeaturesAnimatedProps {
+  optimizedImages?: Record<string, string>;
+}
+
+const FeaturesAnimated = ({ optimizedImages = {} }: FeaturesAnimatedProps) => {
   const base = import.meta.env.BASE_URL;
+
+  // Helper function to get optimized image URL
+  const getImageUrl = (imageName: string) => {
+    return optimizedImages[imageName] || `${base}/${imageName}.png`;
+  };
 
   // Card data structure
   const cardsData = [
@@ -13,7 +22,7 @@ const FeaturesAnimated = () => {
         "No inappropriate clips, adult jokes, scary scenes or addictive content.",
         "Only Islamic, educational, and child-friendly content."
       ],
-      image: `${base}/feature-image-1.png`,
+      image: getImageUrl('feature-image-1'),
       imageAlt: "Safe YouTube videos feature",
       backgroundSvg: `${base}/feature-background-1.svg`,
       tickIcon: `${base}/tick-icon-1.svg`
@@ -26,7 +35,7 @@ const FeaturesAnimated = () => {
         "Kids cannot open any outside content.",
         "You can add or remove videos anytime."
       ],
-      image: `${base}/feature-image-1-hover.png`,
+      image: getImageUrl('feature-image-1-hover'),
       imageAlt: "Parent-controlled video selection",
       backgroundSvg: `${base}/feature-background-2.svg`,
       tickIcon: `${base}/tick-icon-2.svg`
@@ -39,7 +48,7 @@ const FeaturesAnimated = () => {
         "Games stay on the phone but cannot open without permission.",
         "Kids learn healthy habits and stop overplaying."
       ],
-      image: `${base}/feature-image-2.png`,
+      image: getImageUrl('feature-image-2'),
       imageAlt: "Game blocking feature",
       backgroundSvg: `${base}/feature-background-3.svg`,
       tickIcon: `${base}/tick-icon-3.svg`
@@ -52,7 +61,7 @@ const FeaturesAnimated = () => {
         "Videos and apps stop automatically when time is up.",
         "No shouting, no arguments, no stress."
       ],
-      image: `${base}/feature-image-2-hover.png`,
+      image: getImageUrl('feature-image-2-hover'),
       imageAlt: "Time limit controls",
       backgroundSvg: `${base}/feature-background-4.svg`,
       tickIcon: `${base}/tick-icon-4.svg`
@@ -65,7 +74,7 @@ const FeaturesAnimated = () => {
         "Kids cannot open anything unsafe or unapproved.",
         "No accidental browsing or algorithm-based suggestions."
       ],
-      image: `${base}/feature-image-3.png`,
+      image: getImageUrl('feature-image-3'),
       imageAlt: "App and website blocking",
       backgroundSvg: `${base}/feature-background-5.svg`,
       tickIcon: `${base}/tick-icon-5.svg`
@@ -78,7 +87,7 @@ const FeaturesAnimated = () => {
         "Bedtime mode blocks everything except emergency calls.",
         "Children sleep and study without screen interruptions."
       ],
-      image: `${base}/feature-image-3-hover.png`,
+      image: getImageUrl('feature-image-3-hover'),
       imageAlt: "Study and bedtime mode",
       backgroundSvg: `${base}/feature-background-6.svg`,
       tickIcon: `${base}/tick-icon-6.svg`
@@ -91,7 +100,7 @@ const FeaturesAnimated = () => {
         "Islamic studies, science tools, and creativity apps included.",
         "Every feature promotes growth—not distraction."
       ],
-      image: `${base}/feature-image-1.png`,
+      image: getImageUrl('feature-image-1'),
       imageAlt: "Educational activities",
       backgroundSvg: `${base}/feature-background-1.svg`,
       tickIcon: `${base}/tick-icon-1.svg`
@@ -105,8 +114,8 @@ const FeaturesAnimated = () => {
         "Simple and suitable for young learners."
       ],
       images: [
-        `${base}/feature-image-1-hover.png`,
-        `${base}/feature-image-1-active.png`
+        getImageUrl('feature-image-1-hover'),
+        getImageUrl('feature-image-1-active')
       ],
       imageAlt: ["Quran app interface", "Quran features"],
       isStacked: true,
@@ -121,7 +130,7 @@ const FeaturesAnimated = () => {
         "Easy tips for building good habits and character.",
         "Support for raising children in the digital age."
       ],
-      image: `${base}/feature-image-2.png`,
+      image: getImageUrl('feature-image-2'),
       imageAlt: "Parenting support resources",
       backgroundSvg: `${base}/feature-background-3.svg`,
       tickIcon: `${base}/tick-icon-3.svg`
@@ -134,7 +143,7 @@ const FeaturesAnimated = () => {
         "Kids cannot change time limits, remove blocks, or access controls.",
         "Your rules stay safe and secure."
       ],
-      image: `${base}/feature-image-2-hover.png`,
+      image: getImageUrl('feature-image-2-hover'),
       imageAlt: "Secure parental control panel",
       backgroundSvg: `${base}/feature-background-4.svg`,
       tickIcon: `${base}/tick-icon-4.svg`

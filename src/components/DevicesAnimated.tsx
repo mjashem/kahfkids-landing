@@ -1,8 +1,13 @@
 import { motion } from 'framer-motion';
 import { AnimatedSection } from './AnimatedSection';
 
-const DevicesAnimated = () => {
+interface DevicesAnimatedProps {
+  tvMockup?: string;
+}
+
+const DevicesAnimated = ({ tvMockup }: DevicesAnimatedProps) => {
   const base = import.meta.env.BASE_URL;
+  const mockupSrc = tvMockup || `${base}/tv-mockup.png`;
   const devicePlatforms = [
     { logo: `${base}/roku-logo.png`, name: "Roku" },
     { logo: `${base}/firetv-logo.png`, name: "FireTV" },
@@ -60,7 +65,7 @@ const DevicesAnimated = () => {
         {/* Device Group Image */}
         <AnimatedSection animation="scaleIn" delay={0.1} className="relative w-full max-w-2xl lg:max-w-4xl h-64 sm:h-80 lg:h-96 flex items-center justify-center">
           <motion.img
-            src={`${base}/tv-mockup.png`}
+            src={mockupSrc}
             alt="Kahf Kids on all devices - TV, MacBook, iPad, and iPhone"
             className="w-full h-full object-contain"
             whileHover={{

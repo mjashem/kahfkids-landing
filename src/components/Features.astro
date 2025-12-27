@@ -1,5 +1,26 @@
 ---
 import FeaturesAnimated from './FeaturesAnimated.tsx';
+import { getImage } from 'astro:assets';
+
+// Import all feature images
+import featureImage1 from '../assets/feature-image-1.png';
+import featureImage1Hover from '../assets/feature-image-1-hover.png';
+import featureImage1Active from '../assets/feature-image-1-active.png';
+import featureImage2 from '../assets/feature-image-2.png';
+import featureImage2Hover from '../assets/feature-image-2-hover.png';
+import featureImage3 from '../assets/feature-image-3.png';
+import featureImage3Hover from '../assets/feature-image-3-hover.png';
+
+// Optimize all images to WebP
+const imageMap = {
+  'feature-image-1': (await getImage({ src: featureImage1, format: 'webp', quality: 85, width: 450, height: 300 })).src,
+  'feature-image-1-hover': (await getImage({ src: featureImage1Hover, format: 'webp', quality: 85, width: 450, height: 300 })).src,
+  'feature-image-1-active': (await getImage({ src: featureImage1Active, format: 'webp', quality: 85, width: 450, height: 300 })).src,
+  'feature-image-2': (await getImage({ src: featureImage2, format: 'webp', quality: 85, width: 450, height: 300 })).src,
+  'feature-image-2-hover': (await getImage({ src: featureImage2Hover, format: 'webp', quality: 85, width: 450, height: 300 })).src,
+  'feature-image-3': (await getImage({ src: featureImage3, format: 'webp', quality: 85, width: 450, height: 300 })).src,
+  'feature-image-3-hover': (await getImage({ src: featureImage3Hover, format: 'webp', quality: 85, width: 450, height: 300 })).src,
+};
 ---
 
-<FeaturesAnimated client:load />
+<FeaturesAnimated client:load optimizedImages={imageMap} />
