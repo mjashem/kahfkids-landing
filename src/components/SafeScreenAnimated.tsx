@@ -145,7 +145,9 @@ const SafeScreenAnimated = () => {
           className="flex flex-row gap-3 sm:gap-4 w-full sm:w-auto justify-center"
         >
           <motion.a
-            href="#"
+            href="https://play.google.com/store/apps/details?id=com.kahf.kids&pcampaignid=web_share"
+            target="_blank"
+            rel="noopener noreferrer"
             variants={itemVariants}
             whileHover={{
               scale: 1.05,
@@ -165,7 +167,9 @@ const SafeScreenAnimated = () => {
             />
           </motion.a>
           <motion.a
-            href="#"
+            href="https://apps.apple.com/us/app/kahf-kids-for-child-parents/id6605937095"
+            target="_blank"
+            rel="noopener noreferrer"
             variants={itemVariants}
             whileHover={{
               scale: 1.05,

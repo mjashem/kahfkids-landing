@@ -243,7 +243,10 @@ const FooterAnimated = () => {
               className="flex flex-col gap-4 sm:gap-6 w-full items-center"
             >
               <div className="flex gap-2 sm:gap-3">
-                <motion.div
+                <motion.a
+                  href="https://play.google.com/store/apps/details?id=com.kahf.kids&pcampaignid=web_share"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="h-8 w-24 sm:h-10 sm:w-28"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring" as const, stiffness: 400 }}
@@ -253,8 +256,11 @@ const FooterAnimated = () => {
                     alt="App Store"
                     className="w-full h-full object-contain"
                   />
-                </motion.div>
-                <motion.div
+                </motion.a>
+                <motion.a
+                  href="https://apps.apple.com/us/app/kahf-kids-for-child-parents/id6605937095"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="h-8 w-24 sm:h-10 sm:w-28"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring" as const, stiffness: 400 }}
@@ -264,7 +270,7 @@ const FooterAnimated = () => {
                     alt="Google Play"
                     className="w-full h-full object-contain"
                   />
-                </motion.div>
+                </motion.a>
               </div>
               <div className="font-medium text-[#4a4b4d] text-xs sm:text-sm leading-relaxed max-w-xs">
                 <p className="mb-1">Also available on:</p>

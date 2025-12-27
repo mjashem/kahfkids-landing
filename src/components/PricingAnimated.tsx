@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { AnimatedSection } from './AnimatedSection';
+import { detectOS, getAppStoreURL } from '../hooks/useAppStoreLink';
+import { useState, useEffect } from 'react';
 
 // Pricing plan interface
 interface PricingPlan {
@@ -17,6 +19,13 @@ interface PricingPlan {
 
 const PricingAnimated = () => {
   const base = import.meta.env.BASE_URL;
+  const [appStoreUrl, setAppStoreUrl] = useState<string>('');
+
+  useEffect(() => {
+    // Set the appropriate app store URL on mount
+    setAppStoreUrl(getAppStoreURL());
+  }, []);
+
   const pricingPlans: PricingPlan[] = [
     {
       name: "Free",
@@ -190,19 +199,30 @@ const PricingAnimated = () => {
                   </div>
 
                   <div className="flex flex-col gap-3 sm:gap-4 items-center">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`w-full py-3 sm:py-4 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium transition-all duration-300 transform ${
-                        plan.isPopular || plan.isBestValue
-                          ? 'bg-[#E05C41] text-white hover:bg-[#c94d32] hover:shadow-lg'
-                          : plan.name === 'Free'
-                          ? 'bg-[#666666] text-white hover:bg-[#555555] hover:shadow-lg'
-                          : 'bg-[#222222] text-white hover:bg-[#333333] hover:shadow-lg'
-                      }`}
-                    >
-                      {plan.buttonText}
-                    </motion.button>
+                    {plan.name === 'Free' ? (
+                      <motion.a
+                        href={appStoreUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-full py-3 sm:py-4 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium transition-all duration-300 transform bg-[#666666] text-white hover:bg-[#555555] hover:shadow-lg text-center"
+                      >
+                        {plan.buttonText}
+                      </motion.a>
+                    ) : (
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`w-full py-3 sm:py-4 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium transition-all duration-300 transform ${
+                          plan.isPopular || plan.isBestValue
+                            ? 'bg-[#E05C41] text-white hover:bg-[#c94d32] hover:shadow-lg'
+                            : 'bg-[#222222] text-white hover:bg-[#333333] hover:shadow-lg'
+                        }`}
+                      >
+                        {plan.buttonText}
+                      </motion.button>
+                    )}
                     {plan.name !== 'Free' && (
                       <p className="text-xs sm:text-sm text-[#4a4b4d] text-center">
                         You can cancel anytime.

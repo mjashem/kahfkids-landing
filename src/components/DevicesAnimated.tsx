@@ -82,20 +82,32 @@ const DevicesAnimated = ({ tvMockup }: DevicesAnimatedProps) => {
             variants={containerVariants}
             className="flex gap-4 sm:gap-6 items-center"
           >
-            <motion.img
-              src={`${base}/devices-background.svg`}
-              alt="App Store"
-              className="h-10 sm:h-12 w-32 sm:w-40 object-contain"
-              whileHover={{ y: -4, scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            />
-            <motion.img
-              src={`${base}/devices-illustration.svg`}
-              alt="Google Play"
-              className="h-10 sm:h-12 w-32 sm:w-40 object-contain"
-              whileHover={{ y: -4, scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            />
+            <motion.a
+              href="https://play.google.com/store/apps/details?id=com.kahf.kids&pcampaignid=web_share"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <motion.img
+                src={`${base}/devices-background.svg`}
+                alt="App Store"
+                className="h-10 sm:h-12 w-32 sm:w-40 object-contain cursor-pointer"
+                whileHover={{ y: -4, scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              />
+            </motion.a>
+            <motion.a
+              href="https://apps.apple.com/us/app/kahf-kids-for-child-parents/id6605937095"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <motion.img
+                src={`${base}/devices-illustration.svg`}
+                alt="Google Play"
+                className="h-10 sm:h-12 w-32 sm:w-40 object-contain cursor-pointer"
+                whileHover={{ y: -4, scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              />
+            </motion.a>
           </motion.div>
 
           {/* Device Platform Logos */}

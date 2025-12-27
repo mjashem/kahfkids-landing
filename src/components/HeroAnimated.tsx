@@ -250,7 +250,9 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '', iphoneMocku
                 {/* App Store Badges - Row on all screen sizes */}
                 <div className="flex flex-row gap-3 sm:gap-3 md:gap-4 w-full sm:w-auto items-center">
                   <motion.a
-                    href="#"
+                    href="https://play.google.com/store/apps/details?id=com.kahf.kids&pcampaignid=web_share"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-1/2 sm:w-[170px] md:w-[175px] lg:w-[180px] h-12 sm:h-11 md:h-12 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                     whileHover={{
                       scale: 1.05,
@@ -269,7 +271,9 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '', iphoneMocku
                     />
                   </motion.a>
                   <motion.a
-                    href="#"
+                    href="https://apps.apple.com/us/app/kahf-kids-for-child-parents/id6605937095"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-1/2 sm:w-[170px] md:w-[175px] lg:w-[180px] h-12 sm:h-11 md:h-12 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                     whileHover={{
                       scale: 1.05,
