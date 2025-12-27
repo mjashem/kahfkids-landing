@@ -529,7 +529,7 @@ const SocialProofAnimated = () => {
         <div className="relative max-w-4xl mx-auto">
           <div className="relative h-[400px] md:h-[350px] mb-16">
             <div className="absolute inset-0 flex items-center justify-center">
-              <AnimatePresence mode="wait">
+              <AnimatePresence>
                 {reviewsData.map((review, index) => {
                   const prevIndex = (currentIndex - 1 + reviewsData.length) % reviewsData.length;
                   const nextIndex = (currentIndex + 1) % reviewsData.length;
