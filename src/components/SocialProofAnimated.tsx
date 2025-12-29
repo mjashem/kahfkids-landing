@@ -113,7 +113,6 @@ const usePerformanceDetection = () => {
 
 // Star rating component - memoized to prevent unnecessary re-renders
 const StarRating = React.memo(({ rating, size = "normal" }: { rating: number; size?: "small" | "normal" | "large" }) => {
-  const { isMobile } = usePerformanceDetection();
   const sizeClasses = {
     small: "w-4 h-4",
     normal: "w-5 h-5",
@@ -123,29 +122,15 @@ const StarRating = React.memo(({ rating, size = "normal" }: { rating: number; si
   return (
     <div className="flex gap-1">
       {[...Array(5)].map((_, i) => (
-        <motion.svg
+        <svg
           key={i}
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{
-            scale: 1,
-            rotate: 0,
-            transition: {
-              delay: i * 0.1,
-              type: isMobile ? ("tween" as const) : ("spring" as const),
-              ...(isMobile
-                ? { duration: 0.2, ease: [0.25, 0.1, 0.25, 1.0] as const }
-                : { stiffness: 200, damping: 15 }
-              )
-            }
-          }}
           className={`${sizeClasses[size]} ${i < rating ? 'text-yellow-400 drop-shadow-sm' : 'text-gray-300'}`}
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
-          style={{ transform: 'translateZ(0)', willChange: 'transform, opacity' }}
         >
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </motion.svg>
+        </svg>
       ))}
     </div>
   );
@@ -154,63 +139,39 @@ StarRating.displayName = 'StarRating';
 
 // Stat Card Component
 const StatCard = React.memo(({ stat, index }: { stat: StatItem; index: number }) => {
-  const { isMobile } = usePerformanceDetection();
-
   return (
-    <AnimatedSection
-      animation="fadeUp"
-      delay={index * 0.1}
-      duration={0.5}
-      threshold={0.2}
-    >
-      <motion.div
-        whileHover={!isMobile ? {
-          scale: 1.05,
-          transition: { type: "spring", stiffness: 400, damping: 25 }
-        } : undefined}
-        className="bg-white rounded-xl p-4 sm:p-5 shadow-md hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
-        style={{ transform: 'translateZ(0)', willChange: isMobile ? 'auto' : 'transform' }}
-      >
-        {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#ff4848]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    <div className="bg-white rounded-xl p-4 sm:p-5 shadow-md hover:shadow-lg transition-all duration-300 group relative overflow-hidden">
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#ff4848]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-        {/* Icon */}
-        <div className="flex justify-center mb-3 relative z-10">
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2 + index * 0.1, type: "spring" }}
-            className="w-8 h-8 sm:w-10 sm:h-10 text-[#ff4848] group-hover:scale-110 transition-transform duration-300"
-            dangerouslySetInnerHTML={{ __html: stat.icon }}
-          />
-        </div>
+      {/* Icon */}
+      <div className="flex justify-center mb-3 relative z-10">
+        <div
+          className="w-8 h-8 sm:w-10 sm:h-10 text-[#ff4848] group-hover:scale-110 transition-transform duration-300"
+          dangerouslySetInnerHTML={{ __html: stat.icon }}
+        />
+      </div>
 
-        {/* Value */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 + index * 0.1 }}
-          className="text-center relative z-10"
+      {/* Value */}
+      <div className="text-center relative z-10">
+        <h3
+          className="font-bold text-[#222222] mb-1"
+          style={{
+            fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
+            lineHeight: '1.2',
+            letterSpacing: '-0.01em'
+          }}
         >
-          <h3
-            className="font-bold text-[#222222] mb-1"
-            style={{
-              fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
-              lineHeight: '1.2',
-              letterSpacing: '-0.01em'
-            }}
-          >
-            {stat.value}
-          </h3>
-          <p className="text-[#4a4b4d] font-medium text-xs sm:text-sm">
-            {stat.label}
-          </p>
-        </motion.div>
+          {stat.value}
+        </h3>
+        <p className="text-[#4a4b4d] font-medium text-xs sm:text-sm">
+          {stat.label}
+        </p>
+      </div>
 
-        {/* Decorative corner element */}
-        <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-[#ff4848]/10 to-transparent rounded-bl-xl" />
-      </motion.div>
-    </AnimatedSection>
+      {/* Decorative corner element */}
+      <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-[#ff4848]/10 to-transparent rounded-bl-xl" />
+    </div>
   );
 });
 StatCard.displayName = 'StatCard';
@@ -327,13 +288,6 @@ const ReviewCard = React.memo(({ review, isActive, isNext, isPrev, isMobile }: {
             </div>
           </div>
         </div>
-
-        <motion.div
-          className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-          style={{
-            boxShadow: "0 0 40px rgba(255, 72, 72, 0.15)"
-          }}
-        />
       </div>
     </motion.div>
   );
