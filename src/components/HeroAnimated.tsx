@@ -10,329 +10,266 @@ interface HeroAnimatedProps {
 const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '', iphoneMockup }) => {
   const base = import.meta.env.BASE_URL;
   const mockupSrc = iphoneMockup || `${base}/iphone-mockup.png`;
+
   return (
     <section
       id="home"
-      className={`relative bg-white min-h-[500px] sm:min-h-[550px] md:min-h-[600px] lg:min-h-[600px] ${className}`}
+      className={`relative bg-white min-h-[350px] sm:min-h-[400px] lg:min-h-[480px] ${className}`}
     >
-      {/* Background with decorative elements */}
-      <div className="absolute inset-0">
-        {/* Wavy divider at bottom */}
-        <div className="absolute -bottom-2 sm:-bottom-1 md:-bottom-0 left-0 right-0 z-10 h-4 sm:h-5 md:h-6">
-          <svg viewBox="0 0 1440 23" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M1440 0.5L0 22.5H1440V0.5Z"
-              fill="#FF4848"
-            />
-          </svg>
-        </div>
-      </div>
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-[#fff5f5] to-white" />
 
-      <div className="relative h-full pt-4 sm:pt-6 md:pt-8 lg:pt-12 xl:pt-16">
-        <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl h-full">
-          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between h-full w-full gap-0 lg:gap-16">
+      <div className="relative z-10 h-full py-3 sm:py-5 md:py-7 lg:py-9">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl h-full">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-            {/* Hero Content */}
-            <AnimatedSection animation="slideRight" delay={0.1} className="flex-1 lg:flex-[2] text-center lg:text-left order-1 lg:order-1">
-              <div className="space-y-6">
-                {/* Decorative elements row */}
-                <div className="flex flex-row items-center lg:items-start gap-2 sm:gap-3 md:gap-4 lg:gap-4 justify-end lg:justify-end -mb-2 sm:-mb-4 lg:-mb-8 mr-2 sm:mr-4 lg:mr-44">
-                  <motion.div
-                    className="flex h-12 sm:h-14 md:h-16 lg:h-[100px] items-center justify-center w-8 sm:w-9 md:w-10 lg:w-[50px]"
-                    style={{ transform: 'translateZ(0)', willChange: 'transform' }}
-                    animate={{
-                      rotate: [13.97, 18.97, 13.97],
-                      y: [0, -3, 0]
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    whileHover={{
-                      rotate: 25,
-                      scale: 1.2,
-                      transition: { type: "spring", stiffness: 300, damping: 10 }
-                    }}
+            {/* LEFT: Content Area */}
+            <div className="space-y-2 sm:space-y-3 lg:space-y-4 text-center lg:text-left order-1 lg:order-1">
+
+              {/* Main Headline */}
+              <AnimatedSection animation="slideRight" delay={0}>
+                <div className="relative">
+                  {/* Decorative balloons - positioned above "Safe Learning" */}
+                  <div className="absolute -top-6 sm:-top-10 lg:-top-14 right-2 sm:right-6 lg:right-10 flex gap-1.5 sm:gap-2.5">
+                    <motion.div
+                      className="w-8 h-8 sm:w-10 sm:h-10 lg:w-14 lg:h-14 flex-shrink-0"
+                      style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+                      animate={{
+                        rotate: [13.97, 18.97, 13.97],
+                        y: [0, -5, 0]
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      whileHover={{
+                        rotate: 25,
+                        scale: 1.2,
+                        transition: { type: "spring", stiffness: 300, damping: 10 }
+                      }}
+                    >
+                      <img
+                        src={`${base}/decorative-element-hero-1.svg`}
+                        alt=""
+                        className="w-full h-full object-contain"
+                      />
+                    </motion.div>
+                    <motion.div
+                      className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 flex-shrink-0"
+                      style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+                      animate={{
+                        rotate: [344.472, 339.472, 344.472],
+                        y: [0, 5, 0]
+                      }}
+                      transition={{
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.8
+                      }}
+                      whileHover={{
+                        rotate: 320,
+                        scale: 1.15,
+                        transition: { type: "spring", stiffness: 300, damping: 10 }
+                      }}
+                    >
+                      <img
+                        src={`${base}/decorative-element-hero-2.svg`}
+                        alt=""
+                        className="w-full h-full object-contain"
+                      />
+                    </motion.div>
+                  </div>
+
+                  <motion.h1
+                    className="font-['Baloo_2:SemiBold',_sans-serif] font-semibold text-[#0D1013] text-3xl sm:text-4xl md:text-5xl lg:text-[52px] leading-tight lg:leading-[1.15] tracking-tight"
+                    whileHover={{ scale: 1.01 }}
                   >
-                    <img
-                      src={`${base}/decorative-element-hero-1.svg`}
-                      alt="Decorative element 1"
-                      className="w-full h-full object-contain mr-2 sm:mr-4 lg:mr-6 -mb-2 sm:-mb-4 lg:-mb-6"
-                    />
-                  </motion.div>
-                  <motion.div
-                    className="flex h-16 sm:h-18 md:h-20 lg:h-[120px] items-center justify-center w-10 sm:w-11 md:w-12 lg:w-[60px]"
-                    style={{ transform: 'translateZ(0)', willChange: 'transform' }}
-                    animate={{
-                      rotate: [344.472, 339.472, 344.472],
-                      y: [0, 5, 0]
-                    }}
-                    transition={{
-                      duration: 5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: 0.8
-                    }}
-                    whileHover={{
-                      rotate: 320,
-                      scale: 1.15,
-                      transition: { type: "spring", stiffness: 300, damping: 10 }
-                    }}
-                  >
-                    <img
-                      src={`${base}/decorative-element-hero-2.svg`}
-                      alt="Decorative element 2"
-                      className="w-full h-full object-contain"
-                    />
-                  </motion.div>
+                    Parental Control &{' '}
+                    <motion.span
+                      className="text-[#E05C41] inline-block relative"
+                      whileHover={{
+                        scale: 1.05,
+                        textShadow: "0 0 20px rgba(224, 92, 65, 0.4)"
+                      }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
+                      Safe Learning
+                    </motion.span>
+                    {' '}for Muslim Kids
+                  </motion.h1>
                 </div>
-                {/* Heading */}
-                <motion.h1
-                  className="font-['Baloo_2:SemiBold',_sans-serif] font-semibold text-[#222222] text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight md:leading-normal lg:leading-[70px] tracking-tight md:tracking-normal lg:tracking-[-0.56px]"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  The Ultimate <motion.span
-                    className="text-[#ff4848] inline-block"
-                    whileHover={{
-                      scale: 1.1,
-                      textShadow: "0 0 20px rgba(255, 72, 72, 0.5)"
-                    }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >Safe & Fun</motion.span> Edutainment Hub for Kids with <motion.span
-                    className="text-[#ff4848] inline-block"
-                    whileHover={{
-                      scale: 1.1,
-                      textShadow: "0 0 20px rgba(255, 72, 72, 0.5)"
-                    }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >Smart Parental Control</motion.span>
-                </motion.h1>
-
-                {/* Description */}
                 <motion.p
-                  className="font-['Baloo_2:Medium',_sans-serif] font-medium text-[#4a4b4d] text-base sm:text-lg leading-normal tracking-normal sm:tracking-[-0.18px] w-full"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
+                  className="font-['Baloo_2:Medium',_sans-serif] text-[#4a4b4d] text-sm sm:text-base lg:text-lg mt-2 lg:mt-4 max-w-xl mx-auto lg:mx-0"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  Discover stories, games, and learning tools—all in<br />
-                  a secure space made just for kids.
+                  Give your child ad-free, curated videos, Qur&apos;an learning tools, games, and complete parental controls — all in one app
                 </motion.p>
-              </div>
+              </AnimatedSection>
 
-              {/* CTA Buttons */}
-              <motion.div
-                className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-3 md:gap-4 mt-6 sm:mt-7 md:mt-8 lg:mt-10 w-full sm:w-auto"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                {/* Buy Premium Button */}
-                <motion.button
-                  className="relative bg-[#ff4848] rounded-lg px-3 sm:px-4 md:px-5 py-2 sm:py-3 md:py-4 h-9 sm:h-11 md:h-12 flex items-center gap-1 sm:gap-2 w-full sm:w-[157px] justify-center cursor-pointer overflow-hidden shadow-lg whitespace-nowrap"
-                  style={{ transform: 'translateZ(0)', willChange: 'transform, box-shadow' }}
-                  animate={{
-                    scale: [1, 1.08, 1],
-                    boxShadow: [
-                      "0 4px 15px rgba(255, 72, 72, 0.4)",
-                      "0 8px 30px rgba(255, 72, 72, 0.6)",
-                      "0 4px 15px rgba(255, 72, 72, 0.4)"
-                    ]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  whileHover={{
-                    scale: 1.15,
-                    backgroundColor: "#ff3030",
-                    boxShadow: "0 15px 40px rgba(255, 72, 72, 0.7)",
-                    transition: { duration: 0.2 }
-                  }}
-                  whileTap={{
-                    scale: 0.95,
-                    backgroundColor: "#e02020",
-                    transition: { duration: 0.1 }
-                  }}
-                  onClick={() => {
-                    const pricingSection = document.getElementById('pricing');
-                    if (pricingSection) {
-                      pricingSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                      });
-                    }
-                  }}
-                >
-                  {/* Strong shimmer effect */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12"
+              {/* CTA Button */}
+              <AnimatedSection animation="fadeUp" delay={0.3}>
+                <div className="space-y-2">
+                  <motion.button
+                    className="bg-[#E05C41] text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-xl shadow-lg font-['Baloo_2:SemiBold',_sans-serif] text-sm sm:text-base md:text-lg font-semibold cursor-pointer relative overflow-hidden"
+                    style={{ transform: 'translateZ(0)', willChange: 'transform, box-shadow' }}
                     animate={{
-                      x: ["-200%", "300%"]
-                    }}
-                    transition={{
-                      duration: 1.2,
-                      repeat: Infinity,
-                      ease: "easeOut",
-                      repeatDelay: 0.3
-                    }}
-                  />
-
-                  {/* Pulsing glow ring */}
-                  <motion.div
-                    className="absolute -inset-1 bg-[#ff4848] rounded-lg opacity-30"
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.3, 0.1, 0.3]
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
-
-                  {/* Bright flash effect */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-transparent via-white/30 to-transparent"
-                    animate={{
-                      opacity: [0, 0, 0.6, 0],
-                      y: ["100%", "-100%"]
+                      scale: [1, 1.05, 1],
+                      boxShadow: [
+                        "0 4px 15px rgba(224, 92, 65, 0.3)",
+                        "0 8px 30px rgba(224, 92, 65, 0.5)",
+                        "0 4px 15px rgba(224, 92, 65, 0.3)"
+                      ]
                     }}
                     transition={{
                       duration: 2.5,
                       repeat: Infinity,
-                      ease: "easeOut",
-                      repeatDelay: 1
-                    }}
-                  />
-
-                  {/* Diamond Icon */}
-                  <motion.img
-                    src={`${base}/diamond-icon.svg`}
-                    alt="Diamond"
-                    className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 flex-shrink-0"
-                    animate={{
-                      rotate: [0, 45, 0, -45, 0],
-                      scale: [1, 1.1, 1, 1.1, 1]
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
                       ease: "easeInOut"
                     }}
-                  />
-
-                  <motion.span
-                    className="text-white text-xs sm:text-sm font-['Baloo_2:Bold',_sans-serif] font-bold leading-5 sm:leading-6 relative z-10"
-                    animate={{
-                      textShadow: [
-                        "0 0 10px rgba(255, 255, 255, 0.5)",
-                        "0 0 20px rgba(255, 255, 255, 0.8)",
-                        "0 0 10px rgba(255, 255, 255, 0.5)"
-                      ]
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    Unlock Premium
-                  </motion.span>
-                </motion.button>
-
-                {/* App Store Badges - Row on all screen sizes */}
-                <div className="flex flex-row gap-3 sm:gap-3 md:gap-4 w-full sm:w-auto items-center">
-                  <motion.a
-                    href="https://play.google.com/store/apps/details?id=com.kahf.kids&pcampaignid=web_share"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-1/2 sm:w-[170px] md:w-[175px] lg:w-[180px] h-12 sm:h-11 md:h-12 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                     whileHover={{
-                      scale: 1.05,
-                      y: -2,
-                      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                      scale: 1.08,
+                      backgroundColor: "#c94d32",
+                      boxShadow: "0 15px 40px rgba(224, 92, 65, 0.6)",
+                      transition: { duration: 0.2 }
                     }}
                     whileTap={{
                       scale: 0.97,
-                      boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
+                      backgroundColor: "#b5432b",
+                      transition: { duration: 0.1 }
+                    }}
+                    onClick={() => {
+                      const pricingSection = document.getElementById('pricing');
+                      if (pricingSection) {
+                        pricingSection.scrollIntoView({
+                          behavior: 'smooth',
+                          block: 'start'
+                        });
+                      }
                     }}
                   >
-                    <img
-                      src={`${base}/app-store-badge.svg`}
-                      alt="Download on App Store"
-                      className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
+                    {/* Shimmer effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12"
+                      animate={{
+                        x: ["-200%", "300%"]
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeOut",
+                        repeatDelay: 0.5
+                      }}
                     />
-                  </motion.a>
-                  <motion.a
-                    href="https://apps.apple.com/us/app/kahf-kids-for-child-parents/id6605937095"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-1/2 sm:w-[170px] md:w-[175px] lg:w-[180px] h-12 sm:h-11 md:h-12 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
-                    whileHover={{
-                      scale: 1.05,
-                      y: -2,
-                      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-                    }}
-                    whileTap={{
-                      scale: 0.97,
-                      boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
-                    }}
-                  >
-                    <img
-                      src={`${base}/google-play-badge.svg`}
-                      alt="Get it on Google Play"
-                      className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
-                    />
-                  </motion.a>
+                    <span className="relative z-10">Start Your Free Trial</span>
+                  </motion.button>
                 </div>
-                <motion.div
-                  className="hidden lg:flex items-center justify-center w-10 sm:w-12 lg:w-14 h-10 sm:h-12 lg:h-14 ml-4 sm:ml-8 lg:ml-12 mt-8 sm:mt-10 lg:mt-12"
-                  animate={{
-                    rotate: [0, 360],
-                    scale: [1, 1.1, 1]
-                  }}
-                  transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                >
+              </AnimatedSection>
+
+              {/* Platform Availability */}
+              <AnimatedSection animation="fadeUp" delay={0.4}>
+                <div className="space-y-1.5 flex flex-col items-center lg:items-start">
+                  <p className="text-xs text-[#4a4b4d] font-['Baloo_2:Medium',_sans-serif]">
+                    Available on:
+                  </p>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 0.9, scale: 1 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="opacity-90 hover:opacity-100 transition-opacity"
+                  >
+                    <picture>
+                      <source
+                        srcSet={`${base}/platform-group-mobile.png`}
+                        media="(max-width: 640px)"
+                      />
+                      <img
+                        src={`${base}/platform-group.png`}
+                        alt="Available on iOS, Android, Android TV, Fire TV, Kindle, and Web"
+                        className="w-full max-w-[200px] sm:max-w-[280px] h-auto object-contain"
+                      />
+                    </picture>
+                  </motion.div>
+                </div>
+              </AnimatedSection>
+
+              {/* Trust & Stats Section */}
+              <AnimatedSection animation="fadeUp" delay={0.5}>
+                <div className="space-y-3 flex flex-col items-center lg:items-start">
+                  {/* Trust Badge */}
+                  <motion.div
+                    className="inline-flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-[#E05C41]/10 to-[#E05C41]/5 border border-[#E05C41]/20 rounded-lg px-3 sm:px-4 py-1.5 sm:py-2"
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                  >
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#E05C41]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
+                    </svg>
+                    <span className="text-[#E05C41] text-sm sm:text-base font-semibold font-['Baloo_2:SemiBold',_sans-serif]">
+                      Trusted By 270K+ Parents
+                    </span>
+                  </motion.div>
+
+                  {/* Stats Row - Simplified to 2 key stats */}
+                  <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 sm:gap-3">
+                    <motion.div
+                      className="flex items-center gap-1.5 sm:gap-2 bg-white border border-gray-200 rounded-lg px-2.5 sm:px-3 py-1.5 shadow-sm"
+                      whileHover={{ y: -2, scale: 1.01 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                    >
+                      <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E05C41]" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <div>
+                        <div className="text-[#E05C41] font-bold text-sm sm:text-base font-['Baloo_2:SemiBold',_sans-serif]">23k+</div>
+                        <div className="text-[#4a4b4d] text-[10px] sm:text-xs font-medium">Videos</div>
+                      </div>
+                    </motion.div>
+
+                    <motion.div
+                      className="flex items-center gap-1.5 sm:gap-2 bg-white border border-gray-200 rounded-lg px-2.5 sm:px-3 py-1.5 shadow-sm"
+                      whileHover={{ y: -2, scale: 1.01 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                    >
+                      <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E05C41]" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                      </svg>
+                      <div>
+                        <div className="text-[#E05C41] font-bold text-sm sm:text-base font-['Baloo_2:SemiBold',_sans-serif]">100%</div>
+                        <div className="text-[#4a4b4d] text-[10px] sm:text-xs font-medium">Ads Free</div>
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
+              </AnimatedSection>
+
+            </div>
+
+            {/* RIGHT: Device Mockup */}
+            <AnimatedSection animation="scaleIn" delay={0.2} className="flex justify-center order-2 lg:order-2">
+              <motion.div
+                className="relative w-full lg:w-auto flex justify-center"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                whileHover={{
+                  scale: 1.02,
+                  rotate: [-1, 1, -1],
+                  transition: { duration: 0.5, repeat: Infinity, repeatType: "reverse" }
+                }}
+              >
+                <div className="relative origin-bottom">
                   <img
-                    src={`${base}/decorative-element-hero-3.svg`}
-                    alt="Decorative element 3"
-                    className="w-full h-full object-contain"
+                    src={mockupSrc}
+                    alt="Kahf Kids App - Parental Control & Safe Learning for Muslim Kids"
+                    className="w-full h-auto object-contain max-w-[180px] sm:max-w-[240px] md:max-w-[300px] lg:max-w-[360px] xl:max-w-[400px]"
                   />
-                </motion.div>
+                </div>
               </motion.div>
             </AnimatedSection>
 
-            {/* iPhone Mockup */}
-            <motion.div
-              className="flex-1 lg:flex-[1] flex justify-center lg:justify-end order-1 lg:order-2 mt-4 sm:mt-6 lg:mt-8 relative z-20 lg:pr-0"
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              whileHover={{
-                scale: 1.02,
-                rotate: [-1, 1, -1],
-                transition: { duration: 0.5, repeat: Infinity, repeatType: "reverse" }
-              }}
-            >
-              <div className="relative w-full lg:w-auto origin-top -mb-12 sm:-mb-16 md:-mb-20 lg:-mb-24 xl:-mb-32 -translate-x-6 lg:transform lg:translate-x-8">
-                <img
-                  src={mockupSrc}
-                  alt="iPhone 11 with Kahf Kids App"
-                  className="w-full h-auto object-contain max-w-[320px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[450px] xl:max-w-[520px]"
-                />
-              </div>
-            </motion.div>
           </div>
         </div>
       </div>

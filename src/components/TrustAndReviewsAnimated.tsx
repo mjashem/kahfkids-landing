@@ -1,6 +1,88 @@
-import { AnimatedSection } from './AnimatedSection';
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import { AnimatedSection } from './AnimatedSection';
+import HeroAppRatings from './HeroAppRatings';
+import HeroTrustBadge from './HeroTrustBadge';
+
+// Stat data interface
+interface StatItem {
+  id: number;
+  value: string;
+  label: string;
+  color: string;
+  icon: string;
+}
+
+// Statistics data
+const statisticsData: StatItem[] = [
+  {
+    id: 1,
+    value: "21,000+",
+    label: "Curated Videos",
+    color: "text-[#E05C41]",
+    icon: `<svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>`
+  },
+  {
+    id: 2,
+    value: "4.9★",
+    label: "Parent Rating",
+    color: "text-yellow-500",
+    icon: `<svg class="w-full h-full" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+    </svg>`
+  },
+  {
+    id: 3,
+    value: "24/7",
+    label: "Parental Control",
+    color: "text-purple-500",
+    icon: `<svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+    </svg>`
+  }
+];
+
+// Trust badge data interface
+interface TrustBadge {
+  id: number;
+  text: string;
+  icon: string;
+}
+
+// Trust badges data
+const trustBadgesData: TrustBadge[] = [
+  {
+    id: 1,
+    text: "Google Play Editors' Choice",
+    icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
+    </svg>`,
+  },
+  {
+    id: 2,
+    text: "#1 Parental Control App for Muslims",
+    icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+    </svg>`,
+  },
+  {
+    id: 3,
+    text: "COPPA Compliant",
+    icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+    </svg>`,
+  },
+  {
+    id: 4,
+    text: "Featured in Muslim Parenting Communities",
+    icon: `<svg class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+    </svg>`,
+  }
+];
 
 // Review data interface
 interface Review {
@@ -11,7 +93,7 @@ interface Review {
   highlight?: string;
 }
 
-// Review data - moved outside component to prevent recreation
+// Review data
 const reviewsData: Review[] = [
   {
     id: 1,
@@ -50,24 +132,52 @@ const reviewsData: Review[] = [
   }
 ];
 
-// Helper to detect device performance
-const usePerformanceDetection = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [isLowEndDevice, setIsLowEndDevice] = useState(false);
+// Stat Card Component
+const StatCard = React.memo(({ stat, index }: { stat: StatItem; index: number }) => {
+  return (
+    <AnimatedSection
+      animation="fadeUp"
+      delay={index * 0.05}
+      duration={0.3}
+      threshold={0.3}
+    >
+      <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-md hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-  useEffect(() => {
-    const mobile = typeof window !== 'undefined' && window.innerWidth < 1024;
-    const lowEnd = typeof window !== 'undefined' &&
-      (navigator.hardwareConcurrency || 4) < 4;
+        {/* Icon */}
+        <div className="flex justify-center mb-3 relative z-10">
+          <div
+            className={`w-8 h-8 sm:w-10 sm:h-10 ${stat.color} group-hover:scale-110 transition-transform duration-300`}
+            dangerouslySetInnerHTML={{ __html: stat.icon }}
+          />
+        </div>
 
-    setIsMobile(mobile);
-    setIsLowEndDevice(lowEnd);
-  }, []);
+        {/* Value */}
+        <div className="text-center relative z-10">
+          <h3
+            className={`font-bold ${stat.color} mb-1`}
+            style={{
+              fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+              lineHeight: '1.2'
+            }}
+          >
+            {stat.value}
+          </h3>
+          <p className="text-gray-600 font-medium text-xs sm:text-sm">
+            {stat.label}
+          </p>
+        </div>
 
-  return { isMobile, isLowEndDevice };
-};
+        {/* Decorative corner element */}
+        <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-[#E05C41]/10 to-transparent rounded-bl-2xl" />
+      </div>
+    </AnimatedSection>
+  );
+});
+StatCard.displayName = 'StatCard';
 
-// Star rating component - memoized to prevent unnecessary re-renders
+// Star rating component
 const StarRating = React.memo(({ rating, size = "normal" }: { rating: number; size?: "small" | "normal" | "large" }) => {
   const sizeClasses = {
     small: "w-4 h-4",
@@ -93,7 +203,7 @@ const StarRating = React.memo(({ rating, size = "normal" }: { rating: number; si
 });
 StarRating.displayName = 'StarRating';
 
-// Review Card Component - memoized with optimized animations
+// Review Card Component
 const ReviewCard = React.memo(({ review, isActive, isNext, isPrev, isMobile }: {
   review: Review;
   isActive: boolean;
@@ -107,7 +217,6 @@ const ReviewCard = React.memo(({ review, isActive, isNext, isPrev, isMobile }: {
       x: 0,
       opacity: 1,
       zIndex: 10,
-      // Remove blur filter on mobile - use opacity only for better performance
       transition: isMobile
         ? { duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] as const }
         : { type: "spring" as const, stiffness: 300, damping: 30 }
@@ -211,13 +320,18 @@ const ReviewCard = React.memo(({ review, isActive, isNext, isPrev, isMobile }: {
 });
 ReviewCard.displayName = 'ReviewCard';
 
-const SocialProofAnimated = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const { isMobile, isLowEndDevice } = usePerformanceDetection();
+const TrustAndReviewsAnimated = () => {
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const intervalRef = React.useRef<ReturnType<typeof setInterval> | null>(null);
+  const [isMobile, setIsMobile] = React.useState(false);
 
-  // Auto-rotate reviews continuously
-  useEffect(() => {
+  React.useEffect(() => {
+    const mobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+    setIsMobile(mobile);
+  }, []);
+
+  // Auto-rotate reviews
+  React.useEffect(() => {
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % reviewsData.length);
     }, 5000);
@@ -230,7 +344,7 @@ const SocialProofAnimated = () => {
   }, []);
 
   // Handle custom event for card clicks
-  useEffect(() => {
+  React.useEffect(() => {
     const handleGoToReview = (event: Event) => {
       const customEvent = event as CustomEvent<number>;
       const reviewId = customEvent.detail;
@@ -244,61 +358,30 @@ const SocialProofAnimated = () => {
     return () => window.removeEventListener('goToReview', handleGoToReview);
   }, []);
 
-  // Memoize navigation handlers to prevent recreation
-  const goToSlide = useCallback((index: number) => {
+  const goToSlide = React.useCallback((index: number) => {
     setCurrentIndex(index);
   }, []);
 
-  const goToPrevious = useCallback(() => {
+  const goToPrevious = React.useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + reviewsData.length) % reviewsData.length);
   }, []);
 
-  const goToNext = useCallback(() => {
+  const goToNext = React.useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % reviewsData.length);
   }, []);
 
   return (
-    <div id="social-proof" className="bg-gradient-to-br from-[#fafafa] via-[#fef6f6] to-[#fefefe] py-16 lg:py-24 relative overflow-hidden">
-      {/* Decorative background elements - optimized for mobile */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Only show 1 background on mobile, 3 on desktop */}
-        {isMobile || isLowEndDevice ? (
-          <motion.div
-            animate={{
-              rotate: [0, 360],
-              transition: { duration: 100, repeat: Infinity, ease: "linear" }
-            }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-[#ff4848]/2 to-transparent rounded-full blur-3xl"
-            style={{ contain: 'layout style paint' }}
-          />
-        ) : (
-          <>
-            <motion.div
-              animate={{
-                rotate: [0, 360],
-                transition: { duration: 50, repeat: Infinity, ease: "linear" }
-              }}
-              className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-[#ff4848]/3 to-transparent rounded-full blur-3xl"
-              style={{ contain: 'layout style paint' }}
-            />
-            <motion.div
-              animate={{
-                rotate: [360, 0],
-                transition: { duration: 60, repeat: Infinity, ease: "linear" }
-              }}
-              className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-tl from-[#ff4848]/3 to-transparent rounded-full blur-3xl"
-              style={{ contain: 'layout style paint' }}
-            />
-            <motion.div
-              animate={{
-                rotate: [0, 360],
-                transition: { duration: 70, repeat: Infinity, ease: "linear" }
-              }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-[#ff4848]/2 to-transparent rounded-full blur-3xl"
-              style={{ contain: 'layout style paint' }}
-            />
-          </>
-        )}
+    <div className="bg-gradient-to-br from-[#fafafa] via-[#fef6f6] to-[#fefefe] py-16 lg:py-24 relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{
+            rotate: [0, 360],
+            transition: { duration: 100, repeat: Infinity, ease: "linear" }
+          }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-[#ff4848]/2 to-transparent rounded-full blur-3xl"
+          style={{ contain: 'layout style paint' }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -316,10 +399,9 @@ const SocialProofAnimated = () => {
                 letterSpacing: '-0.02em'
               }}
             >
-              Why Parents{" "}
-              <span className="bg-gradient-to-r from-[#ff4848] to-[#ff6b6b] bg-clip-text text-transparent">
-                Trust Kahf Kids
-              </span>
+              Trusted by <span className="bg-gradient-to-r from-[#ff4848] to-[#ff6b6b] bg-clip-text text-transparent">
+                Muslim Families
+              </span> Worldwide
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -328,66 +410,71 @@ const SocialProofAnimated = () => {
               className="text-[#4a4b4d] text-lg max-w-4xl mx-auto"
               style={{ fontSize: 'clamp(1.125rem, 2.5vw, 1.25rem)' }}
             >
-              Join thousands of Muslim families who{'\''}ve made the smart choice for safe, educational, and faith-based digital content
+              Join thousands of parents who trust Kahf Kids to provide a safe, halal digital environment for their children
             </motion.p>
           </div>
         </AnimatedSection>
 
-        {/* Rating Badge - Prominent Display */}
-        <AnimatedSection animation="fadeUp" delay={0.5} duration={0.6} threshold={0.3}>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
-            className="max-w-md mx-auto mb-16"
-          >
-            <div className="bg-white rounded-2xl p-6 shadow-xl text-center relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#ff4848]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#ff4848]/10 to-transparent rounded-bl-2xl" />
-
-              <div className="relative z-10">
-                <div className="flex justify-center mb-3">
-                  <StarRating rating={5} size="normal" />
-                </div>
-
-                <div className="mb-3">
-                  <span
-                    className="font-bold text-[#222222] block"
-                    style={{
-                      fontSize: 'clamp(2rem, 4vw, 2.75rem)',
-                      lineHeight: '1.2'
-                    }}
-                  >
-                    4.9★
-                  </span>
-                </div>
-
-                <p className="text-[#4a4b4d] font-medium mb-3 text-base">
-                  Rated by <span className="text-[#ff4848] font-bold">10,000+</span> Parents
-                </p>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8 }}
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-[#ff4848] to-[#ff6b6b] text-white px-5 py-2.5 rounded-full text-xs font-semibold shadow-md"
-                >
-                  <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  Trusted Choice for Families
-                </motion.div>
-              </div>
-
-              <motion.div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                style={{
-                  boxShadow: "0 0 30px rgba(255, 72, 72, 0.12)"
-                }}
-              />
-            </div>
-          </motion.div>
+        {/* App Ratings + Trust Badge Row */}
+        <AnimatedSection animation="fadeUp" delay={0.3} duration={0.6} threshold={0.3}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12">
+            <HeroAppRatings className="justify-center" />
+            <HeroTrustBadge />
+          </div>
         </AnimatedSection>
+
+        {/* Key Stats Grid */}
+        <AnimatedSection animation="fadeUp" delay={0.5} duration={0.6} threshold={0.3}>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto mb-12">
+            {statisticsData.map((stat, index) => (
+              <StatCard key={stat.id} stat={stat} index={index} />
+            ))}
+          </div>
+        </AnimatedSection>
+
+        {/* Trust Badges Strip */}
+        <AnimatedSection animation="fadeUp" delay={0.6} duration={0.6} threshold={0.3}>
+          <div className="mb-16">
+            <div className="text-center mb-8">
+              <h3 className="text-sm sm:text-base text-gray-500 font-medium tracking-wider uppercase">
+                Trusted & Recognized
+              </h3>
+            </div>
+            <div className="flex overflow-x-auto gap-8 sm:gap-12 pb-4 scrollbar-hide justify-center items-center">
+              {trustBadgesData.map((badge, index) => (
+                <AnimatedSection
+                  key={badge.id}
+                  animation="fadeUp"
+                  delay={index * 0.05}
+                  duration={0.3}
+                  threshold={0.3}
+                >
+                  <motion.div
+                    className="flex flex-col items-center gap-3 min-w-[150px] sm:min-w-[180px] cursor-pointer group"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {/* Icon */}
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 text-[#E05C41]/60 group-hover:text-[#E05C41] transition-colors duration-300">
+                      <div
+                        className="w-full h-full"
+                        dangerouslySetInnerHTML={{ __html: badge.icon }}
+                      />
+                    </div>
+
+                    {/* Text */}
+                    <p className="text-xs sm:text-sm text-gray-600 font-medium text-center leading-tight max-w-[160px]">
+                      {badge.text}
+                    </p>
+                  </motion.div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </AnimatedSection>
+
+        {/* Divider */}
+        <div className="border-t border-gray-200 mb-16 max-w-4xl mx-auto" />
 
         {/* Testimonials Section Header */}
         <AnimatedSection animation="fadeUp" delay={0.7} duration={0.6} threshold={0.3}>
@@ -415,7 +502,7 @@ const SocialProofAnimated = () => {
               className="text-[#4a4b4d] text-lg max-w-3xl mx-auto"
               style={{ fontSize: 'clamp(1rem, 2vw, 1.125rem)' }}
             >
-              Real experiences from families who trust us with their children{'\''}s digital journey
+              Real experiences from families who trust us with their children's digital journey
             </motion.p>
           </div>
         </AnimatedSection>
@@ -424,7 +511,6 @@ const SocialProofAnimated = () => {
         <div className="relative max-w-4xl mx-auto">
           <div className="relative h-[400px] md:h-[350px] mb-16">
             <div className="absolute inset-0 flex items-center justify-center">
-              {/* Only render visible cards (active, next, prev) for better performance */}
               {reviewsData.map((review, index) => {
                 const prevIndex = (currentIndex - 1 + reviewsData.length) % reviewsData.length;
                 const nextIndex = (currentIndex + 1) % reviewsData.length;
@@ -446,7 +532,7 @@ const SocialProofAnimated = () => {
             </div>
           </div>
 
-          {/* Navigation Arrows - Positioned between cards and progress indicators on mobile */}
+          {/* Navigation Arrows - Mobile */}
           <div className="flex items-center justify-center gap-6 mb-8 lg:hidden">
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -473,7 +559,7 @@ const SocialProofAnimated = () => {
             </motion.button>
           </div>
 
-          {/* Desktop Navigation Arrows - Outside the carousel container */}
+          {/* Desktop Navigation Arrows */}
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -516,8 +602,19 @@ const SocialProofAnimated = () => {
           </div>
         </div>
       </div>
+
+      {/* Add scrollbar hide styles */}
+      <style>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 };
 
-export default SocialProofAnimated;
+export default TrustAndReviewsAnimated;

@@ -40,47 +40,6 @@ const SafeScreenAnimated = () => {
         variants={containerVariants}
         className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-6 sm:gap-8 md:gap-10 items-center text-center"
       >
-        {/* Badge */}
-        <AnimatedSection
-          animation="fadeDown"
-          delay={0.1}
-          className="flex items-center gap-2 sm:gap-3 bg-white/20 backdrop-blur-sm border border-white/30 px-4 sm:px-6 py-2 sm:py-3 rounded-full"
-        >
-          <motion.div
-            variants={itemVariants}
-            whileHover={{
-              scale: 1.1,
-              rotate: [0, 10, -10, 0],
-              transition: { duration: 0.5 }
-            }}
-            className="w-5 h-5 sm:w-6 sm:h-6"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              className="w-full h-full text-white"
-            >
-              <path
-                d="M12 2L4 7V12C4 16.5 7.5 20.5 12 22C16.5 20.5 20 16.5 20 12V7L12 2Z"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M9 12L11 14L15 10"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </motion.div>
-          <span className="text-white text-sm sm:text-base font-medium">
-            Join 230,000+ Families
-          </span>
-        </AnimatedSection>
-
         {/* Main Heading */}
         <AnimatedSection
           animation="fadeUp"
@@ -136,58 +95,6 @@ const SafeScreenAnimated = () => {
               </span>
             </motion.div>
           ))}
-        </AnimatedSection>
-
-        {/* App Store Badges Only */}
-        <AnimatedSection
-          animation="fadeUp"
-          delay={0.4}
-          className="flex flex-row gap-3 sm:gap-4 w-full sm:w-auto justify-center"
-        >
-          <motion.a
-            href="https://play.google.com/store/apps/details?id=com.kahf.kids&pcampaignid=web_share"
-            target="_blank"
-            rel="noopener noreferrer"
-            variants={itemVariants}
-            whileHover={{
-              scale: 1.05,
-              y: -2,
-              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-            }}
-            whileTap={{
-              scale: 0.97,
-              boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
-            }}
-            className="w-1/2 sm:w-[170px] md:w-[175px] lg:w-[180px] h-12 sm:h-11 md:h-12 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
-          >
-            <img
-              src={`${base}/app-store-badge.svg`}
-              alt="Download on App Store"
-              className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
-            />
-          </motion.a>
-          <motion.a
-            href="https://apps.apple.com/us/app/kahf-kids-for-child-parents/id6605937095"
-            target="_blank"
-            rel="noopener noreferrer"
-            variants={itemVariants}
-            whileHover={{
-              scale: 1.05,
-              y: -2,
-              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-            }}
-            whileTap={{
-              scale: 0.97,
-              boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
-            }}
-            className="w-1/2 sm:w-[170px] md:w-[175px] lg:w-[180px] h-12 sm:h-11 md:h-12 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
-          >
-            <img
-              src={`${base}/google-play-badge.svg`}
-              alt="Get it on Google Play"
-              className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
-            />
-          </motion.a>
         </AnimatedSection>
 
         {/* Footer */}

@@ -15,7 +15,7 @@ export default defineConfig({
   output: 'static',
 
   // Trailing slash configuration
-  trailingSlash: 'never',
+  trailingSlash: 'ignore',
 
   integrations: [react()],
 

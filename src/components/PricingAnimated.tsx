@@ -58,9 +58,9 @@ const PricingAnimated = () => {
         "Lock kids' device",
         "Uninstall protection (Android only)"
       ],
-      buttonText: "Buy Premium for Monthly",
+      buttonText: "Start 7-Day Free Trial",
       isPopular: true,
-      badge: "Most Popular",
+      badge: "Start Free Trial",
       borderColor: "border-[#E05C41]"
     },
     {
@@ -78,9 +78,9 @@ const PricingAnimated = () => {
         "Uninstall protection (Android only)",
         "Save 50% compared to Monthly"
       ],
-      buttonText: "Buy Premium for Yearly",
+      buttonText: "Start 7-Day Free Trial",
       isBestValue: true,
-      badge: "Best Value",
+      badge: "7-Day Free Trial",
       borderColor: "border-[#E05C41]",
       isProminent: true
     }

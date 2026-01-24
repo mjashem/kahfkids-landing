@@ -2,14 +2,19 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
+import Statistics from "../components/Statistics.astro";
+import TrustAndReviews from "../components/TrustAndReviews.astro";
+import TrustBadges from "../components/TrustBadges.astro";
+import HowItWorks from "../components/HowItWorks.astro";
 import Features from "../components/Features.astro";
-import SocialProof from "../components/SocialProof.astro";
 import Ecosystem from "../components/Ecosystem.astro";
 import Pricing from "../components/Pricing.astro";
 import FAQ from "../components/FAQ.astro";
 import Devices from "../components/Devices.astro";
 import SafeScreen from "../components/SafeScreen.astro";
+import CTA from "../components/CTA.astro";
 import Footer from "../components/Footer.astro";
+import FloatingCTA from "../components/FloatingCTA";
 ---
 
 <Layout
@@ -20,14 +25,20 @@ import Footer from "../components/Footer.astro";
 
   <main>
     <Hero />
+    <Statistics />
+    <TrustAndReviews />
+    <TrustBadges />
+    <HowItWorks />
     <Features />
-    <SocialProof />
     <!-- <Ecosystem /> -->
     <Pricing />
     <FAQ />
-      <Devices />
+    <Devices />
     <SafeScreen />
+    <CTA />
   </main>
 
   <Footer />
+
+  <FloatingCTA client:load />
 </Layout>
