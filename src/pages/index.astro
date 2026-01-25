@@ -15,6 +15,7 @@ import SafeScreen from "../components/SafeScreen.astro";
 import CTA from "../components/CTA.astro";
 import Footer from "../components/Footer.astro";
 import FloatingCTA from "../components/FloatingCTA";
+import BottomBanner from "../components/BottomBanner";
 ---
 
 <Layout
@@ -41,4 +42,5 @@ import FloatingCTA from "../components/FloatingCTA";
   <Footer />
 
   <FloatingCTA client:load />
+  <BottomBanner client:load />
 </Layout>
