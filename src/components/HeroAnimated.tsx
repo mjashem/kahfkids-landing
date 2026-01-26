@@ -19,7 +19,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '', iphoneMocku
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-[#fff5f5] to-white" />
 
-      <div className="relative z-10 min-h-[calc(100vh-80px)] pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-4 sm:pb-6 md:pb-8 lg:pb-10">
+      <div className="relative z-10 pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-4 sm:pb-6 md:pb-8 lg:pb-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
 
