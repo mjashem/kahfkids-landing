@@ -68,9 +68,9 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '', iphoneMocku
 
               {/* CTA Button */}
               <AnimatedSection animation="fadeUp" delay={0.3}>
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2 items-center lg:items-start">
                   <motion.button
-                    className="bg-[#E05C41] text-white px-8 sm:px-10 md:px-12 py-3.5 sm:py-4 rounded-xl shadow-lg font-['Baloo_2:SemiBold',_sans-serif] text-base sm:text-lg lg:text-xl font-semibold cursor-pointer relative overflow-hidden"
+                    className="min-w-[240px] bg-[#E05C41] text-white px-8 sm:px-10 md:px-12 py-3.5 sm:py-4 rounded-xl shadow-lg font-['Baloo_2:SemiBold',_sans-serif] text-base sm:text-lg lg:text-xl font-semibold cursor-pointer relative overflow-hidden"
                     style={{ transform: 'translateZ(0)', willChange: 'transform, box-shadow' }}
                     animate={{
                       scale: [1, 1.05, 1],
@@ -119,7 +119,32 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '', iphoneMocku
                         repeatDelay: 0.5
                       }}
                     />
-                    <span className="relative z-10">Start Your Free Trial</span>
+                    <span className="relative z-10">Get Started Free</span>
+                  </motion.button>
+
+                  {/* Mobile Secondary Button */}
+                  <motion.button
+                    className="lg:hidden min-w-[240px] border-2 border-[#E05C41] text-[#E05C41] bg-transparent px-8 sm:px-10 md:px-12 py-3.5 sm:py-4 rounded-xl font-['Baloo_2:SemiBold',_sans-serif] text-base sm:text-lg lg:text-xl font-semibold cursor-pointer"
+                    whileHover={{
+                      scale: 1.05,
+                      backgroundColor: "rgba(224, 92, 65, 0.05)",
+                      transition: { duration: 0.2 }
+                    }}
+                    whileTap={{
+                      scale: 0.97,
+                      transition: { duration: 0.1 }
+                    }}
+                    onClick={() => {
+                      const pricingSection = document.getElementById('pricing');
+                      if (pricingSection) {
+                        pricingSection.scrollIntoView({
+                          behavior: 'smooth',
+                          block: 'start'
+                        });
+                      }
+                    }}
+                  >
+                    View Premium Plans
                   </motion.button>
 
                   {/* Pricing Transparency - Fills empty space, improves conversion */}
@@ -129,7 +154,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '', iphoneMocku
                     transition={{ duration: 0.6, delay: 0.5 }}
                     className="text-sm sm:text-base text-[#4a4b4d] text-center lg:text-left mt-2"
                   >
-                    7-day free trial • From $2.50/month • Cancel anytime
+                    No credit card required • Cancel anytime
                   </motion.p>
 
                   {/* Trust Pills */}
@@ -146,9 +171,9 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({ className = '', iphoneMocku
                       4.6★
                     </span>
                     <span className="inline-flex items-center gap-1 text-sm font-medium bg-[#E05C41]/10 text-[#E05C41] px-3 py-1.5 rounded-full">
-                      270K+ Downloads
+                      270K+ Families
                     </span>
-                    <span className="inline-flex items-center gap-1 text-sm font-medium bg-[#E05C41] text-white px-3 py-1.5 rounded-full">
+                    <span className="inline-flex items-center gap-1 text-sm font-medium bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-full">
                       <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd"/>
                       </svg>
