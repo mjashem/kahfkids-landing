@@ -43,6 +43,9 @@ export default defineConfig({
           drop_debugger: true,
         },
       },
+    },
+    server: {
+      allowedHosts: ['.coder.kahf.riajul.dev']
     }
     // REMOVED: Don't manually define BASE_URL - Astro handles this
   }

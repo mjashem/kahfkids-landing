@@ -168,15 +168,15 @@ const PricingAnimated = () => {
                   scale: 1.02,
                   transition: { duration: 0.3 }
                 }}
-                className={`relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 ${
+                className={`relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col ${
                   plan.isProminent
-                    ? 'border-4 border-[#E05C41] md:scale-105 md:z-10'
+                    ? 'border-4 border-[#E05C41] md:z-10'
                     : 'border-2 border-gray-100'
                 }`}
               >
                 {/* Badge */}
                 {plan.badge && (
-                  <div className="absolute -top-0 -right-0 bg-gradient-to-br from-[#E05C41] to-[#c94d32] text-white px-6 py-2 rounded-bl-3xl shadow-lg">
+                  <div className="absolute -top-1 -right-0 bg-gradient-to-br from-[#E05C41] to-[#c94d32] text-white px-5 py-2 rounded-bl-3xl shadow-lg">
                     <span className="text-xs font-bold uppercase tracking-wider">
                       {plan.badge}
                     </span>
@@ -184,7 +184,7 @@ const PricingAnimated = () => {
                 )}
 
                 {/* Card Content */}
-                <div className="p-6 sm:p-8">
+                <div className="p-6 sm:p-8 flex flex-col flex-1">
                   {/* Plan Header */}
                   <div className="mb-6">
                     <h3 className="text-lg font-semibold text-[#0D1013] mb-3">
@@ -203,7 +203,7 @@ const PricingAnimated = () => {
                   </div>
 
                   {/* Features List */}
-                  <div className="mb-6 space-y-3 min-h-[280px] sm:min-h-[320px]">
+                  <div className="mb-6 space-y-3 flex-1">
                     {plan.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex gap-3 items-start">
                         <div className="flex-shrink-0 mt-1">
@@ -242,11 +242,11 @@ const PricingAnimated = () => {
                         {plan.buttonText}
                       </motion.button>
                     )}
-                    {plan.name !== 'Free' && (
+                    {plan.name !== 'Free' ? (
                       <p className="text-xs text-[#4a4b4d] text-center font-medium">
                         No credit card required · Cancel anytime
                       </p>
-                    )}
+                    ): <p className='text-xs text-[#4a4b4d] text-center font-medium'>Free Forever</p>}
                   </div>
                 </div>
               </motion.div>

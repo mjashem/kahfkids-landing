@@ -244,7 +244,7 @@ const ReviewsAnimated = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-br from-[#fafafa] via-[#fef6f6] to-[#fefefe] py-8 lg:py-12 relative overflow-hidden">
+    <div id="reviews" className="bg-gradient-to-br from-[#fafafa] via-[#fef6f6] to-[#fefefe] py-8 lg:py-12 relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
