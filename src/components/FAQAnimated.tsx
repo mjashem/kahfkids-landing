@@ -91,7 +91,7 @@ const FAQAnimated: React.FC = () => {
   );
 
   return (
-    <section id="faq" className="bg-white py-16 md:py-24">
+    <section id="faq" className="bg-white py-8 md:py-12">
       <div className="container mx-auto px-4">
         <AnimatedSection animation="fadeIn" className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-semibold text-[#222222] tracking-[-0.42px] mb-4">

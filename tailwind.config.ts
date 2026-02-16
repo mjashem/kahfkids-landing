@@ -9,6 +9,8 @@ export default {
         'kahf-dark': '#0D1013', // Headline/100
         'kahf-white': '#FFFFFF', // BG-White
         'kahf-accent': '#E05C41', // Danger/100
+        'kahf-accent-hover': '#C74D34', // Darker shade for hover
+        'kahf-accent-light': '#F8EBE8', // Light tint for secondary hover
         'kahf-black': '#000000', // Pure black
       },
       fontFamily: {
@@ -43,6 +45,10 @@ export default {
         '128': '32rem',
         '144': '36rem',
         '160': '40rem',
+      },
+      boxShadow: {
+        'cta': '0 4px 15px rgba(224, 92, 65, 0.3)',
+        'cta-hover': '0 6px 20px rgba(224, 92, 65, 0.4)',
       },
     },
   },

@@ -30,97 +30,106 @@ interface FeaturedInLogo {
 const impactMetricsData: ImpactMetric[] = [
   {
     id: 1,
-    value: "2M+",
-    label: "Safe Hours Watched",
-    description: "Children engaging with halal, educational content daily",
+    value: "270K+",
+    label: "Trusted By Parents",
+    description: "Muslim families worldwide trust Kahf Kids for their children's digital safety",
     icon: `<svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
     </svg>`,
     color: "text-[#E05C41]"
   },
   {
     id: 2,
-    value: "50K+",
-    label: "Hours Saved from Ads",
-    description: "Ad-free experience saves time compared to regular YouTube",
+    value: "23K+",
+    label: "Mufties Approved Videos",
+    description: "Islamic scholars verify every piece of content for authenticity",
     icon: `<svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
     </svg>`,
     color: "text-[#E05C41]"
   },
   {
     id: 3,
-    value: "100K+",
-    label: "Times Protected",
-    description: "Active protection from indecent content",
+    value: "100%",
+    label: "Ads Free",
+    description: "Zero advertisements for a pure, distraction-free learning experience",
     icon: `<svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01"></path>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
+      <circle cx="12" cy="12" r="9" stroke-width="2"></circle>
     </svg>`,
     color: "text-[#E05C41]"
   },
   {
     id: 4,
-    value: "45 min",
-    label: "Avg. Daily Learning",
-    description: "Balanced screen time parents love and kids enjoy",
+    value: "✓",
+    label: "Teacher Approved",
+    description: "Educators recommend Kahf Kids for quality Islamic education",
     icon: `<svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>
     </svg>`,
     color: "text-[#E05C41]"
   }
 ];
 
 
-// Featured In - Media logos (placeholder data - update with real logos)
+// Featured In - Media logos (actual downloaded logos)
 const featuredInData: FeaturedInLogo[] = [
   {
     id: 1,
-    name: "Productive Muslim",
-    logo: `<svg class="w-24 h-12" viewBox="0 0 120 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="10" width="8" height="20" rx="2"/>
-      <rect x="12" y="5" width="8" height="30" rx="2"/>
-      <rect x="24" y="15" width="8" height="10" rx="2"/>
-      <text x="40" y="28" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="currentColor">Productive Muslim</text>
-    </svg>`
+    name: "Somoy TV",
+    logo: `<img loading="lazy" src="${import.meta.env.BASE_URL}somoy-tv-logo.png" alt="Somoy TV" class="h-10 sm:h-12 w-auto object-contain" />`
   },
   {
     id: 2,
-    name: "Muslim Pro",
-    logo: `<svg class="w-24 h-12" viewBox="0 0 120 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" stroke-width="3"/>
-      <path d="M20 12 L20 28 M12 20 L28 20" stroke="currentColor" stroke-width="2"/>
-      <text x="40" y="28" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="currentColor">Muslim Pro</text>
-    </svg>`
+    name: "Daily Star",
+    logo: `<img loading="lazy" src="${import.meta.env.BASE_URL}daily-star-logo.svg" alt="The Daily Star" class="h-10 w-auto object-contain" />`
   },
   {
     id: 3,
-    name: "Islamicity",
-    logo: `<svg class="w-24 h-12" viewBox="0 0 120 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 20 L20 10 L30 20 L20 30 Z" fill="none" stroke="currentColor" stroke-width="2"/>
-      <circle cx="20" cy="20" r="6" fill="currentColor"/>
-      <text x="40" y="28" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="currentColor">Islamicity</text>
-    </svg>`
+    name: "Future Startup",
+    logo: `<img loading="lazy" src="${import.meta.env.BASE_URL}future-startup-logo.png" alt="Future Startup" class="h-10 sm:h-12 w-auto object-contain" />`
   },
   {
     id: 4,
-    name: "IlmFeed",
-    logo: `<svg class="w-24 h-12" viewBox="0 0 120 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <rect x="8" y="12" width="24" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path d="M14 20 L18 24 L26 16" stroke="currentColor" stroke-width="2" fill="none"/>
-      <text x="40" y="28" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="currentColor">IlmFeed</text>
-    </svg>`
+    name: "Banglavision",
+    logo: `<img loading="lazy" src="${import.meta.env.BASE_URL}banglavision-logo.png" alt="Banglavision" class="h-10 sm:h-12 w-auto object-contain" />`
   },
   {
     id: 5,
-    name: "Muslim Central",
-    logo: `<svg class="w-24 h-12" viewBox="0 0 140 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="18" cy="20" r="10" fill="currentColor"/>
-      <circle cx="40" cy="20" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
-      <text x="60" y="28" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="currentColor">Muslim Central</text>
-    </svg>`
+    name: "Naya Diganta",
+    logo: `<img loading="lazy" src="${import.meta.env.BASE_URL}naya-diganta-logo.png" alt="Naya Diganta" class="h-10 sm:h-12 invert w-auto object-contain" />`
+  },
+  {
+    id: 6,
+    name: "Khoborer Kagoz",
+    logo: `<img loading="lazy" src="${import.meta.env.BASE_URL}khoborer-kagoz-logo.png" alt="Khborere Kagoz" class="h-10 w-auto object-contain" />`
+  },
+  {
+    id: 7,
+    name: "Islam Online",
+    logo: `<img loading="lazy" src="${import.meta.env.BASE_URL}islam-online-logo.svg" alt="Islam Online" class="h-10 sm:h-12 w-auto object-contain" />`
+  },
+  {
+    id: 8,
+    name: "Khola Kagoz",
+    logo: `<img loading="lazy" src="${import.meta.env.BASE_URL}khola-kagoj-logo.png" alt="Khola Kagoz" class="h-10 w-auto object-contain" />`
+  },
+  {
+    id: 9,
+    name: "Dainik Inkilab",
+    logo: `<img loading="lazy" src="${import.meta.env.BASE_URL}dainik-inqilab-logo.png" alt="Dainik Inkilab" class="h-10 sm:h-12 w-auto object-contain" />`
+  },
+  {
+    id: 10,
+    name: "Digibanglatech",
+    logo: `<img loading="lazy" src="${import.meta.env.BASE_URL}digibanglatech-logo.png" alt="Digibanglatech" class="h-10 sm:h-12 w-auto object-contain" />`
+  },
+  {
+    id: 11,
+    name: "Samakal",
+    logo: `<img loading="lazy" src="${import.meta.env.BASE_URL}samakal-logo.png" alt="Samakal" class="h-6 translate-y-1 w-auto object-contain" />`
   }
 ];
 
@@ -295,7 +304,7 @@ StatsBar.displayName = 'StatsBar';
 
 const TrustAnimated = () => {
   return (
-    <div className="bg-gradient-to-br from-[#fafafa] via-[#fef6f6] to-[#fefefe] py-16 lg:py-20 relative overflow-hidden">
+    <div className="bg-gradient-to-br from-[#fafafa] via-[#fef6f6] to-[#fefefe] py-8 lg:py-12 relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -326,10 +335,11 @@ const TrustAnimated = () => {
                 letterSpacing: '-0.02em'
               }}
             >
-              Making a{" "}
+              Trusted by{" "}
               <span className="bg-gradient-to-r from-[#ff4848] to-[#ff6b6b] bg-clip-text text-transparent">
-                Real Impact
-              </span>
+                Muslim Families
+              </span>{" "}
+              Worldwide
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -337,7 +347,7 @@ const TrustAnimated = () => {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="text-[#4a4b4d] text-base sm:text-lg max-w-3xl mx-auto"
             >
-              See how Kahf Kids is protecting and enriching children's digital lives worldwide
+              Join over 270,000 parents providing safe, Islamic content for their children
             </motion.p>
           </div>
         </AnimatedSection>
@@ -391,35 +401,64 @@ const TrustAnimated = () => {
         </AnimatedSection>
 
         {/* ================================================================ */}
-        {/* FEATURED IN - Simplified                                        */}
+        {/* FEATURED IN - Auto-scrolling Horizontal                         */}
         {/* ================================================================ */}
         <AnimatedSection animation="fadeUp" delay={0.7} duration={0.5} threshold={0.3}>
-          <div className="text-center">
-            <span className="inline-block text-xs text-gray-400 font-medium tracking-widest uppercase mb-6">
+          <div className="text-center overflow-hidden">
+            <span className="inline-block text-xs text-gray-400 font-medium tracking-widest uppercase mb-8">
               As Featured In
             </span>
-            <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 lg:gap-10">
-              {featuredInData.map((item, index) => (
-                <AnimatedSection
-                  key={item.id}
-                  animation="fadeUp"
-                  delay={0.7 + (index * 0.08)}
-                  duration={0.3}
-                  threshold={0.3}
+
+            {/* Auto-scrolling container */}
+            <div className="relative">
+              {/* Gradient overlays for fade effect */}
+              <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#fef6f6] to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#fefefe] to-transparent z-10 pointer-events-none" />
+
+              {/* Scrolling track */}
+              <div className="overflow-hidden py-4">
+                <motion.div
+                  className="flex gap-12 lg:gap-16"
+                  animate={{
+                    x: [0, -1920], // Adjust based on content width
+                  }}
+                  transition={{
+                    x: {
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      duration: 40,
+                      ease: "linear",
+                    },
+                  }}
                 >
-                  <motion.div
-                    className="grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    title={item.name}
-                  >
+                  {/* First set of logos */}
+                  {featuredInData.map((item) => (
                     <div
-                      className="text-gray-400 hover:text-[#E05C41]"
-                      dangerouslySetInnerHTML={{ __html: item.logo }}
-                    />
-                  </motion.div>
-                </AnimatedSection>
-              ))}
+                      key={`first-${item.id}`}
+                      className="flex-shrink-0 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer px-4"
+                      title={item.name}
+                    >
+                      <div
+                        className="text-gray-600 hover:text-[#E05C41] flex items-center justify-center"
+                        dangerouslySetInnerHTML={{ __html: item.logo }}
+                      />
+                    </div>
+                  ))}
+                  {/* Duplicate set for seamless loop */}
+                  {featuredInData.map((item) => (
+                    <div
+                      key={`second-${item.id}`}
+                      className="flex-shrink-0 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer px-4"
+                      title={item.name}
+                    >
+                      <div
+                        className="text-gray-600 hover:text-[#E05C41] flex items-center justify-center"
+                        dangerouslySetInnerHTML={{ __html: item.logo }}
+                      />
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
             </div>
           </div>
         </AnimatedSection>

@@ -121,32 +121,43 @@ const PricingAnimated = () => {
   );
 
   return (
-    <div id="pricing" className="bg-[#fffbfb] py-16 sm:py-20 lg:py-24">
+    <div id="pricing" className="bg-gradient-to-b from-white to-[#fffbfb] py-12 lg:py-20">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col gap-24 lg:gap-32"
+        className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl"
       >
         {/* Pricing Section */}
         <AnimatedSection
           animation="fadeUp"
           delay={0}
-          className="flex flex-col gap-12 sm:gap-16 lg:gap-20 items-center"
+          className="flex flex-col gap-8 lg:gap-12 items-center"
         >
-          <div className="text-center">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#222222] leading-tight lg:leading-[1.2] capitalize tracking-tight mb-4 sm:mb-6">
-              Safe & Fun Content for Kids – at an Affordable Price
+          {/* Header */}
+          <div className="text-center max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-block mb-4 px-4 py-2 bg-[#E05C41]/10 rounded-full"
+            >
+              <span className="text-sm font-semibold text-[#E05C41] uppercase tracking-wide">
+                Simple Pricing
+              </span>
+            </motion.div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0D1013] mb-4 leading-tight">
+              Choose Your Perfect Plan
             </h2>
-            <p className="text-base sm:text-lg text-[#4a4b4d] tracking-tight max-w-2xl mx-auto">
-              Kahf Kids brings your child safe, halal, and fun content at an affordable price. Simple plans for a secure and joyful digital world.
+            <p className="text-base sm:text-lg text-[#4a4b4d] max-w-2xl mx-auto">
+              Start with our free plan or unlock premium features. All plans include safe, curated content.
             </p>
           </div>
 
+          {/* Pricing Cards */}
           <motion.div
             variants={containerVariants}
-            className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch justify-center w-full"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 w-full max-w-7xl"
           >
             {pricingPlans.map((plan, index) => (
               <motion.div
@@ -154,84 +165,109 @@ const PricingAnimated = () => {
                 variants={itemVariants}
                 whileHover={{
                   y: -8,
+                  scale: 1.02,
                   transition: { duration: 0.3 }
                 }}
-                className={`relative bg-white border-2 ${plan.borderColor} rounded-2xl p-6 sm:p-8 w-full shadow-lg hover:shadow-2xl transition-shadow duration-300 ${
+                className={`relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 ${
                   plan.isProminent
-                    ? 'border-4 max-w-sm sm:max-w-lg lg:max-w-xl'
-                    : 'max-w-sm sm:max-w-md lg:max-w-lg'
+                    ? 'border-4 border-[#E05C41] md:scale-105 md:z-10'
+                    : 'border-2 border-gray-100'
                 }`}
               >
+                {/* Badge */}
                 {plan.badge && (
-                  <div className="absolute -top-3 sm:-top-2 right-4 sm:right-6 bg-[#E05C41] text-white px-3 py-2 sm:px-4 sm:py-3 rounded-t-lg rounded-bl-lg z-10 shadow-md">
-                    <span className="text-xs sm:text-sm font-medium">
+                  <div className="absolute -top-0 -right-0 bg-gradient-to-br from-[#E05C41] to-[#c94d32] text-white px-6 py-2 rounded-bl-3xl shadow-lg">
+                    <span className="text-xs font-bold uppercase tracking-wider">
                       {plan.badge}
                     </span>
                   </div>
                 )}
 
-                <div className="flex flex-col gap-6 sm:gap-8">
-                  <div>
-                    <h3 className="text-base sm:text-lg font-medium text-[#222222] capitalize tracking-tight mb-2">
+                {/* Card Content */}
+                <div className="p-6 sm:p-8">
+                  {/* Plan Header */}
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold text-[#0D1013] mb-3">
                       {plan.name}
                     </h3>
-                    <div className="relative">
-                      <p className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#222222] tracking-tight">
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-5xl sm:text-6xl font-bold text-[#0D1013]">
                         {plan.price}
-                      </p>
+                      </span>
                       {plan.priceNote && (
-                        <span className="text-sm sm:text-base text-[#4a4b4d] tracking-tight absolute top-2 sm:top-3 right-0">
+                        <span className="text-lg text-[#4a4b4d] font-medium">
                           {plan.priceNote}
                         </span>
                       )}
                     </div>
                   </div>
 
-                  <div className="space-y-3 sm:space-y-4">
+                  {/* Features List */}
+                  <div className="mb-6 space-y-3 min-h-[280px] sm:min-h-[320px]">
                     {plan.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex gap-3 items-start">
-                        <TickIcon />
-                        <p className="text-sm sm:text-base text-[#4a4b4d] leading-relaxed flex-1">
+                        <div className="flex-shrink-0 mt-1">
+                          <TickIcon />
+                        </div>
+                        <p className="text-sm text-[#4a4b4d] leading-relaxed">
                           {feature}
                         </p>
                       </div>
                     ))}
                   </div>
 
-                  <div className="flex flex-col gap-3 sm:gap-4 items-center">
+                  {/* CTA Button */}
+                  <div className="space-y-3">
                     {plan.name === 'Free' ? (
                       <motion.a
                         href={appStoreUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="w-full py-3 sm:py-4 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium transition-all duration-300 transform bg-[#666666] text-white hover:bg-[#555555] hover:shadow-lg text-center"
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="block w-full py-4 px-6 text-center rounded-xl font-semibold text-white bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 shadow-lg hover:shadow-xl transition-all duration-300"
                       >
                         {plan.buttonText}
                       </motion.a>
                     ) : (
                       <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`w-full py-3 sm:py-4 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium transition-all duration-300 transform ${
-                          plan.isPopular || plan.isBestValue
-                            ? 'bg-[#E05C41] text-white hover:bg-[#c94d32] hover:shadow-lg'
-                            : 'bg-[#222222] text-white hover:bg-[#333333] hover:shadow-lg'
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`w-full py-4 px-6 rounded-xl font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 ${
+                          plan.isProminent
+                            ? 'bg-gradient-to-r from-[#E05C41] to-[#c94d32] hover:from-[#c94d32] hover:to-[#b03d28]'
+                            : 'bg-gradient-to-r from-[#E05C41] to-[#d45438] hover:from-[#d45438] hover:to-[#c94d32]'
                         }`}
                       >
                         {plan.buttonText}
                       </motion.button>
                     )}
                     {plan.name !== 'Free' && (
-                      <p className="text-xs sm:text-sm text-[#4a4b4d] text-center">
-                        You can cancel anytime.
+                      <p className="text-xs text-[#4a4b4d] text-center font-medium">
+                        No credit card required · Cancel anytime
                       </p>
                     )}
                   </div>
                 </div>
               </motion.div>
             ))}
+          </motion.div>
+
+          {/* Trust Badge */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="text-center pt-6"
+          >
+            <p className="text-sm text-[#4a4b4d] flex items-center justify-center gap-2 flex-wrap">
+              <svg className="w-5 h-5 text-[#E05C41]" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span className="font-medium">Trusted by 270,000+ Muslim families</span>
+              <span className="text-[#4a4b4d]/50">·</span>
+              <span>100% Safe & Ad-Free</span>
+            </p>
           </motion.div>
         </AnimatedSection>
       </motion.div>

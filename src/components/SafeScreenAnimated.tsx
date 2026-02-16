@@ -32,7 +32,7 @@ const SafeScreenAnimated = () => {
   ];
 
   return (
-    <div className="py-12 sm:py-16 md:py-20" style={{background: 'linear-gradient(118.88deg, #DD4E6D 22.43%, #E15353 95.02%)'}}>
+    <div className="py-8 md:py-12" style={{background: 'linear-gradient(118.88deg, #DD4E6D 22.43%, #E15353 95.02%)'}}>
       <motion.div
         initial="hidden"
         whileInView="visible"

@@ -7,16 +7,19 @@ interface DevicesAnimatedProps {
 
 const DevicesAnimated = ({ tvMockup }: DevicesAnimatedProps) => {
   const base = import.meta.env.BASE_URL;
-  const mockupSrc = tvMockup || `${base}/tv-mockup.png`;
-  const devicePlatforms = [
-    { logo: `${base}/roku-logo.png`, name: "Roku" },
-    { logo: `${base}/firetv-logo.png`, name: "FireTV" },
-    { logo: `${base}/appletv-logo.png`, name: "Apple TV" },
-    { logo: `${base}/ios-logo.png`, name: "iOS" },
-    { logo: `${base}/android-logo.png`, name: "Android" },
-    { logo: `${base}/windows-logo.png`, name: "Windows" },
-    { logo: `${base}/lg-logo.png`, name: "LG" },
-    { logo: `${base}/sony-logo.png`, name: "Sony" }
+  const mockupSrc = tvMockup || `${base}tv-mockup.png`;
+  const availablePlatforms = [
+    { logo: `${base}googletv-logo.png`, name: "Google TV" },
+    { logo: `${base}android-logo.png`, name: "Android TV" },
+    { logo: `${base}firetv-logo.png`, name: "Amazon Fire TV" },
+    { logo: `${base}sony-logo.png`, name: "Sony TV" }
+  ];
+
+  const comingSoonPlatforms = [
+    { logo: `${base}lg-logo.png`, name: "LG TV" },
+    { logo: `${base}samsung-logo.png`, name: "Samsung TV" },
+    { logo: `${base}appletv-logo.png`, name: "Apple TV" },
+    { logo: `${base}roku-logo.png`, name: "Roku TV" }
   ];
 
   const containerVariants = {
@@ -45,7 +48,7 @@ const DevicesAnimated = ({ tvMockup }: DevicesAnimatedProps) => {
   };
 
   return (
-    <div className="bg-[#f8f0f0] py-12 sm:py-16 lg:py-20 flex items-center justify-center">
+    <div className="bg-[#f8f0f0] py-8 lg:py-12 flex items-center justify-center">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -77,38 +80,81 @@ const DevicesAnimated = ({ tvMockup }: DevicesAnimatedProps) => {
 
         {/* Platform Logos */}
         <AnimatedSection animation="fadeUp" delay={0.2} className="flex flex-col gap-6 sm:gap-8 items-center w-full max-w-4xl">
-          {/* Device Platform Logos */}
-          <motion.div
-            variants={containerVariants}
-            className="flex flex-wrap justify-center gap-2 sm:gap-4 lg:gap-6 w-full items-center"
-          >
-            {devicePlatforms.map((platform, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{
-                  y: -6,
-                  scale: 1.1,
-                  transition: {
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 25
-                  }
-                }}
-                whileTap={{
-                  scale: 0.95,
-                  transition: { duration: 0.1 }
-                }}
-                className="flex items-center justify-center p-2 sm:p-3"
-              >
-                <img
-                  src={platform.logo}
-                  alt={platform.name}
-                  className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+          {/* Available Platforms */}
+          <div className="flex flex-col gap-3 sm:gap-4 items-center w-full">
+            <h3 className="text-sm sm:text-base font-semibold text-[#2c2626] uppercase tracking-wide">
+              Available on
+            </h3>
+            <motion.div
+              variants={containerVariants}
+              className="flex flex-wrap justify-center gap-2 sm:gap-4 lg:gap-6 w-full items-center"
+            >
+              {availablePlatforms.map((platform, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{
+                    y: -6,
+                    scale: 1.1,
+                    transition: {
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 25
+                    }
+                  }}
+                  whileTap={{
+                    scale: 0.95,
+                    transition: { duration: 0.1 }
+                  }}
+                  className="flex items-center justify-center p-2 sm:p-3"
+                >
+                  <img
+                    src={platform.logo}
+                    alt={platform.name}
+                    className="w-10 h-10 lg:w-12 lg:h-12 object-contain rounded-full"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Coming Soon Platforms */}
+          <div className="flex flex-col gap-3 sm:gap-4 items-center w-full">
+            <h3 className="text-sm sm:text-base font-semibold text-[#2c2626] uppercase tracking-wide">
+              Coming Soon
+            </h3>
+            <motion.div
+              variants={containerVariants}
+              className="flex flex-wrap justify-center gap-2 sm:gap-4 lg:gap-6 w-full items-center"
+            >
+              {comingSoonPlatforms.map((platform, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{
+                    y: -6,
+                    scale: 1.1,
+                    transition: {
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 25
+                    }
+                  }}
+                  whileTap={{
+                    scale: 0.95,
+                    transition: { duration: 0.1 }
+                  }}
+                  className="flex items-center justify-center p-2 sm:p-3 opacity-60"
+                >
+                  <img
+                    src={platform.logo}
+                    alt={platform.name}
+                    className="w-10 h-10 lg:w-12 lg:h-12 object-contain rounded-full"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </AnimatedSection>
       </motion.div>
     </div>

@@ -244,7 +244,7 @@ const ReviewsAnimated = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-br from-[#fafafa] via-[#fef6f6] to-[#fefefe] py-16 lg:py-24 relative overflow-hidden">
+    <div className="bg-gradient-to-br from-[#fafafa] via-[#fef6f6] to-[#fefefe] py-8 lg:py-12 relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -272,10 +272,11 @@ const ReviewsAnimated = () => {
                 letterSpacing: '-0.02em'
               }}
             >
-              Hear From Our{" "}
+              What Parents{' '}
               <span className="bg-gradient-to-r from-[#ff4848] to-[#ff6b6b] bg-clip-text text-transparent">
-                Happy Parents
+                Parents
               </span>
+              {' '}Are Saying
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

@@ -11,9 +11,9 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <header
-	class="sticky top-0 w-full bg-white/95 backdrop-blur-sm z-50 transition-all duration-500 ease-out"
+	class="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 transition-all duration-300 ease-out"
 	id="navbar"
-	style="box-shadow: 0 2px 8px rgba(0,0,0,var(--shadow-opacity, 0.08));"
+	style="box-shadow: 0 2px 8px rgba(0,0,0,var(--shadow-opacity, 0.08)); transform: translateY(0);"
 >
 	<nav class="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
 		<div class="flex items-center justify-between py-4">
@@ -211,36 +211,52 @@ const base = import.meta.env.BASE_URL;
 			});
 		}
 
-		// Navbar scroll effect
+		// Navbar scroll effect with hide/show on scroll direction
 		if (navbar) {
+			let lastScrollY = window.scrollY;
+			let ticking = false;
+
 			const handleScroll = () => {
 				const scrollY = window.scrollY;
-				// Start fade in at 15px, fully visible by 40px
+
+				// Shadow opacity effect
 				const startFade = 15;
 				const endFade = 40;
 
 				if (scrollY <= startFade) {
-					// No shadow when at top
 					navbar.style.setProperty("--shadow-opacity", "0");
 				} else if (scrollY >= endFade) {
-					// Full shadow when scrolled
 					navbar.style.setProperty("--shadow-opacity", "0.08");
 				} else {
-					// Gradual shadow opacity based on scroll position
-					const opacity =
-						((scrollY - startFade) / (endFade - startFade)) * 0.08;
-					navbar.style.setProperty(
-						"--shadow-opacity",
-						opacity.toString()
-					);
+					const opacity = ((scrollY - startFade) / (endFade - startFade)) * 0.08;
+					navbar.style.setProperty("--shadow-opacity", opacity.toString());
+				}
+
+				// Hide/show navbar based on scroll direction
+				if (scrollY > lastScrollY && scrollY > 100) {
+					// Scrolling down & past 100px - hide navbar
+					navbar.style.transform = "translateY(-100%)";
+				} else if (scrollY < lastScrollY || scrollY <= 100) {
+					// Scrolling up or near top - show navbar
+					navbar.style.transform = "translateY(0)";
+				}
+
+				lastScrollY = scrollY;
+				ticking = false;
+			};
+
+			const requestTick = () => {
+				if (!ticking) {
+					window.requestAnimationFrame(handleScroll);
+					ticking = true;
 				}
 			};
 
 			// Initial check
 			handleScroll();
 
-			// Listen for scroll events
-			window.addEventListener("scroll", handleScroll);
+			// Listen for scroll events with RAF optimization
+			window.addEventListener("scroll", requestTick, { passive: true });
 		}
 	});
 </script>

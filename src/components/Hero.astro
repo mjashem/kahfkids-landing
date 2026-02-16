@@ -4,20 +4,49 @@ interface Props {}
 
 import HeroAnimated from './HeroAnimated';
 import { getImage } from 'astro:assets';
-import iphoneMockupSrc from '../assets/iphone-mockup.png';
+import iphoneFrameSrc from '../assets/iphonescren.png';
+import featureImg1 from '../assets/feature-image-1.png';
+import featureImg2 from '../assets/feature-image-2.png';
+import featureImg3 from '../assets/feature-image-3.png';
 
 const {} = Astro.props;
 
-// Pre-optimize iPhone mockup to WebP
-const optimizedImage = await getImage({
-  src: iphoneMockupSrc,
+// Pre-optimize iPhone frame to WebP
+const optimizedFrame = await getImage({
+  src: iphoneFrameSrc,
   format: 'webp',
-  quality: 85,
+  quality: 90,
   width: 450,
-  height: 600,
 });
 
-const iphoneMockup = optimizedImage.src;
+// Pre-optimize slide images
+const optimizedSlide1 = await getImage({
+  src: featureImg1,
+  format: 'webp',
+  quality: 85,
+  width: 380,
+});
+
+const optimizedSlide2 = await getImage({
+  src: featureImg2,
+  format: 'webp',
+  quality: 85,
+  width: 380,
+});
+
+const optimizedSlide3 = await getImage({
+  src: featureImg3,
+  format: 'webp',
+  quality: 85,
+  width: 380,
+});
+
+const iphoneFrame = optimizedFrame.src;
+const slides = [
+  optimizedSlide1.src,
+  optimizedSlide2.src,
+  optimizedSlide3.src,
+];
 ---
 
-<HeroAnimated client:load iphoneMockup={iphoneMockup} />
+<HeroAnimated client:load iphoneFrame={iphoneFrame} slides={slides} />

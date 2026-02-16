@@ -3,13 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from './Button';
 
 interface FloatingCTAProps {
-  threshold?: number; // Pixels from top to show CTA (default: hero height ~500px)
+  threshold?: number; // Pixels from top to show CTA (default: hero height ~600px)
   text?: string;
   scrollToId?: string;
 }
 
 const FloatingCTA: React.FC<FloatingCTAProps> = ({
-  threshold = 500,
+  threshold = 600,
   text = 'Start Free Trial',
   scrollToId = 'pricing',
 }) => {
@@ -54,6 +54,7 @@ const FloatingCTA: React.FC<FloatingCTAProps> = ({
               fullWidth
               shimmer
               onClick={handleClick}
+              className="!text-[#E05C41]"
             >
               {text}
             </Button>

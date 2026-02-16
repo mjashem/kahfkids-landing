@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Button from './Button';
 
 const BottomBanner: React.FC = () => {
   const [appStoreUrl, setAppStoreUrl] = useState<string>('');
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     // OS Detection Function (from Navbar.astro)
@@ -34,6 +35,24 @@ const BottomBanner: React.FC = () => {
     setAppStoreUrl(os === 'ios' ? APP_STORE_URLS.ios : APP_STORE_URLS.android);
   }, []);
 
+  // Scroll detection for desktop visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show after scrolling past first section (~500px)
+      setIsVisible(window.scrollY > 500);
+    };
+
+    // Check initial scroll position
+    handleScroll();
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const handleClick = () => {
     if (appStoreUrl) {
       window.open(appStoreUrl, '_blank', 'noopener,noreferrer');
@@ -41,13 +60,16 @@ const BottomBanner: React.FC = () => {
   };
 
   return (
-    <motion.div
-      initial={{ y: 100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-      className="fixed bottom-0 left-0 right-0 z-50 hidden lg:flex bg-[#ff4848] items-center justify-center"
-      style={{ minHeight: '36px' }}
-    >
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 100, opacity: 0 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+          className="fixed bottom-0 left-0 right-0 z-50 hidden lg:flex bg-[#ff4848] items-center justify-center"
+          style={{ minHeight: '36px' }}
+        >
       {/* Subtle animated background shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -128,7 +150,9 @@ const BottomBanner: React.FC = () => {
           Try Free
         </Button>
       </div>
-    </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
