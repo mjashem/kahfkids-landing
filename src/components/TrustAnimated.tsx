@@ -117,14 +117,14 @@ const featuredInData: FeaturedInLogo[] = [
     logo: `<img loading="lazy" src="${import.meta.env.BASE_URL}khola-kagoj-logo.png" alt="Khola Kagoz" class="h-10 w-auto object-contain" />`
   },
   {
+    id: 10,
+    name: "Digibanglatech",
+    logo: `<img loading="lazy" src="${import.meta.env.BASE_URL}digibanglatech-logo.png" alt="Digibanglatech" class="h-10 sm:h-16 -translate-y-1 w-auto object-contain" />`
+  },
+  {
     id: 9,
     name: "Dainik Inkilab",
     logo: `<img loading="lazy" src="${import.meta.env.BASE_URL}dainik-inqilab-logo.png" alt="Dainik Inkilab" class="h-10 sm:h-12 w-auto object-contain" />`
-  },
-  {
-    id: 10,
-    name: "Digibanglatech",
-    logo: `<img loading="lazy" src="${import.meta.env.BASE_URL}digibanglatech-logo.png" alt="Digibanglatech" class="h-10 sm:h-12 w-auto object-contain" />`
   },
   {
     id: 11,
@@ -358,16 +358,17 @@ const TrustAnimated = () => {
         <StatsBar metrics={impactMetricsData} />
 
         {/* ================================================================ */}
-        {/* TRUST BADGES - Simplified                                       */}
+        {/* TRUST BADGES - Redesigned for Mobile                            */}
         {/* ================================================================ */}
         <AnimatedSection animation="fadeUp" delay={0.5} duration={0.5} threshold={0.3}>
-          <div className="mt-8 mb-10 lg:mb-12">
-            <div className="text-center mb-6">
-              <h3 className="text-xs sm:text-sm text-gray-500 font-medium tracking-wider uppercase">
+          <div className="mt-6 mb-8 lg:mb-12">
+            <div className="text-center mb-5">
+              <h3 className="text-xs sm:text-sm text-gray-500 font-semibold tracking-wider uppercase">
                 Trusted & Recognized
               </h3>
             </div>
-            <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 lg:gap-10">
+            {/* Grid layout: 2 cols on mobile, 4 cols on desktop */}
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-3 sm:gap-6 lg:gap-8 max-w-5xl mx-auto md:px-4">
               {trustBadgesData.map((badge, index) => (
                 <AnimatedSection
                   key={badge.id}
@@ -377,12 +378,12 @@ const TrustAnimated = () => {
                   threshold={0.3}
                 >
                   <motion.div
-                    className="flex items-center gap-2 cursor-pointer group"
-                    whileHover={{ scale: 1.03 }}
+                    className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-2.5 p-2 md:p-4 sm:p-0 rounded-xl sm:rounded-none bg-white/70 sm:bg-transparent border border-gray-200/60 sm:border-0 shadow-sm sm:shadow-none backdrop-blur-sm sm:backdrop-blur-none cursor-pointer group hover:bg-white hover:shadow-md hover:border-[#E05C41]/30 sm:hover:bg-transparent sm:hover:shadow-none sm:hover:border-0 transition-all duration-300 min-h-[100px] sm:min-h-0"
+                    whileHover={{ scale: 1.05, y: -2 }}
                     transition={{ duration: 0.2 }}
                   >
                     {/* Icon */}
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 text-[#E05C41]/50 group-hover:text-[#E05C41] transition-colors duration-300 flex-shrink-0">
+                    <div className="w-10 h-10 sm:w-9 sm:h-9 text-[#E05C41] group-hover:text-[#E05C41] group-hover:scale-110 transition-all duration-300 flex-shrink-0">
                       <div
                         className="w-full h-full"
                         dangerouslySetInnerHTML={{ __html: badge.icon }}
@@ -390,7 +391,7 @@ const TrustAnimated = () => {
                     </div>
 
                     {/* Text */}
-                    <p className="text-xs sm:text-sm text-gray-600 font-medium leading-tight">
+                    <p className="text-[11px] sm:text-sm text-gray-800 font-semibold leading-snug text-center sm:text-left">
                       {badge.text}
                     </p>
                   </motion.div>
@@ -415,49 +416,51 @@ const TrustAnimated = () => {
               <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#fef6f6] to-transparent z-10 pointer-events-none" />
               <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#fefefe] to-transparent z-10 pointer-events-none" />
 
-              {/* Scrolling track */}
+              {/* Scrolling track with CSS animation */}
               <div className="overflow-hidden py-4">
-                <motion.div
-                  className="flex gap-12 lg:gap-16"
-                  animate={{
-                    x: [0, -1920], // Adjust based on content width
-                  }}
-                  transition={{
-                    x: {
-                      repeat: Infinity,
-                      repeatType: "loop",
-                      duration: 40,
-                      ease: "linear",
-                    },
-                  }}
+                <style>{`
+                  @keyframes scroll-logos {
+                    0% {
+                      transform: translateX(0);
+                    }
+                    100% {
+                      transform: translateX(-50%);
+                    }
+                  }
+                  .animate-scroll {
+                    animation: scroll-logos 30s linear infinite;
+                  }
+                  .animate-scroll:hover {
+                    animation-play-state: paused;
+                  }
+                  @media (max-width: 768px) {
+                    .animate-scroll {
+                      animation-duration: 20s;
+                    }
+                  }
+                `}</style>
+                <div
+                  className="flex gap-8 sm:gap-12 lg:gap-16 animate-scroll"
+                  style={{ width: 'max-content' }}
                 >
-                  {/* First set of logos */}
-                  {featuredInData.map((item) => (
-                    <div
-                      key={`first-${item.id}`}
-                      className="flex-shrink-0 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer px-4"
-                      title={item.name}
-                    >
-                      <div
-                        className="text-gray-600 hover:text-[#E05C41] flex items-center justify-center"
-                        dangerouslySetInnerHTML={{ __html: item.logo }}
-                      />
-                    </div>
+                  {/* Duplicate the logos exactly twice for perfect loop */}
+                  {[...Array(2)].map((_, setIndex) => (
+                    <React.Fragment key={`set-${setIndex}`}>
+                      {featuredInData.map((item) => (
+                        <div
+                          key={`${setIndex}-${item.id}`}
+                          className="flex-shrink-0 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer px-4"
+                          title={item.name}
+                        >
+                          <div
+                            className="text-gray-600 hover:text-[#E05C41] flex items-center justify-center"
+                            dangerouslySetInnerHTML={{ __html: item.logo }}
+                          />
+                        </div>
+                      ))}
+                    </React.Fragment>
                   ))}
-                  {/* Duplicate set for seamless loop */}
-                  {featuredInData.map((item) => (
-                    <div
-                      key={`second-${item.id}`}
-                      className="flex-shrink-0 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer px-4"
-                      title={item.name}
-                    >
-                      <div
-                        className="text-gray-600 hover:text-[#E05C41] flex items-center justify-center"
-                        dangerouslySetInnerHTML={{ __html: item.logo }}
-                      />
-                    </div>
-                  ))}
-                </motion.div>
+                </div>
               </div>
             </div>
           </div>

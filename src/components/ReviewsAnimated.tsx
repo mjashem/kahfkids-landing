@@ -272,7 +272,7 @@ const ReviewsAnimated = () => {
                 letterSpacing: '-0.02em'
               }}
             >
-              What Parents{' '}
+              What{' '}
               <span className="bg-gradient-to-r from-[#ff4848] to-[#ff6b6b] bg-clip-text text-transparent">
                 Parents
               </span>

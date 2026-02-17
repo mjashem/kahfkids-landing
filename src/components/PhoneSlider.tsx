@@ -62,7 +62,7 @@ const PhoneSlider: React.FC<PhoneSliderProps> = ({
               <img
                 src={slides[currentSlide]}
                 alt={`App screenshot ${currentSlide + 1}`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
                 draggable={false}
               />
             </motion.div>

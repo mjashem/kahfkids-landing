@@ -291,7 +291,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({
                     <img
                       src={frameSrc}
                       alt="iPhone Frame"
-                      className="w-full h-auto object-contain relative z-10 pointer-events-none"
+                      className="w-[98%] h-auto object-contain relative z-10 pointer-events-none"
                       draggable={false}
                     />
 
@@ -299,7 +299,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-full h-full relative">
                         {/* Adjust these values to perfectly fit your iPhone frame */}
-                        <div className="absolute top-[1%] left-[2%] w-[97%] h-[98%] rounded-[8%] overflow-hidden">
+                        <div className="absolute top-[3%] left-[0%] w-[99%] h-[96%] rounded-[8%] overflow-hidden">
                           <PhoneSlider
                             slides={defaultSlides}
                             autoPlayInterval={4000}

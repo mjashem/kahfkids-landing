@@ -4,10 +4,11 @@ interface Props {}
 
 import HeroAnimated from './HeroAnimated';
 import { getImage } from 'astro:assets';
-import iphoneFrameSrc from '../assets/iphonescren.png';
-import featureImg1 from '../assets/feature-image-1.png';
-import featureImg2 from '../assets/feature-image-2.png';
-import featureImg3 from '../assets/feature-image-3.png';
+import iphoneFrameSrc from '../assets/iphone-frame.png';
+import featureImg1 from '../assets/hero-image-1.jpeg';
+import featureImg2 from '../assets/hero-image-2.jpeg';
+import featureImg3 from '../assets/hero-image-3.jpeg';
+import featureImg4 from '../assets/hero-image-4.jpeg';
 
 const {} = Astro.props;
 
@@ -41,11 +42,19 @@ const optimizedSlide3 = await getImage({
   width: 380,
 });
 
+const optimizedSlide4 = await getImage({
+  src: featureImg4,
+  format: 'webp',
+  quality: 85,
+  width: 380,
+});
+
 const iphoneFrame = optimizedFrame.src;
 const slides = [
   optimizedSlide1.src,
   optimizedSlide2.src,
   optimizedSlide3.src,
+  optimizedSlide4.src
 ];
 ---
 
