@@ -35,7 +35,7 @@ const FeaturesAnimated = ({ optimizedImages = {} }: FeaturesAnimatedProps) => {
         "Kids cannot open any outside content.",
         "You can add or remove videos anytime."
       ],
-      image: getImageUrl('feature-image-1-hover'),
+      image: getImageUrl('feature-image-2'),
       imageAlt: "Parent-controlled video selection",
       backgroundSvg: `${base}/feature-background-2.svg`,
       tickIcon: `${base}/tick-icon-2.svg`
@@ -48,7 +48,7 @@ const FeaturesAnimated = ({ optimizedImages = {} }: FeaturesAnimatedProps) => {
         "Games stay on the phone but cannot open without permission.",
         "Kids learn healthy habits and stop overplaying."
       ],
-      image: getImageUrl('feature-image-2'),
+      image: getImageUrl('feature-image-3'),
       imageAlt: "Game blocking feature",
       backgroundSvg: `${base}/feature-background-3.svg`,
       tickIcon: `${base}/tick-icon-3.svg`
@@ -61,7 +61,7 @@ const FeaturesAnimated = ({ optimizedImages = {} }: FeaturesAnimatedProps) => {
         "Videos and apps stop automatically when time is up.",
         "No shouting, no arguments, no stress."
       ],
-      image: getImageUrl('feature-image-2-hover'),
+      image: getImageUrl('feature-image-4'),
       imageAlt: "Time limit controls",
       backgroundSvg: `${base}/feature-background-4.svg`,
       tickIcon: `${base}/tick-icon-4.svg`
@@ -74,7 +74,7 @@ const FeaturesAnimated = ({ optimizedImages = {} }: FeaturesAnimatedProps) => {
         "Kids cannot open anything unsafe or unapproved.",
         "No accidental browsing or algorithm-based suggestions."
       ],
-      image: getImageUrl('feature-image-3'),
+      image: getImageUrl('feature-image-5'),
       imageAlt: "App and website blocking",
       backgroundSvg: `${base}/feature-background-5.svg`,
       tickIcon: `${base}/tick-icon-5.svg`
@@ -87,7 +87,7 @@ const FeaturesAnimated = ({ optimizedImages = {} }: FeaturesAnimatedProps) => {
         "Bedtime mode blocks everything except emergency calls.",
         "Children sleep and study without screen interruptions."
       ],
-      image: getImageUrl('feature-image-3-hover'),
+      image: getImageUrl('feature-image-6'),
       imageAlt: "Study and bedtime mode",
       backgroundSvg: `${base}/feature-background-6.svg`,
       tickIcon: `${base}/tick-icon-6.svg`
@@ -100,7 +100,7 @@ const FeaturesAnimated = ({ optimizedImages = {} }: FeaturesAnimatedProps) => {
         "Islamic studies, science tools, and creativity apps included.",
         "Every feature promotes growth—not distraction."
       ],
-      image: getImageUrl('feature-image-1'),
+      image: getImageUrl('feature-image-7'),
       imageAlt: "Educational activities",
       backgroundSvg: `${base}/feature-background-1.svg`,
       tickIcon: `${base}/tick-icon-1.svg`
@@ -113,12 +113,9 @@ const FeaturesAnimated = ({ optimizedImages = {} }: FeaturesAnimatedProps) => {
         "Includes translation, loop for memorization, notes, and bookmarks.",
         "Simple and suitable for young learners."
       ],
-      images: [
-        getImageUrl('feature-image-1-hover'),
-        getImageUrl('feature-image-1-active')
-      ],
-      imageAlt: ["Quran app interface", "Quran features"],
-      isStacked: true,
+      image: getImageUrl('feature-image-8'),
+      imageAlt: "Quran app interface",
+      isStacked: false,
       backgroundSvg: `${base}/feature-background-2.svg`,
       tickIcon: `${base}/tick-icon-2.svg`
     },
@@ -130,7 +127,7 @@ const FeaturesAnimated = ({ optimizedImages = {} }: FeaturesAnimatedProps) => {
         "Easy tips for building good habits and character.",
         "Support for raising children in the digital age."
       ],
-      image: getImageUrl('feature-image-2'),
+      image: getImageUrl('feature-image-9'),
       imageAlt: "Parenting support resources",
       backgroundSvg: `${base}/feature-background-3.svg`,
       tickIcon: `${base}/tick-icon-3.svg`
@@ -143,7 +140,7 @@ const FeaturesAnimated = ({ optimizedImages = {} }: FeaturesAnimatedProps) => {
         "Kids cannot change time limits, remove blocks, or access controls.",
         "Your rules stay safe and secure."
       ],
-      image: getImageUrl('feature-image-2-hover'),
+      image: getImageUrl('feature-image-10'),
       imageAlt: "Secure parental control panel",
       backgroundSvg: `${base}/feature-background-4.svg`,
       tickIcon: `${base}/tick-icon-4.svg`

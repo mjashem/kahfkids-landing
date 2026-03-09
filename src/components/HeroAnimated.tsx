@@ -5,17 +5,14 @@ import PhoneSlider from './PhoneSlider';
 
 interface HeroAnimatedProps {
   className?: string;
-  iphoneFrame?: string;
   slides?: string[];
 }
 
 const HeroAnimated: React.FC<HeroAnimatedProps> = ({
   className = '',
-  iphoneFrame,
   slides = []
 }) => {
   const base = import.meta.env.BASE_URL;
-  const frameSrc = iphoneFrame || `${base}/iphonescren.png`;
   const defaultSlides = slides.length > 0 ? slides : [
     `${base}/feature-image-1.png`,
     `${base}/feature-image-2.png`,
@@ -279,37 +276,18 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({
                 transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               >
                 <motion.div
-                  className="relative origin-bottom w-full md:max-w-[320px]"
+                  className="relative origin-bottom w-full md:max-w-[520px] aspect-[3375/4313]"
                   whileHover={{
                     scale: 1.02,
                     transition: { duration: 0.3 }
                   }}
                 >
-                  {/* iPhone Frame Container */}
-                  <div className="relative w-full overflow-hidden rounded-[8%]">
-                    {/* iPhone Frame (overlays the content) */}
-                    <img
-                      src={frameSrc}
-                      alt="iPhone Frame"
-                      className="w-[98%] h-auto object-contain relative z-10 pointer-events-none"
-                      draggable={false}
-                    />
-
-                    {/* Slider positioned inside the frame - Full screen */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-full h-full relative">
-                        {/* Adjust these values to perfectly fit your iPhone frame */}
-                        <div className="absolute top-[3%] left-[0%] w-[99%] h-[96%] rounded-[8%] overflow-hidden">
-                          <PhoneSlider
-                            slides={defaultSlides}
-                            autoPlayInterval={4000}
-                            showDotsInside={true}
-                            className="w-full h-full"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <PhoneSlider
+                    slides={defaultSlides}
+                    autoPlayInterval={4000}
+                    showDotsInside={true}
+                    className="w-full h-full"
+                  />
                 </motion.div>
               </motion.div>
             </AnimatedSection>

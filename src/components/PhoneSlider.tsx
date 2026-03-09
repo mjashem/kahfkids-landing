@@ -44,7 +44,7 @@ const PhoneSlider: React.FC<PhoneSliderProps> = ({
     <>
       {/* Slider Container */}
       <div className={`relative w-full h-full ${className}`}>
-        <div className="relative w-full h-full overflow-hidden bg-white">
+        <div className="relative w-full h-full overflow-hidden bg-transparent">
           <AnimatePresence initial={false} custom={1} mode="wait">
             <motion.div
               key={currentSlide}

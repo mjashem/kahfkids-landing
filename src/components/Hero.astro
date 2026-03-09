@@ -4,52 +4,42 @@ interface Props {}
 
 import HeroAnimated from './HeroAnimated';
 import { getImage } from 'astro:assets';
-import iphoneFrameSrc from '../assets/iphone-frame.png';
-import featureImg1 from '../assets/hero-image-1.jpeg';
-import featureImg2 from '../assets/hero-image-2.jpeg';
-import featureImg3 from '../assets/hero-image-3.jpeg';
-import featureImg4 from '../assets/hero-image-4.jpeg';
+import featureImg1 from '../assets/hero1.webp';
+import featureImg2 from '../assets/hero2.webp';
+import featureImg3 from '../assets/hero3.webp';
+import featureImg4 from '../assets/hero4.webp';
 
 const {} = Astro.props;
-
-// Pre-optimize iPhone frame to WebP
-const optimizedFrame = await getImage({
-  src: iphoneFrameSrc,
-  format: 'webp',
-  quality: 90,
-  width: 450,
-});
 
 // Pre-optimize slide images
 const optimizedSlide1 = await getImage({
   src: featureImg1,
   format: 'webp',
-  quality: 85,
-  width: 380,
+  quality: 100,
+  // width: 420,
 });
 
 const optimizedSlide2 = await getImage({
   src: featureImg2,
   format: 'webp',
-  quality: 85,
-  width: 380,
+  quality: 100,
+  // width: 420,
 });
 
 const optimizedSlide3 = await getImage({
   src: featureImg3,
   format: 'webp',
-  quality: 85,
-  width: 380,
+  quality: 100,
+  // width: 420,
 });
 
 const optimizedSlide4 = await getImage({
   src: featureImg4,
   format: 'webp',
-  quality: 85,
-  width: 380,
+  quality: 100,
+  // width: 420,
 });
 
-const iphoneFrame = optimizedFrame.src;
 const slides = [
   optimizedSlide1.src,
   optimizedSlide2.src,
@@ -58,4 +48,4 @@ const slides = [
 ];
 ---
 
-<HeroAnimated client:load iphoneFrame={iphoneFrame} slides={slides} />
+<HeroAnimated client:load slides={slides} />

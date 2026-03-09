@@ -288,7 +288,7 @@ const FooterAnimated = () => {
         >
           <div className="text-center">
             <p className="font-medium text-[#6a7282] text-xs sm:text-sm leading-relaxed">
-              Copyright © 2025 Kahf Kids. All rights reserved.
+              Copyright © {new Date().getFullYear()} Kahf Kids. All rights reserved.
             </p>
           </div>
         </motion.div>
