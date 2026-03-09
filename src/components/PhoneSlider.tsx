@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface PhoneSliderProps {
   slides: string[];
@@ -25,48 +25,34 @@ const PhoneSlider: React.FC<PhoneSliderProps> = ({
     return () => clearInterval(timer);
   }, [slides.length, autoPlayInterval]);
 
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? '100%' : '-100%',
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      x: direction < 0 ? '100%' : '-100%',
-      opacity: 0,
-    }),
-  };
-
   return (
     <>
       {/* Slider Container */}
       <div className={`relative w-full h-full ${className}`}>
         <div className="relative w-full h-full overflow-hidden bg-transparent">
-          <AnimatePresence initial={false} custom={1} mode="wait">
+          {/* All slides stay mounted — no remount/network fetch on transition */}
+          {slides.map((src, index) => (
             <motion.div
-              key={currentSlide}
-              custom={1}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
+              key={src}
+              animate={{
+                opacity: index === currentSlide ? 1 : 0,
+                scale: index === currentSlide ? 1 : 1.04,
+              }}
               transition={{
-                x: { type: 'spring', stiffness: 300, damping: 30 },
-                opacity: { duration: 0.3 },
+                opacity: { duration: 0.5, ease: 'easeInOut' },
+                scale: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
               }}
               className="absolute inset-0 w-full h-full"
+              style={{ pointerEvents: index === currentSlide ? 'auto' : 'none' }}
             >
               <img
-                src={slides[currentSlide]}
-                alt={`App screenshot ${currentSlide + 1}`}
+                src={src}
+                alt={`App screenshot ${index + 1}`}
                 className="w-full h-full object-contain"
                 draggable={false}
               />
             </motion.div>
-          </AnimatePresence>
+          ))}
         </div>
 
         {/* Navigation Dots - Inside (if enabled) */}
