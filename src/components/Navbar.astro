@@ -80,6 +80,19 @@ const { currentPage = "home" } = Astro.props;
 					>
 				</div>
 
+				<!-- Gift Button -->
+				<a
+					href="https://id.kahf.co/support/kahfkids"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex items-center gap-2 bg-gradient-to-r from-[#E05C41] to-[#d45438] hover:from-[#d45438] hover:to-[#c94d32] text-white rounded-full h-[50px] px-[20px] transition-all duration-200 shadow-md hover:shadow-lg"
+				>
+					<svg class="w-[18px] h-[18px] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+						<path d="M20 7h-1.586A2 2 0 0 0 17 4a4.016 4.016 0 0 0-2.578 1.072C13.757 3.8 12.938 3 12 3s-1.757.8-2.422 2.072A4.016 4.016 0 0 0 7 4a2 2 0 0 0-1.414 3.414L4 7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-3-1a2.013 2.013 0 0 1 2 2h-3.306A2.009 2.009 0 0 1 17 6ZM12 5c.361 0 1 .981 1 2h-2c0-1.019.639-2 1-2Zm-5 1a2.013 2.013 0 0 1 1.306 3.548L5 9.548V7a2 2 0 0 1 2-1ZM5 12h6v8H6a1 1 0 0 1-1-1v-7Zm8 8v-8h6v7a1 1 0 0 1-1 1h-5Z"/>
+					</svg>
+					<span class="font-semibold text-[14px]">Gift</span>
+				</a>
+
 				<!-- Download App Button -->
 				<a
 					href="#"
@@ -92,25 +105,38 @@ const { currentPage = "home" } = Astro.props;
 				</a>
 			</div>
 
-			<!-- Mobile Menu Button -->
-			<button
-				class="md:hidden p-2 text-gray-900 hover:text-orange-500 transition-colors"
-				aria-label="Toggle mobile menu"
-				id="mobile-menu-button"
-			>
-				<svg
-					class="w-6 h-6"
-					fill="none"
-					stroke="currentColor"
-					viewBox="0 0 24 24"
+			<!-- Mobile: Gift + Menu Button -->
+			<div class="md:hidden flex items-center gap-2">
+				<a
+					href="https://id.kahf.co/support/kahfkids"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex items-center gap-1.5 bg-gradient-to-r from-[#E05C41] to-[#c94d32] text-white rounded-full h-[38px] px-[14px] hover:from-[#c94d32] hover:to-[#b03d28] transition-all duration-200 shadow-md"
 				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M4 6h16M4 12h16M4 18h16"></path>
-				</svg>
-			</button>
+					<svg class="w-[15px] h-[15px] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+						<path d="M20 7h-1.586A2 2 0 0 0 17 4a4.016 4.016 0 0 0-2.578 1.072C13.757 3.8 12.938 3 12 3s-1.757.8-2.422 2.072A4.016 4.016 0 0 0 7 4a2 2 0 0 0-1.414 3.414L4 7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-3-1a2.013 2.013 0 0 1 2 2h-3.306A2.009 2.009 0 0 1 17 6ZM12 5c.361 0 1 .981 1 2h-2c0-1.019.639-2 1-2Zm-5 1a2.013 2.013 0 0 1 1.306 3.548L5 9.548V7a2 2 0 0 1 2-1ZM5 12h6v8H6a1 1 0 0 1-1-1v-7Zm8 8v-8h6v7a1 1 0 0 1-1 1h-5Z"/>
+					</svg>
+					<span class="font-semibold text-[13px]">Gift</span>
+				</a>
+				<button
+					class="p-2 text-gray-900 hover:text-orange-500 transition-colors"
+					aria-label="Toggle mobile menu"
+					id="mobile-menu-button"
+				>
+					<svg
+						class="w-6 h-6"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M4 6h16M4 12h16M4 18h16"></path>
+					</svg>
+				</button>
+			</div>
 		</div>
 
 		<!-- Mobile Navigation -->
@@ -205,11 +231,11 @@ const { currentPage = "home" } = Astro.props;
 
 			if (os === "ios") {
 				btn.href = APP_STORE_URLS.ios;
-				span.textContent = "Start Your Free Trail";
+				span.textContent = "Try for Free now";
 			} else {
 				// Android and desktop: link to Play Store
 				btn.href = APP_STORE_URLS.android;
-				span.textContent = "Start Your Free Trail";
+				span.textContent = "Try for Free now";
 			}
 		});
 	}

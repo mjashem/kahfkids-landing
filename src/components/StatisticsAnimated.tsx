@@ -14,7 +14,7 @@ interface StatItem {
 const statisticsData: StatItem[] = [
   {
     id: 1,
-    value: "21,000+",
+    value: "25,000+",
     label: "Curated Videos",
     color: "text-[#E05C41]",
     icon: `<svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

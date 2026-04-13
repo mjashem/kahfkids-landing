@@ -162,7 +162,7 @@ const HeroAnimated: React.FC<HeroAnimatedProps> = ({
                     transition={{ duration: 0.6, delay: 0.5 }}
                     className="text-sm sm:text-base text-[#4a4b4d] text-center lg:text-left mt-2"
                   >
-                    No credit card required • Cancel anytime
+                    14 days free trial • No credit card required
                   </motion.p>
 
                   {/* Trust Pills */}

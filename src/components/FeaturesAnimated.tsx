@@ -18,7 +18,7 @@ const FeaturesAnimated = ({ optimizedImages = {} }: FeaturesAnimatedProps) => {
       id: 1,
       title: "Replace Unsafe, Uncontrolled YouTube",
       features: [
-        "21,000+ safe and handpicked videos. Reviewed by Mufties.",
+        "25,000+ safe and handpicked videos. Reviewed by Mufties.",
         "No inappropriate clips, adult jokes, scary scenes or addictive content.",
         "Only Islamic, educational, and child-friendly content."
       ],
@@ -83,9 +83,9 @@ const FeaturesAnimated = ({ optimizedImages = {} }: FeaturesAnimatedProps) => {
       id: 6,
       title: "Focus on Study Time & Bed Time",
       features: [
-        "Automatically block distractions during study hours.",
-        "Bedtime mode blocks everything except emergency calls.",
-        "Children sleep and study without screen interruptions."
+        "Instantly block all apps with one tap during study or sleep time",
+        "Set automatic blocking based on daily study and sleep schedules",
+        "Limit screen time to prevent late nights and improve focus"
       ],
       image: getImageUrl('feature-image-6'),
       imageAlt: "Study and bedtime mode",

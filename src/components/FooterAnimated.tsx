@@ -112,7 +112,7 @@ const FooterAnimated = () => {
               <h3 className="font-semibold text-black text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">Support</h3>
               <div className="flex flex-col gap-3 sm:gap-4">
                 <motion.a
-                  href="#"
+                  href="mailto:support@kahfkids.com"
                   className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
                   whileHover={{ x: 4 }}
                   transition={{ type: "spring" as const, stiffness: 400 }}
@@ -120,15 +120,9 @@ const FooterAnimated = () => {
                   Contact Us
                 </motion.a>
                 <motion.a
-                  href="#"
-                  className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
-                  whileHover={{ x: 4 }}
-                  transition={{ type: "spring" as const, stiffness: 400 }}
-                >
-                  Help Center
-                </motion.a>
-                <motion.a
-                  href="#"
+                  href="https://id.kahf.co/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
                   whileHover={{ x: 4 }}
                   transition={{ type: "spring" as const, stiffness: 400 }}
@@ -136,20 +130,14 @@ const FooterAnimated = () => {
                   Privacy Policy
                 </motion.a>
                 <motion.a
-                  href="#"
+                  href="https://id.kahf.co/terms"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
                   whileHover={{ x: 4 }}
                   transition={{ type: "spring" as const, stiffness: 400 }}
                 >
                   Terms & Condition
-                </motion.a>
-                <motion.a
-                  href="#"
-                  className="font-medium text-[#4a4b4d] text-sm sm:text-base leading-relaxed hover:text-black transition-colors"
-                  whileHover={{ x: 4 }}
-                  transition={{ type: "spring" as const, stiffness: 400 }}
-                >
-                  Child Safety Policy
                 </motion.a>
               </div>
             </div>

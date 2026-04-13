@@ -62,7 +62,7 @@ const HeroStatsBadges: React.FC<HeroStatsBadgesProps> = ({ className = '' }) => 
       animate="visible"
     >
       <StatBadge
-        value="23k+"
+        value="25k+"
         label="Mufties Approved Videos"
         icon={
           <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20">

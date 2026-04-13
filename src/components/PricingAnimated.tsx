@@ -31,7 +31,7 @@ const PricingAnimated = () => {
       name: "Free",
       price: "$0",
       features: [
-        "21,000+ Curated Safe YouTube Videos",
+        "25,000+ Curated Safe YouTube Videos",
         "Drawing Activities",
         "Digital Qur'an — read, recite, memorize",
         "Brain-Boosting Games",
@@ -46,7 +46,7 @@ const PricingAnimated = () => {
     },
     {
       name: "Monthly Premium",
-      price: "$5",
+      price: "$4.99",
       priceNote: "/month",
       features: [
         "Everything in Free Plan +",
@@ -58,9 +58,9 @@ const PricingAnimated = () => {
         "Lock kids' device",
         "Uninstall protection (Android only)"
       ],
-      buttonText: "Start 7-Day Free Trial",
+      buttonText: "Purchase Now",
       isPopular: true,
-      badge: "Start Free Trial",
+      // badge: "Start Free Trial",
       borderColor: "border-[#E05C41]"
     },
     {
@@ -78,9 +78,9 @@ const PricingAnimated = () => {
         "Uninstall protection (Android only)",
         "Save 50% compared to Monthly"
       ],
-      buttonText: "Start 7-Day Free Trial",
+      buttonText: "Purchase Now",
       isBestValue: true,
-      badge: "7-Day Free Trial",
+      badge: "Best Value",
       borderColor: "border-[#E05C41]",
       isProminent: true
     }
@@ -230,21 +230,27 @@ const PricingAnimated = () => {
                         {plan.buttonText}
                       </motion.a>
                     ) : (
-                      <motion.button
+                      <motion.a
+                        href={plan.name === 'Monthly Premium'
+                          ? 'https://id.kahf.co/pay?product_code=kahf_kids_monthly_membership&returnUrl=https://kahfkids.com'
+                          : 'https://id.kahf.co/pay?product_code=kahf_kids_yearly_membership&returnUrl=https://kahfkids.com'
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.98 }}
-                        className={`w-full py-4 px-6 rounded-xl font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 ${
+                        className={`block w-full py-4 px-6 text-center rounded-xl font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 ${
                           plan.isProminent
                             ? 'bg-gradient-to-r from-[#E05C41] to-[#c94d32] hover:from-[#c94d32] hover:to-[#b03d28]'
                             : 'bg-gradient-to-r from-[#E05C41] to-[#d45438] hover:from-[#d45438] hover:to-[#c94d32]'
                         }`}
                       >
                         {plan.buttonText}
-                      </motion.button>
+                      </motion.a>
                     )}
                     {plan.name !== 'Free' ? (
                       <p className="text-xs text-[#4a4b4d] text-center font-medium">
-                        No credit card required · Cancel anytime
+                        Cancel anytime
                       </p>
                     ): <p className='text-xs text-[#4a4b4d] text-center font-medium'>Free Forever</p>}
                   </div>

@@ -10,7 +10,7 @@ interface FAQItem {
 const faqData: FAQItem[] = [
   {
     question: "My child secretly watches videos at night. Will this stop it?",
-    answer: "Yes. When Sleep Mode is on, all apps and videos are blocked. Even if they wake up and take the phone, nothing opens except emergency calls."
+    answer: "Yes. You can set sleep schedules to automatically block all apps and videos at night. Parents can also turn off video access completely. Even if your child wakes up and takes the phone, nothing will open except emergency calls."
   },
   {
     question: "What if my child tries to uninstall the app?",
@@ -37,10 +37,6 @@ const faqData: FAQItem[] = [
     answer: "Absolutely! One-tap setup. If you can use WhatsApp, you can use Kahf Kids. We designed it for busy parents, not tech experts."
   },
   {
-    question: "Multiple children?",
-    answer: "Yes! Create separate profiles for each child with age-appropriate settings and content filters for their individual needs."
-  },
-  {
     question: "Does this reduce tantrums?",
     answer: "Yes. Clear routines eliminate fights. Children know when screen time ends, so there's no begging or negotiating. Peaceful transitions become normal."
   },
@@ -51,10 +47,6 @@ const faqData: FAQItem[] = [
   {
     question: "Will it increase screen addiction?",
     answer: "No - it fights addiction. Strict time limits, content controls, and healthy digital habits. Less screen time, more real childhood."
-  },
-  {
-    question: "What devices work?",
-    answer: "Works on Android phones and tablets. iOS support coming soon. One subscription covers all your child's devices."
   }
 ];
 

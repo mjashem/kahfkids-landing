@@ -45,7 +45,7 @@ export default defineConfig({
       },
     },
     server: {
-      allowedHosts: ['.coder.kahf.riajul.dev']
+      allowedHosts: ['.coder.kahf.co.uk']
     }
     // REMOVED: Don't manually define BASE_URL - Astro handles this
   }
